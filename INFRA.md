@@ -22,9 +22,9 @@ export PROJ_NAME=ProtocolLabsDEV
 export GROUP_NAME_DESCRIPT="ProtocolLabs dev security group"
 export AMI_ID=ami-0d527b8c289b4af7f
 export EC2_COUNT=1
-export EC2_INSTANCE_TYPE=t2.xlarge
+export EC2_INSTANCE_TYPE=t2.micro
 export KEY_NAME=wr-enrico-aws-ec2
-export EBS_SIZE=120
+export EBS_SIZE=25
 ```
 
 # AWS
@@ -40,7 +40,7 @@ aws ec2 authorize-security-group-ingress \
     --group-name $PROJ_NAME \
     --protocol all \
     --port 0-65535 \
-    --cidr 0.0.0.0/8 \
+    --cidr 0.0.0.0/0 \
     --tag-specifications "ResourceType=security-group-rule,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
 ```
 
@@ -77,7 +77,7 @@ ssh -i "~/.ssh/wr-enrico-aws-ec2.pem" ubuntu@x.x.x.x
 ```
 aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances \
         --query 'Reservations[].Instances[].InstanceId' \
-        --filters "Name=tag:Name,Values=ProtocolLabs-dev" \
+        --filters "Name=tag:Name,Values=$PROJ_NAME" \
         --output text\
 )
 ```

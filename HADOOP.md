@@ -2,7 +2,28 @@
 
 # Hadoop 
 
+## Single-node cluster installation
+
 * https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html
+
+
+```
+sudo apt -y update
+sudo apt install -y ssh
+sudo apt-get install -y pdsh
+sudo apt install -y openjdk-8-jre-headless
+sudo apt install -y openjdk-8-jdk-headless
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+
+wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
+tar -xvf hadoop-3.3.1.tar.gz
+
+export HADOOP_HOME="/home/ubuntu/hadoop-3.3.1"
+```
+
+## Multi-node cluster installation
+
 * https://medium.com/@jootorres_11979/how-to-set-up-a-hadoop-3-2-1-multi-node-cluster-on-ubuntu-18-04-2-nodes-567ca44a3b12
 
 
