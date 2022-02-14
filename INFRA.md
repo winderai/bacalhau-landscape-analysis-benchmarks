@@ -42,13 +42,6 @@ aws ec2 authorize-security-group-ingress \
     --port 0-65535 \
     --cidr 0.0.0.0/8 \
     --tag-specifications "ResourceType=security-group-rule,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
-
-                    aws ec2 authorize-security-group-ingress \
-                        --group-name $PROJ_NAME \
-                        --protocol tcp \
-                        --port 0-65535 \
-                        --cidr 0.0.0.0/0 \
-                        --tag-specifications "ResourceType=security-group-rule,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
 ```
 
 Launch instances:
