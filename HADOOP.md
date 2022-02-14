@@ -247,11 +247,11 @@ start-yarn.sh
 
 
 ```
-git clone https://github.com/makayel/hadoop-examples-mapreduce
+git clone https://github.com/enricorotundo/hadoop-examples-mapreduce
 cd hadoop-examples-mapreduce
 sudo apt install -y maven
 mvn install -DskipTests
-wget https://raw.githubusercontent.com/makayel/hadoop-examples-mapreduce/main/src/test/resources/data/trees.csv
+wget https://raw.githubusercontent.com/enricorotundo/hadoop-examples-mapreduce/main/src/test/resources/data/trees.csv
 hdfs dfs -mkdir -p /user/hadoopuser
 hdfs dfs -put trees.csv
 yarn jar ~/hadoop-examples-mapreduce/target/hadoop-examples-mapreduce-1.0-SNAPSHOT-jar-with-dependencies.jar wordcount trees.csv count
