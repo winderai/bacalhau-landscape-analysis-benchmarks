@@ -243,9 +243,8 @@ start-yarn.sh
 
 
 
-## Test Hadoop processing [master]
+## Test Hadoop installation [master]
 
-### https://github.com/iv-stpn/hadoop-mapreduce-examples
 
 ```
 git clone https://github.com/makayel/hadoop-examples-mapreduce
