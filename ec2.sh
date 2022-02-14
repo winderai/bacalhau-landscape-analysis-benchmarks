@@ -1,9 +1,4 @@
-export AWS_PROFILE=winder
-export AWS_DEFAULT_REGION=eu-central-1
-
-
-# install aws cli first and configure it with credentials and default region
-# the script will iterate over all regions of AWS
+# This script will iterate over all regions of AWS and list EC2 instances
 
 for region in `aws ec2 describe-regions --output text | cut -f4`
 do
