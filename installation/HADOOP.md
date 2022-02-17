@@ -279,12 +279,12 @@ Add:
 start-yarn.sh
 ```
 
-### That's all!
+### That's all! 🎉
 
 Reference: https://medium.com/@jootorres_11979/how-to-set-up-a-hadoop-3-2-1-multi-node-cluster-on-ubuntu-18-04-2-nodes-567ca44a3b12
 
 
-## Optional: test Hadoop installation (master)
+## Optional: Test Hadoop installation (master)
 
 ```
 git clone https://github.com/enricorotundo/hadoop-examples-mapreduce
