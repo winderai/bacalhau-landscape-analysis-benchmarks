@@ -128,14 +128,14 @@ Replace content with: `hadoop-slave1`
 sudo vim /etc/hosts
 ```
 
-...remove `127.0.0.1    localhost`...
-
 Add:
 
 ```
-3.127.170.62   hadoop-master
-3.70.193.251   hadoop-slave1
+<MASTER_IP>   hadoop-master
+<SLAVE_IP>   hadoop-slave1
 ```
+
+Note: in case of a `ConnectionRefused` refused error, remove the `127.0.0.1    localhost` entry as suggested [here](https://cwiki.apache.org/confluence/display/HADOOP2/ConnectionRefused).
 
 ### Create an SSH key (master)
 
