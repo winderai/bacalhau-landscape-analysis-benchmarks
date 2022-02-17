@@ -174,10 +174,10 @@ Add:
 
 ```
 <configuration>
-<property>
-<name>fs.defaultFS</name>
-<value>hdfs://hadoop-master:9000</value>
-</property>
+   <property>
+      <name>fs.defaultFS</name>
+      <value>hdfs://hadoop-master:9000</value>
+   </property>
 </configuration>
 ```
 
@@ -191,16 +191,18 @@ Add:
 
 ```
 <configuration>
-<property>
-<name>dfs.namenode.name.dir</name><value>/usr/local/hadoop/data/nameNode</value>
-</property>
-<property>
-<name>dfs.datanode.data.dir</name><value>/usr/local/hadoop/data/dataNode</value>
-</property>
-<property>
-<name>dfs.replication</name>
-<value>2</value>
-</property>
+   <property>
+      <name>dfs.namenode.name.dir</name>
+      <value>/usr/local/hadoop/data/nameNode</value>
+   </property>
+   <property>
+      <name>dfs.datanode.data.dir</name>
+      <value>/usr/local/hadoop/data/dataNode</value>
+   </property>
+   <property>
+      <name>dfs.replication</name>
+      <value>2</value>
+   </property>
 </configuration>
 ```
 
@@ -266,8 +268,8 @@ Add:
 
 ```
 <property>
-<name>yarn.resourcemanager.hostname</name>
-<value>hadoop-master</value>
+   <name>yarn.resourcemanager.hostname</name>
+   <value>hadoop-master</value>
 </property>
 ```
 
@@ -290,6 +292,7 @@ cd hadoop-examples-mapreduce
 sudo apt install -y maven
 mvn install -DskipTests
 wget https://raw.githubusercontent.com/enricorotundo/hadoop-examples-mapreduce/main/src/test/resources/data/trees.csv
+
 hdfs dfs -mkdir -p /user/hadoopuser
 hdfs dfs -put trees.csv
 yarn jar ~/hadoop-examples-mapreduce/target/hadoop-examples-mapreduce-1.0-SNAPSHOT-jar-with-dependencies.jar wordcount trees.csv count
