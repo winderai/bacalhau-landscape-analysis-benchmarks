@@ -1,7 +1,6 @@
-# Postgre
+# Postgre 14
 
-- https://www.postgresql.org/download/linux/ubuntu/
-- https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart
+Add apt repository and install:
 
 ```
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
@@ -15,9 +14,10 @@ sudo -i -u postgres
 
 ```
 createdb sammy
-
 psql sammy
 ```
+
+Expected output:
 
 ```
 SELECT version();
