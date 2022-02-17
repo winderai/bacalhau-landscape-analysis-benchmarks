@@ -1,11 +1,17 @@
 # Spark 3.2.1 (without HDFS)
 
-https://spark.apache.org/docs/latest/spark-standalone.html
+This is a [standalone deploy mode](https://spark.apache.org/docs/latest/spark-standalone.html
+), it consists in a simple but effective manual installation via launch scripts.
+
+
+Download Spark:
 
 ```
 wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
 tar -xvf spark-3.2.1-bin-hadoop3.2.tgz
 ```
+
+Install Java 8 (pre-requisite):
 
 ```
 sudo apt -y update
@@ -13,22 +19,29 @@ sudo apt install -y openjdk-8-jdk-headless
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 ```
 
+## Launch Spark master
+
 ```
 ./sbin/start-master.sh
 ```
 
-Check: http://3.69.47.28:8080/
+Check master's web UI at `http://<MASTER_HOST_PUBLIC_IP>:8080/`
+
+## Launch Spark slave(s)
 
 ```
-./sbin/start-worker.sh spark://ip-172-31-15-62.eu-central-1.compute.internal:7077
+./sbin/start-worker.sh spark://<MASTER_PRIVATE_IP_DNS_NAME>:7077
 ```
 
+Retrieve `<MASTER_PRIVATE_IP_DNS_NAME>` from AWS console or via aws-cli. It looks like `ip-172-31-15-62.eu-central-1.compute.internal`.
 
-## Test
+## Test installation
+
+Run the following from within the spark directory:
 
 ```
 ./bin/spark-submit \
-    --master spark://ip-172-31-15-62.eu-central-1.compute.internal:7077 \
+    --master spark://<MASTER_PRIVATE_IP_DNS_NAME>:7077 \
     --deploy-mode client \
     --class org.apache.spark.examples.SparkPi examples/jars/spark-examples_2.12-3.2.1.jar \
     1000
