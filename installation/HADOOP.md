@@ -16,7 +16,7 @@ tar -xvf hadoop-3.3.1.tar.gz
 export HADOOP_HOME="/home/ubuntu/hadoop-3.3.1"
 ```
 
-Reference: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html
+Reference: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html
 
 ## Multi-node cluster installation
 
