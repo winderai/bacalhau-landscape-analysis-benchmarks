@@ -153,3 +153,8 @@ cython_debug/
 
 
 .DS_Store
+*.class
+*.jar
+*.crc
+*_SUCCESS
+*part-r-*
