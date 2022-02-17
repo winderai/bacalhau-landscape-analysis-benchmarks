@@ -54,7 +54,10 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ### Check Java version (all)
 ```
 java -version
+```
 
+Expected output:
+```
 openjdk version "1.8.0_312"
 OpenJDK Runtime Environment (build 1.8.0_312-8u312-b07-0ubuntu1~20.04-b07)
 OpenJDK 64-Bit Server VM (build 25.312-b07, mixed mode)
