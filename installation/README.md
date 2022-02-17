@@ -1,19 +1,12 @@
-# sample-code-benchmark
-
+# Raise AWS Infrastructure 
 
 ## Prerequistes
 
-* AWS cli
+* AWS cli (aws-cli/2.4.17)
 * enough EC2 quota
 
-Check:
 
-```
-❯ aws --version
-aws-cli/2.4.17 Python/3.8.8 Darwin/20.6.0 exe/x86_64 prompt/off
-```
-
-Let's setup some env vars:
+## 1) Let's setup some env vars:
 
 ```
 export AWS_PROFILE=winder
@@ -27,7 +20,7 @@ export KEY_NAME=wr-enrico-aws-ec2
 export EBS_SIZE=25
 ```
 
-# AWS
+## 2) Configure security group
 
 
 ```
@@ -44,7 +37,7 @@ aws ec2 authorize-security-group-ingress \
     --tag-specifications "ResourceType=security-group-rule,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
 ```
 
-Launch instances:
+## 3) Launch EC2 instances
 
 ```
 aws ec2 run-instances \
@@ -64,12 +57,6 @@ aws ec2 describe-instances \
     --filters "Name=tag-value,Values=$PROJ_NAME" \
     --query "Reservations[*].Instances[*].PublicIpAddress" \
     --output text
-```
-
-Connect:
-```
-ssh -i "~/.ssh/wr-enrico-aws-ec2.pem" ubuntu@x.x.x.x
-ssh -i "~/.ssh/wr-enrico-aws-ec2.pem" ubuntu@x.x.x.x
 ```
 
 # Cleanup EC2
