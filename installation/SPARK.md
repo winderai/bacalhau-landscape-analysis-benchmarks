@@ -1,4 +1,4 @@
-# Spark (without HDFS)
+# Spark 3.2.1 (without HDFS)
 
 https://spark.apache.org/docs/latest/spark-standalone.html
 
