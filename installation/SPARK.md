@@ -33,7 +33,7 @@ Check master's web UI at `http://<MASTER_HOST_PUBLIC_IP>:8080/`
 ./sbin/start-worker.sh spark://<MASTER_PRIVATE_IP_DNS_NAME>:7077
 ```
 
-Retrieve `<MASTER_PRIVATE_IP_DNS_NAME>` from AWS console or via aws-cli. It looks like `ip-172-31-15-62.eu-central-1.compute.internal`.
+Retrieve `<MASTER_PRIVATE_IP_DNS_NAME>` from AWS console or via aws-cli. It should look similar to `ip-172-31-15-62.eu-central-1.compute.internal`.
 
 ## Test installation
 
