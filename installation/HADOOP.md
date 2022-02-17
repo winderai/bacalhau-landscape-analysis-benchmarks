@@ -34,7 +34,7 @@ sudo apt install -y openjdk-8-jdk-headless
 sudo apt install -y openjdk-8-jre-headless
 ```
 
-### (all)
+### Set rcmd module to SSH (all)
 
 ```
 vim .bashrc
