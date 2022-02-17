@@ -4,9 +4,6 @@
 
 ## Single-node cluster installation
 
-* https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html
-
-
 ```
 sudo apt -y update
 sudo apt install -y ssh
@@ -22,13 +19,16 @@ tar -xvf hadoop-3.3.1.tar.gz
 export HADOOP_HOME="/home/ubuntu/hadoop-3.3.1"
 ```
 
+Reference: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html
+
 ## Multi-node cluster installation
 
-* https://medium.com/@jootorres_11979/how-to-set-up-a-hadoop-3-2-1-multi-node-cluster-on-ubuntu-18-04-2-nodes-567ca44a3b12
+- all: run command in all host machines
+- master
+- slave(s)
 
+### Install requirements (all)
 
-
-[all]
 ```
 sudo apt -y update
 sudo apt install -y ssh
@@ -37,30 +37,24 @@ sudo apt install -y openjdk-8-jdk-headless
 sudo apt install -y openjdk-8-jre-headless
 ```
 
-4) [all]
+### (all)
+
 ```
 vim .bashrc
 ```
 
-`export PDSH_RCMD_TYPE=ssh`
+Append: `export PDSH_RCMD_TYPE=ssh`
 
-[all]
+### Configure SSH (all)
+
 ```
 ssh-keygen -t rsa -P ""
-```
 
-[all]
-```
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
-[all]
-```
-ssh localhost
-exit
-```
 
-[all]
+### Check Java version (all)
 ```
 java -version
 
@@ -69,33 +63,32 @@ OpenJDK Runtime Environment (build 1.8.0_312-8u312-b07-0ubuntu1~20.04-b07)
 OpenJDK 64-Bit Server VM (build 25.312-b07, mixed mode)
 ```
 
-[all]
+### Download Hadoop (all)
+
 ```
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
 tar -xvf hadoop-3.3.1.tar.gz
-```
-
-[all]
-```
 mv hadoop-3.3.1 hadoop
+sudo mv hadoop /usr/local/hadoop
 ```
 
-[all]
+
+### Pass JAVA_HOME to Hadoop variables (all)
+
 ```
 vim ~/hadoop/etc/hadoop/hadoop-env.sh
 ```
 
-`export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/`
+Append: `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/`
 
-14) [all]
-```
-sudo mv hadoop /usr/local/hadoop
-```
 
-15) [all]
+### Append Hadoon binaries (all)
+
 ```
 sudo vim /etc/environment
 ```
+
+Replace content with:
 
 ```
 PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/hadoop/bin:/usr/local/hadoop/sbin"
@@ -103,68 +96,81 @@ PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/u
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
 ```
 
-16) [all]
+### Configure Hadoop user (all)
+
 ```
 sudo adduser hadoopuser
-```
-
-17) [all]
-```
 sudo usermod -aG hadoopuser hadoopuser
 sudo chown hadoopuser:root -R /usr/local/hadoop/
 sudo chmod g+rwx -R /usr/local/hadoop/
 sudo adduser hadoopuser sudo
 ```
 
-18) [all]
+### Modify host name (master)
+
+```
+sudo vim /etc/hostname
+```
+
+Replace content with: `hadoop-master` 
+
+### Modify host name (slaves)
+
+```
+sudo vim /etc/hostname
+```
+
+Replace content with: `hadoop-slave1`
+
+### Add cluster nodes to host file (all)
+
 ```
 sudo vim /etc/hosts
 ```
 
-...remove 127.0.0.1...
+...remove `127.0.0.1    localhost`...
+
+Add:
 
 ```
 3.127.170.62   hadoop-master
 3.70.193.251   hadoop-slave1
 ```
 
-20) [all]
-```
-sudo vim /etc/hostname
-```
+### Create an SSH key (master)
 
-`hadoop-master` or `hadoop-slave1`
-
-
-21) [master]
 ```
 su - hadoopuser
-```
-
-22) [master]
-```
 ssh-keygen -t rsa
 ```
 
-23) [all]
+### Enable password auth in SSH (all)
+
 ```
-    Log in as root Edit ssh config: 
-        sudo vim /etc/ssh/sshd_config 
-        Change this line: PasswordAuthentication no to PasswordAuthentication yes 
-        sudo systemctl restart sshd
+sudo vim /etc/ssh/sshd_config
 ```
 
-22) [master]
+Change this line: `PasswordAuthentication no` to `PasswordAuthentication yes`
+
+```
+sudo systemctl restart sshd
+```
+
+### Copy SSH key to all hosts (master)
+
 ```
 ssh-copy-id hadoopuser@hadoop-master
 ssh-copy-id hadoopuser@hadoop-slave1
 ```
 
 
-24) [master]
+### Configure NameNode location (master)
+
 ```
 sudo vim /usr/local/hadoop/etc/hadoop/core-site.xml
 ```
+
+Add:
 
 ```
 <configuration>
@@ -175,10 +181,13 @@ sudo vim /usr/local/hadoop/etc/hadoop/core-site.xml
 </configuration>
 ```
 
-25) [master]
+### Configure settings for HDFS daemons (master)
+
 ```
 sudo vim /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 ```
+
+Add:
 
 ```
 <configuration>
@@ -195,47 +204,49 @@ sudo vim /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 </configuration>
 ```
 
-26) [master]
+### Configure worker list (master)
+
 ```
 sudo vim /usr/local/hadoop/etc/hadoop/workers
 ```
 
-`hadoop-slave1`
+Add: `hadoop-slave1`
 
-27) [master]
+### Distribute Hadoop master configuration to slaves (master)
+
 ```
 scp /usr/local/hadoop/etc/hadoop/* hadoop-slave1:/usr/local/hadoop/etc/hadoop/
 ```
 
-28) [master]
+### Format HDFS (master)
+
 ```
 source /etc/environment
 hdfs namenode -format
 ```
 
-29) [master]
+### Start HDFS (master)
+
 ```
 start-dfs.sh
 jps
 ```
 
-... `sudo apt install -y openjdk-8-jdk-headless` ?
+If `jps` does not list a `DataNode`, run `hadoop datanode` in a separate terminal.
 
-... run `hadoop datanode` in a separate terminal
+### Start HDFS (slave)
 
-29) [slave]
 ```
 start-dfs.sh
 jps
 ```
 
-    https://stackoverflow.com/questions/48978480/hadoop-permission-denied-publickey-password-keyboard-interactive-warning/49960886
+Note: in case of `Permission denied` error run `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+` as described [here](https://stackoverflow.com/questions/48978480/hadoop-permission-denied-publickey-password-keyboard-interactive-warning/49960886).
+    
 
-<!-- 29) [master]
-export PDSH_RCMD_TYPE=ssh -->
+### Set environment variables (all)
 
-
-31) [both]
 ```
 export HADOOP_HOME="/usr/local/hadoop"
 export HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -245,10 +256,13 @@ export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_YARN_HOME=$HADOOP_HOME
 ```
 
-32) [slave]
+### Configure YARN (slave)
+
 ```
 sudo vim /usr/local/hadoop/etc/hadoop/yarn-site.xml
 ```
+
+Add:
 
 ```
 <property>
@@ -257,15 +271,18 @@ sudo vim /usr/local/hadoop/etc/hadoop/yarn-site.xml
 </property>
 ```
 
-32) [master]
+### Launch YARN (master)
+
 ```
 start-yarn.sh
 ```
 
+### That's all!
+
+Reference: https://medium.com/@jootorres_11979/how-to-set-up-a-hadoop-3-2-1-multi-node-cluster-on-ubuntu-18-04-2-nodes-567ca44a3b12
 
 
-## Test Hadoop installation [master]
-
+## Optional: test Hadoop installation (master)
 
 ```
 git clone https://github.com/enricorotundo/hadoop-examples-mapreduce
