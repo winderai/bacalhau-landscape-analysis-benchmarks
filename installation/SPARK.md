@@ -7,8 +7,10 @@ This is a [standalone deploy mode](https://spark.apache.org/docs/latest/spark-st
 Download Spark:
 
 ```bash
+cd ~
 wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
 tar -xvf spark-3.2.1-bin-hadoop3.2.tgz
+export SPARK_HOME=/home/ubuntu/spark-3.2.1-bin-hadoop3.2
 ```
 
 Install Java 8 (pre-requisite):
