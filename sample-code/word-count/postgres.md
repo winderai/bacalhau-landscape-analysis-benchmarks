@@ -23,5 +23,9 @@ tr " " "\n" < ./data/wordcount.txt | psql -d wordcountdb -c "COPY wordcount FROM
 ```sql
 SELECT * FROM wordcount LIMIT 15;
 
-SELECT word, COUNT(word) FROM wordcount GROUP BY word ORDER BY count DESC LIMIT 10;
+SELECT word, COUNT(word) 
+FROM wordcount 
+GROUP BY word 
+ORDER BY count DESC 
+LIMIT 10;
 ```
