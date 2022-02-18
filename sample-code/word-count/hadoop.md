@@ -1,42 +1,88 @@
 # Hadoop word count
 
+Set env vars:
 
 ```
-cd ~
-git clone https://github.com/enricorotundo/hadoop-examples-mapreduce
-cd hadoop-examples-mapreduce
-sudo apt install -y maven
-mvn install -DskipTests
-wget https://raw.githubusercontent.com/enricorotundo/hadoop-examples-mapreduce/main/src/test/resources/data/trees.csv
-
-
-$HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hadoopuser
-$HADOOP_HOME/bin/hdfs dfs -put trees.csv
-$HADOOP_HOME/bin/yarn jar ~/hadoop-examples-mapreduce/target/hadoop-examples-mapreduce-1.0-SNAPSHOT-jar-with-dependencies.jar wordcount trees.csv count
-$HADOOP_HOME/bin/hdfs dfs -cat count/part-r-00000
-```
-
-
-Alternative wordcount:
-
-https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html
-
-
-```
-export HADOOP_HOME="/Users/enricorotundo/winderresearch/ProtocolLabs/sample-code-benchmark/sample-code/derivative-dataset/hadoop/hadoop-3.3.1"
-
 export PATH=${JAVA_HOME}/bin:${PATH}
 export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+export HADOOP_HOME=<YOUR_HADOOP_HOME>
+```
+
+WordCount.java:
+
+```
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class WordCount {
+
+  public static class TokenizerMapper
+       extends Mapper<Object, Text, Text, IntWritable>{
+
+    private final static IntWritable one = new IntWritable(1);
+    private Text word = new Text();
+
+    public void map(Object key, Text value, Context context
+                    ) throws IOException, InterruptedException {
+      StringTokenizer itr = new StringTokenizer(value.toString());
+      while (itr.hasMoreTokens()) {
+        word.set(itr.nextToken());
+        context.write(word, one);
+      }
+    }
+  }
+
+  public static class IntSumReducer
+       extends Reducer<Text,IntWritable,Text,IntWritable> {
+    private IntWritable result = new IntWritable();
+
+    public void reduce(Text key, Iterable<IntWritable> values,
+                       Context context
+                       ) throws IOException, InterruptedException {
+      int sum = 0;
+      for (IntWritable val : values) {
+        sum += val.get();
+      }
+      result.set(sum);
+      context.write(key, result);
+    }
+  }
+
+  public static void main(String[] args) throws Exception {
+    Configuration conf = new Configuration();
+    Job job = Job.getInstance(conf, "word count");
+    job.setJarByClass(WordCount.class);
+    job.setMapperClass(TokenizerMapper.class);
+    job.setCombinerClass(IntSumReducer.class);
+    job.setReducerClass(IntSumReducer.class);
+    job.setOutputKeyClass(Text.class);
+    job.setOutputValueClass(IntWritable.class);
+    FileInputFormat.addInputPath(job, new Path(args[0]));
+    FileOutputFormat.setOutputPath(job, new Path(args[1]));
+    System.exit(job.waitForCompletion(true) ? 0 : 1);
+  }
+}
+```
 
 
-
+```
+# create JAR file
 $HADOOP_HOME/bin/hadoop com.sun.tools.javac.Main WordCount.java
 jar cf wc.jar WordCount*.class
 
+# launch job
+$HADOOP_HOME/bin/hadoop jar wc.jar WordCount ./data ./out
 
-$HADOOP_HOME/bin/hadoop jar wc.jar WordCount /Users/enricorotundo/winderresearch/ProtocolLabs/sample-code-benchmark/sample-code/derivative-dataset/data /Users/enricorotundo/winderresearch/ProtocolLabs/sample-code-benchmark/sample-code/derivative-dataset/hadoop/out
-
-
-
-$HADOOP_HOME/bin/hadoop fs -cat /Users/enricorotundo/winderresearch/ProtocolLabs/sample-code-benchmark/sample-code/derivative-dataset/hadoop/out/part-r-00000
+# print wordcout output
+$HADOOP_HOME/bin/hadoop fs -cat ./out/part-r-00000
 ```
