@@ -10,7 +10,7 @@ export HADOOP_HOME=<YOUR_HADOOP_HOME>
 
 WordCount.java:
 
-```
+```java
 import java.io.IOException;
 import java.util.StringTokenizer;
 
