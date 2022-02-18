@@ -12,7 +12,7 @@ sudo -i -u postgres
 
 ## Test installation
 
-```sql
+```bash
 createdb sammy
 psql sammy
 ```
