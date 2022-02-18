@@ -53,5 +53,5 @@ Launch Spark job:
 $SPARK_HOME/bin/spark-submit \
     --master local \
     --class org.apache.spark.examples.JavaWordCount examples/jars/spark-examples_2.12-3.2.1.jar \
-    trees.csv
+    ./data/wordcount.txt
 ```
