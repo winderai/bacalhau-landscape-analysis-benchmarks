@@ -31,3 +31,5 @@ from (
 group by word
 order by count desc;
 ```
+
+![alt text](imgs/snowflake_query_result.png "query output")
