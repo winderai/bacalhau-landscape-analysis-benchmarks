@@ -1,3 +1,5 @@
+# Postgres Word Count
+
 ```bash
 # make sure postgres is running
 postgres -D /usr/local/var/postgres

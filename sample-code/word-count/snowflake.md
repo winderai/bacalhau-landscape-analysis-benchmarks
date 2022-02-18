@@ -1,7 +1,4 @@
-
-
-
-https://docs.snowflake.com/en/user-guide/data-load-web-ui.html#step-1-opening-the-load-data-wizard
+# Snowflake Word Count
 
 ## Prerequisite
 
@@ -21,7 +18,8 @@ https://docs.snowflake.com/en/user-guide/data-load-web-ui.html#step-1-opening-th
 
 Follow the procedure from the official docs: https://docs.snowflake.com/en/user-guide/data-load-web-ui.html#step-1-opening-the-load-data-wizard
 
-### Run query
+
+## Run query
 
 ```sql
 SELECT word, COUNT(*) as count

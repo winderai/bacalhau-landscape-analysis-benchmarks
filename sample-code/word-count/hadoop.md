@@ -1,4 +1,4 @@
-# Hadoop word count
+# Hadoop Word Count
 
 Set env vars:
 
