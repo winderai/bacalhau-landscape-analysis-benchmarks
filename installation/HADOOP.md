@@ -173,7 +173,7 @@ sudo vim /usr/local/hadoop/etc/hadoop/core-site.xml
 
 Add:
 
-```
+```xml
 <configuration>
    <property>
       <name>fs.defaultFS</name>
@@ -190,7 +190,7 @@ sudo vim /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 
 Add:
 
-```
+```xml
 <configuration>
    <property>
       <name>dfs.namenode.name.dir</name>
@@ -267,7 +267,7 @@ sudo vim /usr/local/hadoop/etc/hadoop/yarn-site.xml
 
 Add:
 
-```
+```xml
 <property>
    <name>yarn.resourcemanager.hostname</name>
    <value>hadoop-master</value>
