@@ -47,6 +47,8 @@ public final class JavaWordCount {
 }
 ```
 
+Launch Spark job:
+
 ```bash
 $SPARK_HOME/bin/spark-submit \
     --master local \
