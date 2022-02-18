@@ -17,8 +17,11 @@ https://docs.snowflake.com/en/user-guide/data-load-web-ui.html#step-1-opening-th
 
 ![alt text](imgs/snowflake_create_fileformat.png "create file format")
 
-follow procedure for Loading Data -> https://docs.snowflake.com/en/user-guide/data-load-web-ui.html#step-1-opening-the-load-data-wizard
+### Load wordcount.txt
 
+Follow the procedure from the official docs: https://docs.snowflake.com/en/user-guide/data-load-web-ui.html#step-1-opening-the-load-data-wizard
+
+### Run query
 
 ```sql
 SELECT word, COUNT(*) as count
