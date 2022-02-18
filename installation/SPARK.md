@@ -6,14 +6,14 @@ This is a [standalone deploy mode](https://spark.apache.org/docs/latest/spark-st
 
 Download Spark:
 
-```
+```bash
 wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
 tar -xvf spark-3.2.1-bin-hadoop3.2.tgz
 ```
 
 Install Java 8 (pre-requisite):
 
-```
+```bash
 sudo apt -y update
 sudo apt install -y openjdk-8-jdk-headless
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
@@ -21,7 +21,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 ## Launch Spark master
 
-```
+```bash
 ./sbin/start-master.sh
 ```
 
@@ -29,7 +29,7 @@ Check master's web UI at `http://<MASTER_HOST_PUBLIC_IP>:8080/`
 
 ## Launch Spark slave(s)
 
-```
+```bash
 ./sbin/start-worker.sh spark://<MASTER_PRIVATE_IP_DNS_NAME>:7077
 ```
 
@@ -39,7 +39,7 @@ Retrieve `<MASTER_PRIVATE_IP_DNS_NAME>` from AWS console or via aws-cli. It shou
 
 Run the following from within the spark directory:
 
-```
+```bash
 ./bin/spark-submit \
     --master spark://<MASTER_PRIVATE_IP_DNS_NAME>:7077 \
     --deploy-mode client \

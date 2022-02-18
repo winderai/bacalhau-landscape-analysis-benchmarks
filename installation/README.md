@@ -7,7 +7,7 @@
 
 ## 1) Let's setup some env vars:
 
-```
+```bash
 export AWS_PROFILE=winder
 export AWS_REGION=eu-central-1
 export PROJ_NAME=ProtocolLabsDEV
@@ -23,7 +23,7 @@ export EBS_SIZE=25
 ## 2) Configure security group
 
 
-```
+```bash
 aws ec2 create-security-group \
     --group-name $PROJ_NAME \
     --description $GROUP_NAME_DESCRIPT \
@@ -39,7 +39,7 @@ aws ec2 authorize-security-group-ingress \
 
 ## 3) Launch EC2 instances
 
-```
+```bash
 aws ec2 run-instances \
     --image-id $AMI_ID \
     --count $EC2_COUNT \
@@ -52,7 +52,7 @@ aws ec2 run-instances \
 
 Retrieve public IPs:
 
-```
+```bash
 aws ec2 describe-instances \
     --filters "Name=tag-value,Values=$PROJ_NAME" \
     --query "Reservations[*].Instances[*].PublicIpAddress" \
@@ -61,7 +61,7 @@ aws ec2 describe-instances \
 
 # Cleanup EC2
 
-```
+```bash
 aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances \
         --query 'Reservations[].Instances[].InstanceId' \
         --filters "Name=tag:Name,Values=$PROJ_NAME" \
