@@ -1,9 +1,9 @@
 ```python
 import pandas as pd
 
-file_url = "https://raw.githubusercontent.com/enricorotundo/hadoop-examples-mapreduce/main/src/test/resources/data/wordcount.txt"
+file_path = "./data/wordcount.txt"
 
-df = pd.read_csv(file_url, header=None)
+df = pd.read_csv(file_path, header=None)
 
 df["mytext_new"] = df[0].str.lower().str.replace('[^\w\s]','')
   

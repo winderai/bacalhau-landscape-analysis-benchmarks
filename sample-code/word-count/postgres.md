@@ -1,18 +1,26 @@
-```
+```bash
+# make sure postgres is running
 postgres -D /usr/local/var/postgres
 
-wget -P /tmp https://raw.githubusercontent.com/enricorotundo/hadoop-examples-mapreduce/main/src/test/resources/data/wordcount.txt
+createdb wordcountdb
 
-createdb enricorotundo
+# launch postgres terminal
+psql -d wordcountdb
+```
 
-psql -d enricorotundo
+Run the following commands:
 
+```
 drop table wordcount;
 
 create table wordcount(word text);
+```
 
-tr " " "\n" < /tmp/wordcount.txt | psql -d enricorotundo -c "COPY wordcount FROM stdin (delimiter ' ');"
+```bash
+tr " " "\n" < ./data/wordcount.txt | psql -d wordcountdb -c "COPY wordcount FROM stdin (delimiter ' ');"
+```
 
+```sql
 SELECT * FROM wordcount LIMIT 15;
 
 SELECT word, COUNT(word) FROM wordcount GROUP BY word ORDER BY count DESC LIMIT 10;
