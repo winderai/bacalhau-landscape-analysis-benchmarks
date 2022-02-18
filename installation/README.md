@@ -1,10 +1,9 @@
-# Raise AWS Infrastructure 
+# Launch AWS Infrastructure 
 
 ## Prerequistes
 
-* AWS cli (aws-cli/2.4.17)
-* enough EC2 quota
-
+* `aws-cli/2.4.17`
+* Enough EC2 quota
 
 ## 1) Let's setup some env vars:
 
@@ -13,10 +12,11 @@ export AWS_PROFILE=winder
 export AWS_REGION=eu-central-1
 export PROJ_NAME=ProtocolLabsDEV
 export GROUP_NAME_DESCRIPT="ProtocolLabs dev security group"
-export AMI_ID=ami-0d527b8c289b4af7f
+export KEY_NAME=wr-enrico-aws-ec2
+
 export EC2_COUNT=1
 export EC2_INSTANCE_TYPE=t2.micro
-export KEY_NAME=wr-enrico-aws-ec2
+export AMI_ID=ami-0d527b8c289b4af7f
 export EBS_SIZE=25
 ```
 
