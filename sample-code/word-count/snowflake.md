@@ -32,4 +32,6 @@ group by word
 order by count desc;
 ```
 
+Expected result:
+
 ![alt text](imgs/snowflake_query_result.png "query output")
