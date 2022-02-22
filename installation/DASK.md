@@ -29,7 +29,9 @@ On each worker node:
 dask-worker tcp://172.31.11.47:8786
 ```
 
-## Optional: Test Dask Distributed installation (xxxxx)
+## Optional: Test Dask Distributed installation
+
+Run in main node:
 
 ```python
 from dask.distributed import Client
