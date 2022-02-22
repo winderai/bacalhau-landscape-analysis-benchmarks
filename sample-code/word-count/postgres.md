@@ -10,11 +10,9 @@ createdb wordcountdb
 psql -d wordcountdb
 ```
 
-Run the following commands:
+Run the following command:
 
 ```
-drop table wordcount;
-
 create table wordcount(word text);
 ```
 
