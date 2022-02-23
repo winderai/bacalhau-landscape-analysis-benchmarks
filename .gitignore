@@ -158,3 +158,4 @@ cython_debug/
 *.crc
 *_SUCCESS
 *part-r-*
+**/dask-worker-space/
