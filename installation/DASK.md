@@ -1,6 +1,6 @@
 # Dask Distributed
 
-Install miniconda (confirm/proceed when prompted):
+Install miniconda (confirm/proceed when prompted). Skip if it's already installed:
 
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
