@@ -25,7 +25,7 @@ export SPARK_HOME=/home/ubuntu/spark-3.2.1-bin-hadoop3.2
 ## Launch Spark master
 
 ```bash
-./sbin/start-master.sh
+$SPARK_HOME/sbin/start-master.sh
 ```
 
 Check master's web UI at `http://<MASTER_HOST_PUBLIC_IP>:8080/`
@@ -33,7 +33,7 @@ Check master's web UI at `http://<MASTER_HOST_PUBLIC_IP>:8080/`
 ## Launch Spark slave(s)
 
 ```bash
-./sbin/start-worker.sh spark://<MASTER_PRIVATE_IP_DNS_NAME>:7077
+$SPARK_HOME/sbin/start-worker.sh spark://<MASTER_PRIVATE_IP_DNS_NAME>:7077
 ```
 
 Retrieve `<MASTER_PRIVATE_IP_DNS_NAME>` from AWS console or via aws-cli. It should look similar to `ip-172-31-15-62.eu-central-1.compute.internal`.
@@ -43,7 +43,7 @@ Retrieve `<MASTER_PRIVATE_IP_DNS_NAME>` from AWS console or via aws-cli. It shou
 Run the following from within the spark directory:
 
 ```bash
-./bin/spark-submit \
+$SPARK_HOME/bin/spark-submit \
     --master spark://<MASTER_PRIVATE_IP_DNS_NAME>:7077 \
     --deploy-mode client \
     --class org.apache.spark.examples.SparkPi examples/jars/spark-examples_2.12-3.2.1.jar \
