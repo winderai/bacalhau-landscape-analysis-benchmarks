@@ -2,8 +2,8 @@
 
 ## Benchmark Instructions
 
-1. clone this repo
-1. follow installation instrictions
+1. Clone this repo
+1. Follow the [AWS installation instructions](installation/README.md)
 1. follow benchmark instructions
 
 ## Sample code
