@@ -5,23 +5,25 @@
 * Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) (tested on `2.4.17`)
 * Enough EC2 quota to launch multiple instances
 * EC2 permissions to set up a security group
+* AWS key set up (see KEY_NAME)
 
-## 1) Let's setup some env vars:
+## Let's setup some env vars:
 
 ```bash
+# aws cli
 export AWS_PROFILE=winder
 export AWS_REGION=eu-central-1
-export PROJ_NAME=ProtocolLabsDEV
-export GROUP_NAME_DESCRIPT="ProtocolLabs dev security group"
-export KEY_NAME=wr-enrico-aws-ec2
-
+# ec2
 export EC2_COUNT=1
 export EC2_INSTANCE_TYPE=t2.micro
 export AMI_ID=ami-0d527b8c289b4af7f
 export EBS_SIZE=25
+export PROJ_NAME=ProtocolLabsDEV
+export GROUP_NAME_DESCRIPT="ProtocolLabs dev security group"
+export KEY_NAME=wr-enrico-aws-ec2
 ```
 
-## 2) Configure security group
+## Configure security group
 
 
 ```bash
@@ -38,7 +40,7 @@ aws ec2 authorize-security-group-ingress \
     --tag-specifications "ResourceType=security-group-rule,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
 ```
 
-## 3) Launch EC2 instances
+## Launch EC2 instances
 
 ```bash
 aws ec2 run-instances \
@@ -60,7 +62,7 @@ aws ec2 describe-instances \
     --output text
 ```
 
-# Cleanup EC2
+## Cleanup EC2
 
 ```bash
 aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances \
