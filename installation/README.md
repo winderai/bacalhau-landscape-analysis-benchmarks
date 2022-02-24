@@ -7,7 +7,7 @@
 * EC2 permissions to set up a security group
 * AWS key set up (see KEY_NAME)
 
-## Let's setup some env vars:
+## Setup some env vars:
 
 ```bash
 # aws cli
