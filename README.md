@@ -2,9 +2,9 @@
 
 ## Benchmark Instructions
 
-1. Clone this repo
-1. Follow the [AWS installation instructions](installation/README.md)
-1. follow benchmark instructions
+1. Clone this repo.
+1. Follow the [AWS installation instructions](installation/README.md).
+1. Follow benchmark instructions for a [single-node](installation/SINGLE-NODE.md).or [multi-node](installation/MULTI-NODE.md) set up depending on the run you'd like to launch.
 
 ## Sample code
 
