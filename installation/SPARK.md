@@ -3,22 +3,23 @@
 This is a [standalone deploy mode](https://spark.apache.org/docs/latest/spark-standalone.html
 ), it simply consists of a couple of launch scripts.
 
+## Pre-requisite
 
-Download Spark:
+Install Java 8 (if not already installed):
+
+```bash
+sudo apt -y update
+sudo apt install -y openjdk-8-jdk-headless
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+```
+
+## Download Spark
 
 ```bash
 cd ~
 wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
 tar -xvf spark-3.2.1-bin-hadoop3.2.tgz &>/dev/null
 export SPARK_HOME=/home/ubuntu/spark-3.2.1-bin-hadoop3.2
-```
-
-Install Java 8 (pre-requisite):
-
-```bash
-sudo apt -y update
-sudo apt install -y openjdk-8-jdk-headless
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 ```
 
 ## Launch Spark master
