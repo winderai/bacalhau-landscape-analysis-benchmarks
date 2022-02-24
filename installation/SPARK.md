@@ -1,7 +1,7 @@
 # Spark 3.2.1 (without HDFS)
 
 This is a [standalone deploy mode](https://spark.apache.org/docs/latest/spark-standalone.html
-), it consists in a simple but effective manual installation via launch scripts.
+), it simply consists of a couple of launch scripts.
 
 
 Download Spark:
