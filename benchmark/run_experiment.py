@@ -10,7 +10,7 @@ from easyprocess import EasyProcess
 
 def main(args):
     # experiment tracking
-    mlflow.set_tracking_uri("databricks")
+    mlflow.set_tracking_uri("file:./mlflow-files")
     mlflow.set_experiment(args.experiment_name)
     
     with mlflow.start_run(run_name=args.framework) as parent_run:
@@ -19,6 +19,8 @@ def main(args):
             s = EasyProcess(cmd).call().stdout
             print(s)
         elif args.framework == "pandas":
+            mlflow.log_param("param1", 1111)
+            mlflow.log_metric("foo", 222)
             cmd = ["python", "word-count/pandas/word-count.py"]
             s = EasyProcess(cmd).call().stdout
             print(s)
