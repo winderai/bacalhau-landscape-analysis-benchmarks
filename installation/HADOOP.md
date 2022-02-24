@@ -2,7 +2,7 @@
 
 # Hadoop 3.3.1
 
-## Single-node cluster installation
+## Single-node
 
 ```bash
 sudo apt -y update
@@ -18,7 +18,7 @@ export HADOOP_HOME="/home/ubuntu/hadoop-3.3.1"
 
 Reference: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html
 
-## Multi-node cluster installation
+## Multi-node
 
 - all: run command in all host machines
 - master
