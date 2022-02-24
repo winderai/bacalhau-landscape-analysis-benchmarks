@@ -1,6 +1,16 @@
 # sample-code-benchmark
 
+## Benchmark Instructions
 
+1. clone this repo
+1. follow installation instrictions
+1. follow benchmark instructions
+
+## Sample code
+
+- word-count
+- average-house-price
+- derivative-dataset
 
 ## Todo
 
@@ -13,3 +23,5 @@ Benchmarks:
 - [ ] Fetch CPU/Memory stats
 - [ ] Fetch large dataset
 - [ ] Move dataset to S3? or HDFS?
+
+
