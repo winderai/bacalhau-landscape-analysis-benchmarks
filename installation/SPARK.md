@@ -9,7 +9,7 @@ Download Spark:
 ```bash
 cd ~
 wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
-tar -xvf spark-3.2.1-bin-hadoop3.2.tgz
+tar -xvf spark-3.2.1-bin-hadoop3.2.tgz &>/dev/null
 export SPARK_HOME=/home/ubuntu/spark-3.2.1-bin-hadoop3.2
 ```
 

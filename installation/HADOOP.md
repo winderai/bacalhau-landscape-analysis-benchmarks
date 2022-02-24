@@ -68,7 +68,7 @@ OpenJDK 64-Bit Server VM (build 25.312-b07, mixed mode)
 
 ```bash
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
-tar -xvf hadoop-3.3.1.tar.gz
+tar -xvf hadoop-3.3.1.tar.gz &>/dev/null
 mv hadoop-3.3.1 hadoop
 sudo mv hadoop /usr/local/hadoop
 ```
