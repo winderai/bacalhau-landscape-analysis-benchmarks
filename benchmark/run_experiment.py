@@ -1,6 +1,6 @@
 """
 This script assumes a runtime environment
-with all pre-requistes preinstalled
+with all pre-requistes preinstalled (conda activate benchmark)
 """
 
 import argparse
@@ -15,16 +15,10 @@ def main(args):
     
     with mlflow.start_run(run_name=args.framework) as parent_run:
         if args.framework == "dask":
-            mlflow.log_param("dask", 123123123)
-            
             cmd = ["python", "word-count/dask/word-count.py"]
             s = EasyProcess(cmd).call().stdout
             print(s)
         elif args.framework == "pandas":
-            mlflow.log_param("pandas", 123123123)
-
-            mlflow.log_param("tetetetet", 123123123)
-            
             cmd = ["python", "word-count/pandas/word-count.py"]
             s = EasyProcess(cmd).call().stdout
             print(s)
@@ -33,15 +27,16 @@ def main(args):
             s = EasyProcess(cmd).call().stdout
             print(s)
         elif args.framework == "hadoop":
-            raise NotImplementedError
+            cmd = ["bash", "word-count/hadoop/run.sh"]
+            s = EasyProcess(cmd).call().stderr
+            print(s)
         elif args.framework == "spark":
-            raise NotImplementedError
-
-        # export JAVA_HOME=...
-        # export PATH=${JAVA_HOME}/bin:${PATH}
-        # export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
-        # export HADOOP_HOME=/Users/enricorotundo/hadoop-3.3.1
-        # $HADOOP_HOME/bin/hadoop jar jars/hadoop-wc.jar WordCount ./data ./out
+            cmd = ["bash", "word-count/spark/run.sh"]
+            call = EasyProcess(cmd).call()
+            s = call.stderr
+            print(s)
+            s = call.stdout
+            print(s)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
