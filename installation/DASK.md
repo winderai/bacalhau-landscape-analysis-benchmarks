@@ -3,6 +3,7 @@
 Install miniconda (confirm/proceed when prompted). Skip if it's already installed:
 
 ```bash
+cd ~
 wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
 bash Miniconda3-py39_4.10.3-Linux-x86_64.sh
 eval "$(/home/ubuntu/miniconda3/bin/conda shell.bash hook)"
