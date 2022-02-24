@@ -1,9 +1,12 @@
 # Single node installation
 
-This set up is straightforward. Install the following:
+This set up is straightforward since you only work on a single host.
+Proceed by installing each framework and related prerequistes but DO NOT launch any cluster (yet).
+Please follow the instructions linked below:
 
 - [Pandas](installation/PANDAS.md)
 - [Dask](installation/DASK.md)
 - [Postgres](installation/POSTGRE.md)
 - [Hadoop](installation/HADOOP.md)
 - [Spark](installation/SPARK.md)
+- Snowflake ?
