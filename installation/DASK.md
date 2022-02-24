@@ -17,6 +17,8 @@ conda install -y dask==2022.2.0 distributed==2022.2.0 -c conda-forge
 pip install requests aiohttp
 ```
 
+## Launch cluster
+
 On main node:
 
 ```bash
