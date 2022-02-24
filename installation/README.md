@@ -32,6 +32,8 @@ aws ec2 create-security-group \
     --description $GROUP_NAME_DESCRIPT \
     --tag-specifications "ResourceType=security-group,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
 
+# this exposes the security group to any inbound traffic for the Internet
+# make sure to clean up once the benchmark has completed
 aws ec2 authorize-security-group-ingress \
     --group-name $PROJ_NAME \
     --protocol all \
