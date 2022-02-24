@@ -14,13 +14,8 @@
 export AWS_PROFILE=winder
 export AWS_REGION=eu-central-1
 # ec2
-export EC2_COUNT=1
-export EC2_INSTANCE_TYPE=t2.micro
-export AMI_ID=ami-0d527b8c289b4af7f
-export EBS_SIZE=25
 export PROJ_NAME=ProtocolLabsDEV
 export GROUP_NAME_DESCRIPT="ProtocolLabs dev security group"
-export KEY_NAME=wr-enrico-aws-ec2
 ```
 
 ## Configure security group
@@ -43,6 +38,16 @@ aws ec2 authorize-security-group-ingress \
 ```
 
 ## Launch EC2 instances
+
+Configure the cluster resources, set `EC2_COUNT` to 1 for running the benchmarks in a single node setting.
+
+```bash
+export EC2_COUNT=1
+export EC2_INSTANCE_TYPE=t2.micro
+export AMI_ID=ami-0d527b8c289b4af7f
+export EBS_SIZE=25
+export KEY_NAME=wr-enrico-aws-ec2
+```
 
 ```bash
 aws ec2 run-instances \
