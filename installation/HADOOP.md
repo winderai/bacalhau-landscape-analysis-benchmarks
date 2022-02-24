@@ -10,6 +10,7 @@ sudo apt install -y ssh pdsh
 sudo apt install -y openjdk-8-jdk-headless
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
+cd ~
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
 tar -xvf hadoop-3.3.1.tar.gz &>/dev/null
 export HADOOP_HOME="/home/ubuntu/hadoop-3.3.1"
