@@ -10,3 +10,7 @@ Please follow the instructions linked below:
 - [Hadoop](installation/HADOOP.md)
 - [Spark](installation/SPARK.md)
 - Snowflake ?
+
+At this point we have all frameworks installed.
+
+You're now ready to [run the benchmarks](../benchmark/README.md).
