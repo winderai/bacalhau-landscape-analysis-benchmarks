@@ -3,7 +3,8 @@
 ## Prerequistes
 
 * Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) (tested on `2.4.17`)
-* Enough EC2 quota and permissions to set lauch multiple instances and create a security group
+* Enough EC2 quota to launch multiple instances
+* EC2 permissions to set up a security group
 
 ## 1) Let's setup some env vars:
 
