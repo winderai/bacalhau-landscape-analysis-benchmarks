@@ -36,8 +36,10 @@ sudo apt -y update
 sudo apt install -y ssh pdsh
 sudo apt install -y openjdk-8-jdk-headless
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+export PATH=${JAVA_HOME}/bin:${PATH}
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
 tar -xvf hadoop-3.3.1.tar.gz &>/dev/null
+export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
 export HADOOP_HOME="/home/ubuntu/hadoop-3.3.1"
 
 # Install Spark
