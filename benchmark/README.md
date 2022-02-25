@@ -22,6 +22,16 @@ python run_experiment.py \
     --framework dask
 ```
 
+postgre:
+```
+conda activate base
+python run_experiment.py \
+    --experiment_name /test \
+    --framework postgre
+```
+
+
+Hadoop:
 ```
 conda activate base
 python run_experiment.py \

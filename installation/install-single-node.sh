@@ -21,7 +21,7 @@ conda activate dask
 conda install -y dask==2022.2.0 distributed==2022.2.0 -c conda-forge
 pip install requests==2.27.1 aiohttp==3.8.1 mlflow==1.23.1 EasyProcess==1.1
 
-#
+# Create base conda env
 conda activate base
 pip install mlflow==1.23.1 EasyProcess==1.1
 
@@ -44,6 +44,7 @@ tar -xvf hadoop-3.3.1.tar.gz &>/dev/null
 cd ~
 wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
 tar -xvf spark-3.2.1-bin-hadoop3.2.tgz &>/dev/null
+
 
 # Add env var to bash config
 echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' >> ~/.bashrc 

@@ -20,6 +20,7 @@ Benchmarks:
 - [x] Build JARs for Hadoop and Spark examples
 - [x] run_experiment.py for Hadoop
 - [x] run_experiment.py for Spark
+- [ ] make sure experiment prepping (init dirs, fetch dataset) is not counted against the benchmarking 
 - [ ] Fetch CPU/Memory stats
 - [ ] Fetch large dataset
 - [ ] Move dataset to S3? or HDFS?

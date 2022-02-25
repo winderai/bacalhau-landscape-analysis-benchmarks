@@ -31,3 +31,19 @@ GROUP BY word
 ORDER BY count DESC 
 LIMIT 10;
 ```
+
+```
+ word  | count 
+-------+-------
+ the   |    38
+ a     |    28
+ of    |    25
+ word  |    24
+ and   |    23
+ words |    21
+ is    |    19
+ to    |    18
+ in    |    11
+ count |    11
+(10 rows)
+```

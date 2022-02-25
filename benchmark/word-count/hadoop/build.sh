@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -x
+# fail fast
+set -euxo pipefail
 
 $HADOOP_HOME/bin/hadoop com.sun.tools.javac.Main WordCount.java
 

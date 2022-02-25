@@ -24,9 +24,10 @@ def main(args):
             cmd = ["python", "word-count/pandas/word-count.py"]
             s = EasyProcess(cmd).call().stdout
             print(s)
-        elif args.framework == "postgre":
-            cmd = ["bash", "word-count/postgre/word-count.sh"]
-            s = EasyProcess(cmd).call().stdout
+        elif args.framework == "postgres":
+            print("Postgres...")
+            cmd = ["bash", "word-count/postgres/word-count.sh"]
+            s = EasyProcess(cmd).call().stderr
             print(s)
         elif args.framework == "hadoop":
             cmd = ["bash", "word-count/hadoop/run.sh"]
@@ -39,6 +40,9 @@ def main(args):
             print(s)
             s = call.stdout
             print(s)
+        else:
+            raise Exception("Framework {} is not supported.".format(args.framework))
+        
     print("DONE")
 
 if __name__ == "__main__":
