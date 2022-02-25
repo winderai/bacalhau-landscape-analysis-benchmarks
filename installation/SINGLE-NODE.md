@@ -1,15 +1,23 @@
 # Single node installation
 
-This set up is straightforward since you only work on a single host.
-Proceed by installing each framework and related prerequistes but DO NOT launch any cluster (yet).
-Please follow the instructions linked below:
+This set up is straightforward since you work only on a single host.
+We're going to install:
 
-- [Pandas](installation/PANDAS.md)
-- [Dask](installation/DASK.md)
-- [Postgres](installation/POSTGRE.md)
-- [Hadoop](installation/HADOOP.md)
-- [Spark](installation/SPARK.md)
-- Snowflake ?
+- Pandas
+- Dask
+- Postgres
+- Hadoop
+- Spark
+- Snowflake **???**
+
+Proceed by installing each framework and related prerequistes by running the following script. 
+Please DO NOT launch any cluster (yet).
+
+```bash
+cd installation/
+bash install-single-node.sh
+source ~/.bashrc
+```
 
 At this point we have all frameworks installed.
 
