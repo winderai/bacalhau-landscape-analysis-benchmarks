@@ -15,7 +15,7 @@ Please DO NOT launch any cluster (yet).
 
 ```bash
 cd installation/
-bash install-single-node.sh
+bash install-single-node.sh # confirm/proceed when prompted
 source ~/.bashrc
 ```
 
