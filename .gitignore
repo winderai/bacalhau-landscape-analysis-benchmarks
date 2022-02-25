@@ -154,9 +154,9 @@ cython_debug/
 
 .DS_Store
 *.class
-*.jar
 *.crc
 *_SUCCESS
 *part-r-*
 **/dask-worker-space/
 **/mlflow-files/
+*wordcount.txt

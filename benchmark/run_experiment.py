@@ -39,6 +39,7 @@ def main(args):
             print(s)
             s = call.stdout
             print(s)
+    print("DONE")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

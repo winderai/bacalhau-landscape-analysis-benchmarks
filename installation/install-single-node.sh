@@ -13,15 +13,17 @@ eval "$(/home/ubuntu/miniconda3/bin/conda shell.bash hook)"
 conda create -y -n pandas python=3.9
 conda activate pandas
 conda install -y -c conda-forge pandas==1.4.0
+pip install mlflow==1.23.1 EasyProcess==1.1
 
 # Install Dask
 conda create -y -n dask python=3.9
 conda activate dask
 conda install -y dask==2022.2.0 distributed==2022.2.0 -c conda-forge
-pip install requests aiohttp
+pip install requests==2.27.1 aiohttp==3.8.1 mlflow==1.23.1 EasyProcess==1.1
 
 #
 conda activate base
+pip install mlflow==1.23.1 EasyProcess==1.1
 
 # Install postgres
 cd ~
