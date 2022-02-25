@@ -52,3 +52,4 @@ echo 'export PATH=${JAVA_HOME}/bin:${PATH}' >> ~/.bashrc
 echo 'export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar' >> ~/.bashrc 
 echo 'export HADOOP_HOME="/home/ubuntu/hadoop-3.3.1"' >> ~/.bashrc 
 echo 'export SPARK_HOME=/home/ubuntu/spark-3.2.1-bin-hadoop3.2' >> ~/.bashrc 
+echo 'eval "$(/home/ubuntu/miniconda3/bin/conda shell.bash hook)"' >> ~/.bashrc

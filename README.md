@@ -24,5 +24,6 @@ Benchmarks:
 - [ ] Fetch CPU/Memory stats
 - [ ] Fetch large dataset
 - [ ] Move dataset to S3? or HDFS?
+- [ ] disable web UI for clusters?
 
 

@@ -1,21 +1,24 @@
 from dask.distributed import Client
-client = Client('0.0.0.0:8786')
 
-import dask.dataframe as dd
+if __name__ == '__main__':
+    client = Client()
+    print(client)
 
-file_path = "https://raw.githubusercontent.com/enricorotundo/hadoop-examples-mapreduce/main/src/test/resources/data/wordcount.txt"
+    import dask.dataframe as dd
 
-df = dd.read_csv(file_path, header=None)
-# count words
-new_df = (
-    df[0]
-    .str
-    .split()
-    .explode()
-    .value_counts()
-    .reset_index()
-)
-new_df.columns = ['Word', 'Frequency']
-new_df = new_df.sort_values(['Frequency', 'Word'], ascending=False)
+    file_path = "https://raw.githubusercontent.com/enricorotundo/hadoop-examples-mapreduce/main/src/test/resources/data/wordcount.txt"
 
-print(new_df.compute())
+    df = dd.read_csv(file_path, header=None)
+    # count words
+    new_df = (
+        df[0]
+        .str
+        .split()
+        .explode()
+        .value_counts()
+        .reset_index()
+    )
+    new_df.columns = ['Word', 'Frequency']
+    new_df = new_df.sort_values(['Frequency', 'Word'], ascending=False)
+
+    print(new_df.compute())

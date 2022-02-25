@@ -10,7 +10,7 @@ We're going to install:
 - Spark
 - Snowflake **???**
 
-Proceed by installing each framework and related prerequistes by running the following script. 
+Proceed by installing each framework and related prerequistes by running the following script (process duration ~5 minutes).
 Please DO NOT launch any cluster (yet).
 
 ```bash
