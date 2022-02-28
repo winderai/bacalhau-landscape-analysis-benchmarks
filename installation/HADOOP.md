@@ -85,7 +85,7 @@ sudo mv hadoop /usr/local/hadoop
 ### Pass JAVA_HOME to Hadoop variables (all)
 
 ```bash
-echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/`' >> ~/hadoop/etc/hadoop/hadoop-env.sh
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' >>  $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 ```
 
 ### Append Hadoon binaries (all)
@@ -105,7 +105,7 @@ JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
 ### Configure Hadoop user (all)
 
 ```bash
-sudo adduser hadoopuser
+sudo adduser hadoopuser # !IMPORTANT: don't leave password blank, you'll need it later on.
 sudo usermod -aG hadoopuser hadoopuser
 sudo chown hadoopuser:root -R /usr/local/hadoop/
 sudo chmod g+rwx -R /usr/local/hadoop/
@@ -141,6 +141,8 @@ Add:
 <SLAVE_IP>   hadoop-slave1
 ```
 
+Use `Private IPv4 address` from the AWS console.
+
 Note: in case of a `ConnectionRefused` refused error, remove the `127.0.0.1    localhost` entry as suggested [here](https://cwiki.apache.org/confluence/display/HADOOP2/ConnectionRefused).
 
 ### Create an SSH key (master)
@@ -169,6 +171,7 @@ ssh-copy-id hadoopuser@hadoop-master
 ssh-copy-id hadoopuser@hadoop-slave1
 ```
 
+Repeat the last command for each slave you spun up.
 
 ### Configure NameNode location (master)
 
@@ -226,6 +229,9 @@ Add: `hadoop-slave1`
 scp /usr/local/hadoop/etc/hadoop/* hadoop-slave1:/usr/local/hadoop/etc/hadoop/
 ```
 
+Repeat the last command for each slave you spun up.
+
+
 ### Format HDFS (master)
 
 ```bash
@@ -241,6 +247,8 @@ jps
 ```
 
 If `jps` does not list a `DataNode`, run `hadoop datanode` in a separate terminal.
+
+Note: if you run into the `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_TYPE=ssh` on master.
 
 ### Start HDFS (slave)
 
