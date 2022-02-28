@@ -31,7 +31,7 @@ Reference: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-comm
 ```bash
 sudo apt -y update
 sudo apt install -y ssh
-sudo apt-get install -y pdsh
+sudo apt install -y pdsh
 sudo apt install -y openjdk-8-jdk-headless
 sudo apt install -y openjdk-8-jre-headless
 ```
