@@ -18,6 +18,8 @@ export HADOOP_HOME="/home/ubuntu/hadoop-3.3.1"
 
 Reference: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html
 
+---
+
 ## Multi-node
 
 - all: run command in all host machines
@@ -34,19 +36,25 @@ sudo apt install -y openjdk-8-jdk-headless
 sudo apt install -y openjdk-8-jre-headless
 ```
 
-### Set rcmd module to SSH (all)
+### Set environment variables (all)
 
 ```bash
-vim .bashrc
+echo 'export HADOOP_HOME="/usr/local/hadoop"' >> ~/.bashrc
+echo 'export HADOOP_COMMON_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop' >> ~ ~/.bashrc
+echo 'export HADOOP_HDFS_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export HADOOP_MAPRED_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export HADOOP_YARN_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export PDSH_RCMD_TYPE=ssh' >> vim ~/.bashrc # Set rcmd module to SSH
+
+source ~/.bashrc
 ```
 
-Append: `export PDSH_RCMD_TYPE=ssh`
 
 ### Configure SSH (all)
 
 ```bash
 ssh-keygen -t rsa -P ""
-
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
@@ -77,11 +85,8 @@ sudo mv hadoop /usr/local/hadoop
 ### Pass JAVA_HOME to Hadoop variables (all)
 
 ```bash
-vim ~/hadoop/etc/hadoop/hadoop-env.sh
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/`' >> ~/hadoop/etc/hadoop/hadoop-env.sh
 ```
-
-Append: `export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/`
-
 
 ### Append Hadoon binaries (all)
 
@@ -248,16 +253,6 @@ Note: in case of `Permission denied` error run `cat ~/.ssh/id_rsa.pub >> ~/.ssh/
 ` as described [here](https://stackoverflow.com/questions/48978480/hadoop-permission-denied-publickey-password-keyboard-interactive-warning/49960886).
     
 
-### Set environment variables (all)
-
-```bash
-export HADOOP_HOME="/usr/local/hadoop"
-export HADOOP_COMMON_HOME=$HADOOP_HOME
-export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
-export HADOOP_HDFS_HOME=$HADOOP_HOME
-export HADOOP_MAPRED_HOME=$HADOOP_HOME
-export HADOOP_YARN_HOME=$HADOOP_HOME
-```
 
 ### Configure YARN (slave)
 
@@ -284,6 +279,7 @@ start-yarn.sh
 
 Reference: https://medium.com/@jootorres_11979/how-to-set-up-a-hadoop-3-2-1-multi-node-cluster-on-ubuntu-18-04-2-nodes-567ca44a3b12
 
+---
 
 ## Optional: Test Hadoop installation (master)
 
