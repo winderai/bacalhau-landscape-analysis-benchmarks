@@ -1,7 +1,6 @@
-Build:
+Build JAR:
 
 ```
-brew install scala@2.12
-brew install sbt
+bash ./install-sbt.sh
 sbt package
 ```

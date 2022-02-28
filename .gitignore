@@ -160,3 +160,6 @@ cython_debug/
 **/dask-worker-space/
 **/mlflow-files/
 *wordcount.txt
+
+
+!benchmark/word-count/spark/target/scala-2.12/sparkwordcount_2.12-0.1.jar

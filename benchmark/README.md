@@ -27,7 +27,7 @@ postgre:
 conda activate base
 python run_experiment.py \
     --experiment_name /test \
-    --framework postgre
+    --framework postgres
 ```
 
 
@@ -37,4 +37,12 @@ conda activate base
 python run_experiment.py \
     --experiment_name /test \
     --framework hadoop
+```
+
+Spark:
+```
+conda activate base
+python run_experiment.py \
+    --experiment_name /test \
+    --framework spark
 ```

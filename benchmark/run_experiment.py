@@ -27,7 +27,10 @@ def main(args):
         elif args.framework == "postgres":
             print("Postgres...")
             cmd = ["bash", "word-count/postgres/word-count.sh"]
-            s = EasyProcess(cmd).call().stderr
+            call = EasyProcess(cmd).call()
+            s = call.stderr
+            print(s)
+            s = call.stdout
             print(s)
         elif args.framework == "hadoop":
             cmd = ["bash", "word-count/hadoop/run.sh"]
