@@ -15,7 +15,7 @@ Install Dask in a conda environment:
 conda create -y -n dask python=3.9
 conda activate dask
 conda install -y dask==2022.2.0 distributed==2022.2.0 -c conda-forge
-pip install requests aiohttp
+pip install requests==2.27.1 aiohttp==3.8.1
 ```
 
 ## Launch cluster
