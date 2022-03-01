@@ -59,7 +59,6 @@ ssh-keygen -t rsa -P ""
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```
 
-
 ### Download Hadoop (all)
 
 ```bash
@@ -76,53 +75,39 @@ sudo mv hadoop /usr/local/hadoop
 echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' >>  /usr/local/hadoop/etc/hadoop/hadoop-env.sh
 ```
 
-### Append Hadoon binaries (all)
+### Append Hadoop binaries to PATH (all)
 
 ```bash
-sudo vim /etc/environment
-```
-
-Replace content with:
-
-```bash
-PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/hadoop/bin:/usr/local/hadoop/sbin"
-
-JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+echo 'PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/hadoop/bin:/usr/local/hadoop/sbin"
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' | sudo tee /etc/environment
 ```
 
 
 ### Modify host name (master)
 
 ```bash
-sudo vim /etc/hostname
+echo 'hadoop-master' | sudo tee /etc/hostname
 ```
-
-Replace content with: `hadoop-master` 
 
 ### Modify host name (slaves)
 
 ```bash
-sudo vim /etc/hostname
+echo 'hadoop-slave1' | sudo tee /etc/hostname
 ```
 
-Replace content with: `hadoop-slave1`
+:warning: Repeat the command above on each slave node, make sure you replace the node numbering accordingly (e.g., 1st slave is `hadoop-slave1`, 2nd is `hadoop-slave2`, etc.).
 
 ### Add cluster nodes to host file (all)
 
 ```bash
-sudo vim /etc/hosts
-```
-
-Add:
-
-```
-<MASTER_IP>   hadoop-master
-<SLAVE_IP>   hadoop-slave1
+echo '<MASTER_IP>      hadoop-master
+<1st_SLAVE_IP>   hadoop-slave1
+<2nd_SLAVE_IP>   hadoop-slave2' | sudo tee /etc/hosts
 ```
 
 Use `Public IPv4 address` from the AWS console.
 
-Note: make sure you remove the `127.0.0.1    localhost` entry, as suggested in the official [docs](https://cwiki.apache.org/confluence/display/HADOOP2/ConnectionRefused).
+:warning: Add an entry for each slave node in your cluster.
 
 ### Configure Hadoop user (all)
 
@@ -158,36 +143,31 @@ sudo systemctl restart sshd
 ```bash
 ssh-copy-id hadoopuser@hadoop-master
 ssh-copy-id hadoopuser@hadoop-slave1
+ssh-copy-id hadoopuser@hadoop-slave2
+...
 ```
 
-Repeat the last command for each slave you spun up.
+:warning: Copy the key to each slave node in your cluster.
 
 ### Configure NameNode location (master)
 
+
 ```bash
-sudo vim /usr/local/hadoop/etc/hadoop/core-site.xml
-```
-
-Add:
-
-```xml
+echo '<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
    <property>
       <name>fs.defaultFS</name>
       <value>hdfs://hadoop-master:9000</value>
    </property>
-</configuration>
+</configuration>' | sudo tee /usr/local/hadoop/etc/hadoop/core-site.xml
 ```
 
 ### Configure settings for HDFS daemons (master)
 
 ```bash
-sudo vim /usr/local/hadoop/etc/hadoop/hdfs-site.xml
-```
-
-Add:
-
-```xml
+echo '<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
    <property>
       <name>dfs.namenode.name.dir</name>
@@ -201,24 +181,38 @@ Add:
       <name>dfs.replication</name>
       <value>2</value>
    </property>
-</configuration>
+</configuration>' | sudo tee /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 ```
+
 
 ### Configure worker list (master)
 
 ```bash
-sudo vim /usr/local/hadoop/etc/hadoop/workers
+echo 'hadoop-slave1
+hadoop-slave2' | sudo tee /usr/local/hadoop/etc/hadoop/workers
 ```
 
-Add: `hadoop-slave1`
+:warning: Add an entry for each slave node in your cluster.
+
+### Configure YARN (slave)
+
+```bash
+echo '<?xml version="1.0"?>
+<property>
+   <name>yarn.resourcemanager.hostname</name>
+   <value>hadoop-master</value>
+</property>' | sudo tee /usr/local/hadoop/etc/hadoop/yarn-site.xml
+```
 
 ### Distribute Hadoop master configuration to slaves (master)
 
 ```bash
 scp /usr/local/hadoop/etc/hadoop/* hadoop-slave1:/usr/local/hadoop/etc/hadoop/
+scp /usr/local/hadoop/etc/hadoop/* hadoop-slave2:/usr/local/hadoop/etc/hadoop/
+...
 ```
 
-Repeat the last command for each slave you spun up.
+:warning: Repeat the last command for each slave you spun up.
 
 ### Set environment variables (all)
 
@@ -240,7 +234,7 @@ source ~/.bashrc
 
 ```bash
 source /etc/environment
-hdfs namenode -format
+$HADOOP_HOME/bin/hdfs namenode -format
 ```
 
 Reminder: make sure you're impersonating `hadoopuser`.
@@ -248,21 +242,21 @@ Reminder: make sure you're impersonating `hadoopuser`.
 ### Start HDFS (master)
 
 ```bash
-start-dfs.sh
+$HADOOP_HOME/sbin/start-dfs.sh
 ```
 
-Note: if you run into the `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_TYPE=ssh` on each node.
+If you run into `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_TYPE=ssh` on each node.
 
 ```bash
 jps
 ```
 
-:warning: **Important:** Expected output should include: `SecondaryNameNode` and `DataNode`. If `DataNode` is not on the list, run `hadoop datanode` in a separate terminal (impersonating `hadoopuser`).
+:warning: Expected output should include: `SecondaryNameNode` and `DataNode`. If the latter is not on the list: 1) open a separat terminal, 2) impersonate `hadoopuser` and 3) run `$HADOOP_HOME/bin/hdfs datanode`.
 
 ### Start HDFS (slave)
 
 ```bash
-start-dfs.sh
+$HADOOP_HOME/sbin/start-dfs.sh
 jps
 ```
 
@@ -270,26 +264,10 @@ Note: in case of `Permission denied` error run `cat ~/.ssh/id_rsa.pub >> ~/.ssh/
 ` as described [here](https://stackoverflow.com/questions/48978480/hadoop-permission-denied-publickey-password-keyboard-interactive-warning/49960886).
     
 
-
-### Configure YARN (slave)
-
-```bash
-sudo vim /usr/local/hadoop/etc/hadoop/yarn-site.xml
-```
-
-Add:
-
-```xml
-<property>
-   <name>yarn.resourcemanager.hostname</name>
-   <value>hadoop-master</value>
-</property>
-```
-
 ### Launch YARN (master)
 
 ```bash
-start-yarn.sh
+$HADOOP_HOME/sbin/start-yarn.sh
 ```
 
 Now `jps` in master should output also `ResourceManager` and slave nodes will show `NodeManager`.
