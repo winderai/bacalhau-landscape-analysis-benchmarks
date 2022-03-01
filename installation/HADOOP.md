@@ -1,7 +1,7 @@
 # Hadoop 3.3.1
 
 This page contains installation instructions for Hadoop.
-At the end of the process you'll access relevant binaries by using `$HADOOP_HOME`, for example `$HADOOP_HOME/bin/hdfs`.
+At the end of the process you'll be able to access relevant binaries by using `$HADOOP_HOME`, for example `$HADOOP_HOME/bin/hdfs`.
 
 ## Single-node
 
