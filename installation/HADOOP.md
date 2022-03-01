@@ -77,7 +77,7 @@ echo 'hadoop-master' | sudo tee /etc/hostname
 echo 'hadoop-slave1' | sudo tee /etc/hostname
 ```
 
-:warning: Repeat the command above on each slave node, make sure you replace the node numbering accordingly (e.g., 1st slave is `hadoop-slave1`, 2nd is `hadoop-slave2`, etc.).
+:warning: Run the command above on each slave node, make sure you replace the node numbering accordingly (e.g., 1st slave is `hadoop-slave1`, 2nd is `hadoop-slave2`, etc.).
 
 ### Reboot all hosts (all)
 
