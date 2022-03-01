@@ -73,7 +73,7 @@ sudo mv hadoop /usr/local/hadoop
 ### Pass JAVA_HOME to Hadoop variables (all)
 
 ```bash
-echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' >>  $HADOOP_HOME/etc/hadoop/hadoop-env.sh
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' >>  /usr/local/hadoop/etc/hadoop/hadoop-env.sh
 ```
 
 ### Append Hadoon binaries (all)
