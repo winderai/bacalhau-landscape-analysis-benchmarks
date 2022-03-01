@@ -69,12 +69,14 @@ JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"' | sudo tee /etc/environment
 
 ```bash
 echo 'hadoop-master' | sudo tee /etc/hostname
+sudo hostname -F /etc/hostname
 ```
 
 ### Modify host name (slaves)
 
 ```bash
 echo 'hadoop-slave1' | sudo tee /etc/hostname
+sudo hostname -F /etc/hostname
 ```
 
 :warning: Repeat the command above on each slave node, make sure you replace the node numbering accordingly (e.g., 1st slave is `hadoop-slave1`, 2nd is `hadoop-slave2`, etc.).
@@ -87,7 +89,7 @@ echo '<MASTER_IP>      hadoop-master
 <2nd_SLAVE_IP>   hadoop-slave2' | sudo tee /etc/hosts
 ```
 
-Use `Public IPv4 address` from the AWS console.
+Use `Private IPv4 addresses` from the AWS console.
 
 :warning: Add an entry for each slave node in your cluster.
 
