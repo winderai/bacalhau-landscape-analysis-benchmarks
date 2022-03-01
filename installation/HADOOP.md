@@ -206,7 +206,7 @@ echo 'export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop' >> ~ ~/.bashrc
 echo 'export HADOOP_HDFS_HOME=$HADOOP_HOME' >> ~/.bashrc
 echo 'export HADOOP_MAPRED_HOME=$HADOOP_HOME' >> ~/.bashrc
 echo 'export HADOOP_YARN_HOME=$HADOOP_HOME' >> ~/.bashrc
-echo 'export PDSH_RCMD_TYPE=ssh' >> vim ~/.bashrc # Set rcmd module to SSH
+echo 'export PDSH_RCMD_TYPE=ssh' | tee -a ~/.bashrc
 
 source ~/.bashrc
 ```
