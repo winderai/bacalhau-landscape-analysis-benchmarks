@@ -177,7 +177,6 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 ```bash
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
    <property>
       <name>mapreduce.framework.name</name>
@@ -202,6 +201,26 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 </configuration>' | sudo tee /usr/local/hadoop/etc/hadoop/mapred-site.xml
 ```
 
+### Configure YARN (master)
+
+```bash
+echo '<?xml version="1.0"?>
+<configuration>
+   <property>
+      <name>yarn.resourcemanager.hostname</name>
+      <value>hadoop-master</value>
+   </property>
+   <property>
+      <name>yarn.nodemanager.aux-services</name>
+      <value>mapreduce_shuffle</value>
+   </property>
+   <property>
+      <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+      <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+   </property>
+</configuration>' | sudo tee /usr/local/hadoop/etc/hadoop/yarn-site.xml
+```
+
 ### Configure worker list (master)
 
 ```bash
@@ -221,25 +240,6 @@ scp /usr/local/hadoop/etc/hadoop/* hadoop-slave2:/usr/local/hadoop/etc/hadoop/
 
 :warning: Repeat the last command for each slave you spun up.
 
-### Configure YARN (slaves)
-
-```bash
-echo '<?xml version="1.0"?>
-<configuration>
-   <property>
-      <name>yarn.resourcemanager.hostname</name>
-      <value>hadoop-master</value>
-   </property>
-   <property>
-      <name>yarn.nodemanager.aux-services</name>
-      <value>mapreduce_shuffle</value>
-   </property>
-   <property>
-      <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
-      <value>org.apache.hadoop.mapred.ShuffleHandler</value>
-   </property>
-</configuration>' | sudo tee /usr/local/hadoop/etc/hadoop/yarn-site.xml
-```
 
 ### Set environment variables (all)
 
