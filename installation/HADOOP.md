@@ -34,30 +34,10 @@ sudo apt install -y ssh
 sudo apt install -y pdsh
 sudo apt install -y openjdk-8-jdk-headless
 sudo apt install -y openjdk-8-jre-headless
-```
 
-### Set environment variables (all)
-
-```bash
-echo 'export HADOOP_HOME="/usr/local/hadoop"' >> ~/.bashrc
-echo 'export HADOOP_COMMON_HOME=$HADOOP_HOME' >> ~/.bashrc
-echo 'export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop' >> ~ ~/.bashrc
-echo 'export HADOOP_HDFS_HOME=$HADOOP_HOME' >> ~/.bashrc
-echo 'export HADOOP_MAPRED_HOME=$HADOOP_HOME' >> ~/.bashrc
-echo 'export HADOOP_YARN_HOME=$HADOOP_HOME' >> ~/.bashrc
-echo 'export PDSH_RCMD_TYPE=ssh' >> vim ~/.bashrc # Set rcmd module to SSH
-
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' >> vim ~/.bashrc
 source ~/.bashrc
 ```
-
-
-### Configure SSH (all)
-
-```bash
-ssh-keygen -t rsa -P ""
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-```
-
 
 ### Check Java version (all)
 
@@ -71,6 +51,14 @@ openjdk version "1.8.0_312"
 OpenJDK Runtime Environment (build 1.8.0_312-8u312-b07-0ubuntu1~20.04-b07)
 OpenJDK 64-Bit Server VM (build 25.312-b07, mixed mode)
 ```
+
+### Configure SSH (all)
+
+```bash
+ssh-keygen -t rsa -P ""
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+```
+
 
 ### Download Hadoop (all)
 
@@ -102,15 +90,6 @@ PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/u
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
 ```
 
-### Configure Hadoop user (all)
-
-```bash
-sudo adduser hadoopuser # !IMPORTANT: don't leave the password blank, you'll need it later on.
-sudo usermod -aG hadoopuser hadoopuser
-sudo chown hadoopuser:root -R /usr/local/hadoop/
-sudo chmod g+rwx -R /usr/local/hadoop/
-sudo adduser hadoopuser sudo
-```
 
 ### Modify host name (master)
 
@@ -145,11 +124,35 @@ Use `Private IPv4 address` from the AWS console.
 
 Note: in case of a `ConnectionRefused` refused error, remove the `127.0.0.1    localhost` entry as suggested [here](https://cwiki.apache.org/confluence/display/HADOOP2/ConnectionRefused).
 
+### Configure Hadoop user (all)
+
+```bash
+sudo adduser hadoopuser # !IMPORTANT: don't leave the password blank, you'll need it later on.
+sudo usermod -aG hadoopuser hadoopuser
+sudo chown hadoopuser:root -R /usr/local/hadoop/
+sudo chmod g+rwx -R /usr/local/hadoop/
+sudo adduser hadoopuser sudo
+```
+
 ### Create an SSH key (master)
 
 ```bash
 su - hadoopuser
 ssh-keygen -t rsa
+```
+
+### Set environment variables (all)
+
+```bash
+echo 'export HADOOP_HOME="/usr/local/hadoop"' >> ~/.bashrc
+echo 'export HADOOP_COMMON_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop' >> ~ ~/.bashrc
+echo 'export HADOOP_HDFS_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export HADOOP_MAPRED_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export HADOOP_YARN_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export PDSH_RCMD_TYPE=ssh' >> vim ~/.bashrc # Set rcmd module to SSH
+
+source ~/.bashrc
 ```
 
 ### Enable password auth in SSH (all)
