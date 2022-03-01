@@ -175,7 +175,7 @@ hadoop-slave2' | sudo tee /usr/local/hadoop/etc/hadoop/workers
 
 :warning: Add an entry for each slave node in your cluster.
 
-### Configure YARN (slave)
+### Configure YARN (slaves)
 
 ```bash
 echo '<?xml version="1.0"?>
