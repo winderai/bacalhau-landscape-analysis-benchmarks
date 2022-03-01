@@ -232,15 +232,18 @@ Reminder: make sure you're impersonating `hadoopuser`.
 $HADOOP_HOME/sbin/start-dfs.sh
 ```
 
-If you run into `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_TYPE=ssh` on each node.
+If you run into `rcmd: socket: Permission denied` error:
 
-:warning: Now, run `jps` and check if its output includes `SecondaryNameNode` and `DataNode`. If the latter is not on the list: 
+- Make sure you've copied each node's SSH key to all other nodes (see step above with `ssh-copy-id`)
+- Run `export PDSH_RCMD_TYPE=ssh` on each node.
+
+<!-- :warning: Now, run `jps` and check if its output includes `SecondaryNameNode` and `DataNode`. If the latter is not on the list: 
 
 1. Open a separate terminal
 1. Ssh into master
 1. Impersonate `hadoopuser`
 1. `source /etc/environment`
-1. Run `$HADOOP_HOME/bin/hdfs datanode`
+1. Run `$HADOOP_HOME/bin/hdfs datanode` -->
 
 <!-- ### Start HDFS (slave)
 
