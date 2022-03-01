@@ -103,7 +103,7 @@ sudo chmod g+rwx -R /usr/local/hadoop/
 sudo adduser hadoopuser sudo
 ```
 
-### Create an SSH key (master)
+### Create an SSH key (all)
 
 ```bash
 su - hadoopuser
@@ -122,7 +122,7 @@ Change this line: `PasswordAuthentication no` to `PasswordAuthentication yes`
 sudo systemctl restart sshd
 ```
 
-### Copy SSH key to all hosts (master)
+### Copy SSH key to all hosts (all)
 
 ```bash
 ssh-copy-id hadoopuser@hadoop-master
@@ -258,6 +258,9 @@ $HADOOP_HOME/sbin/start-yarn.sh
 Now `jps` in master should output also `ResourceManager` and slave nodes will show `NodeManager`.
 
 ### That's all! 🎉
+
+- http://<MASTER_PUBLIC_IP>:9870/
+- http://<MASTER_PUBLIC_IP>:8088/
 
 Reference: https://medium.com/@jootorres_11979/how-to-set-up-a-hadoop-3-2-1-multi-node-cluster-on-ubuntu-18-04-2-nodes-567ca44a3b12
 
