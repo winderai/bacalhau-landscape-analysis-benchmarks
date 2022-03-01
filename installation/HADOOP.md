@@ -43,6 +43,7 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ### Download Hadoop (all)
 
 ```bash
+cd ~
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
 tar -xvf hadoop-3.3.1.tar.gz &>/dev/null
 mv hadoop-3.3.1 hadoop
