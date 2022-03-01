@@ -254,7 +254,7 @@ jps
 
 If `jps` does not list a `DataNode`, run `hadoop datanode` in a separate terminal.
 
-Note: if you run into the `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_TYPE=ssh` on master.
+Note: if you run into the `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_TYPE=ssh` on each node.
 
 ### Start HDFS (slave)
 
