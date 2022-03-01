@@ -232,7 +232,7 @@ If you run into `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_T
 jps
 ```
 
-:warning: Expected output should include: `SecondaryNameNode` and `DataNode`. If the latter is not on the list: 1) open a separat terminal, 2) impersonate `hadoopuser` and 3) run `$HADOOP_HOME/bin/hdfs datanode`.
+:warning: Expected output should include: `SecondaryNameNode` and `DataNode`. If the latter is not on the list: 1) open a separat terminal, 2) impersonate `hadoopuser`, 3) `source /etc/environment`,  4) run `$HADOOP_HOME/bin/hdfs datanode`.
 
 ### Start HDFS (slave)
 
