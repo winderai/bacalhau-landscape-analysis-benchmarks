@@ -161,7 +161,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
    </property>
    <property>
       <name>dfs.replication</name>
-      <value>2</value>
+      <value>3</value>
    </property>
 </configuration>' | sudo tee /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 ```
