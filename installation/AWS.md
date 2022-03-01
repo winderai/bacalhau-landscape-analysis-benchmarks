@@ -45,7 +45,7 @@ Configure the cluster resources, set `EC2_COUNT` to 1 for running the benchmarks
 export EC2_COUNT=1
 export EC2_INSTANCE_TYPE=t2.micro
 export AMI_ID=ami-0d527b8c289b4af7f
-export EBS_SIZE=25
+export EBS_SIZE=75
 export KEY_NAME=wr-enrico-aws-ec2
 ```
 
