@@ -16,7 +16,7 @@ sudo apt install -y ssh pdsh
 sudo apt install -y openjdk-8-jdk-headless
 sudo apt install -y openjdk-8-jre-headless
 
-echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' >> vim ~/.bashrc
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' | tee -a ~/.bashrc
 source ~/.bashrc
 ```
 
