@@ -292,6 +292,8 @@ Add:
 start-yarn.sh
 ```
 
+Now `jps` in master should output also `ResourceManager` and slave nodes will show `NodeManager`.
+
 ### That's all! 🎉
 
 Reference: https://medium.com/@jootorres_11979/how-to-set-up-a-hadoop-3-2-1-multi-node-cluster-on-ubuntu-18-04-2-nodes-567ca44a3b12
