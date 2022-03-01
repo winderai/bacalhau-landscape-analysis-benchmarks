@@ -1,6 +1,7 @@
-
-
 # Hadoop 3.3.1
+
+This page contains installation instructions for Hadoop.
+At the end of the process you'll access relevant binaries by using `$HADOOP_HOME`, for example `$HADOOP_HOME/bin/hdfs`.
 
 ## Single-node
 
@@ -13,7 +14,10 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 cd ~
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
 tar -xvf hadoop-3.3.1.tar.gz &>/dev/null
-export HADOOP_HOME="/home/ubuntu/hadoop-3.3.1"
+
+echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' >> vim ~/.bashrc
+echo 'export HADOOP_HOME=/home/ubuntu/hadoop-3.3.1' >> vim ~/.bashrc
+source ~/.bashrc
 ```
 
 Reference: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html
