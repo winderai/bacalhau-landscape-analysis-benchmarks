@@ -6,7 +6,7 @@ At the end of the process you'll be able to access relevant binaries by using `$
 You'll need to ssh into each node. 
 While some commands will be issued on all hosts, some will be for the master or slave(s) only, depending on the situation.
 Each step below reports its target host in the title.
-For convienence I'd recommend using [iTerm2 broadcast input](https://christopher.su/notes/mac/iterm-broadcast/) to quickly issue commands across multiple machines.
+For convienence I'd recommend using [iTerm2's broadcast input](https://christopher.su/notes/mac/iterm-broadcast/) to quickly issue commands across multiple machines.
 
 ### Install requirements (all)
 
