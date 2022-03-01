@@ -105,7 +105,7 @@ JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
 ### Configure Hadoop user (all)
 
 ```bash
-sudo adduser hadoopuser # !IMPORTANT: don't leave password blank, you'll need it later on.
+sudo adduser hadoopuser # !IMPORTANT: don't leave the password blank, you'll need it later on.
 sudo usermod -aG hadoopuser hadoopuser
 sudo chown hadoopuser:root -R /usr/local/hadoop/
 sudo chmod g+rwx -R /usr/local/hadoop/
@@ -238,6 +238,8 @@ Repeat the last command for each slave you spun up.
 source /etc/environment
 hdfs namenode -format
 ```
+
+Reminder: make sure you're impersonating `hadoopuser`.
 
 ### Start HDFS (master)
 
