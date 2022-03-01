@@ -249,12 +249,15 @@ Reminder: make sure you're impersonating `hadoopuser`.
 
 ```bash
 start-dfs.sh
+```
+
+Note: if you run into the `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_TYPE=ssh` on each node.
+
+```bash
 jps
 ```
 
-If `jps` does not list a `DataNode`, run `hadoop datanode` in a separate terminal.
-
-Note: if you run into the `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_TYPE=ssh` on each node.
+Expected output should include: `SecondaryNameNode` and `DataNode`. If `DataNode` is not in the list, run `hadoop datanode` in a separate terminal (impersonating `hadoopuser`).
 
 ### Start HDFS (slave)
 
