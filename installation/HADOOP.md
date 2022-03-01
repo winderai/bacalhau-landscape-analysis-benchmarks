@@ -12,8 +12,7 @@ For convienence I'd recommend using [iTerm2's broadcast input](https://christoph
 
 ```bash
 sudo apt -y update
-sudo apt install -y ssh
-sudo apt install -y pdsh
+sudo apt install -y ssh pdsh
 sudo apt install -y openjdk-8-jdk-headless
 sudo apt install -y openjdk-8-jre-headless
 
