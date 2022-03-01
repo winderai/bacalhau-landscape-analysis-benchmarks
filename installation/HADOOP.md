@@ -141,20 +141,6 @@ su - hadoopuser
 ssh-keygen -t rsa
 ```
 
-### Set environment variables (all)
-
-```bash
-echo 'export HADOOP_HOME="/usr/local/hadoop"' >> ~/.bashrc
-echo 'export HADOOP_COMMON_HOME=$HADOOP_HOME' >> ~/.bashrc
-echo 'export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop' >> ~ ~/.bashrc
-echo 'export HADOOP_HDFS_HOME=$HADOOP_HOME' >> ~/.bashrc
-echo 'export HADOOP_MAPRED_HOME=$HADOOP_HOME' >> ~/.bashrc
-echo 'export HADOOP_YARN_HOME=$HADOOP_HOME' >> ~/.bashrc
-echo 'export PDSH_RCMD_TYPE=ssh' >> vim ~/.bashrc # Set rcmd module to SSH
-
-source ~/.bashrc
-```
-
 ### Enable password auth in SSH (all)
 
 ```bash
@@ -234,6 +220,21 @@ scp /usr/local/hadoop/etc/hadoop/* hadoop-slave1:/usr/local/hadoop/etc/hadoop/
 
 Repeat the last command for each slave you spun up.
 
+### Set environment variables (all)
+
+```bash
+su - hadoopuser
+
+echo 'export HADOOP_HOME="/usr/local/hadoop"' >> ~/.bashrc
+echo 'export HADOOP_COMMON_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop' >> ~ ~/.bashrc
+echo 'export HADOOP_HDFS_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export HADOOP_MAPRED_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export HADOOP_YARN_HOME=$HADOOP_HOME' >> ~/.bashrc
+echo 'export PDSH_RCMD_TYPE=ssh' >> vim ~/.bashrc # Set rcmd module to SSH
+
+source ~/.bashrc
+```
 
 ### Format HDFS (master)
 
