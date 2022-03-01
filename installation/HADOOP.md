@@ -322,8 +322,17 @@ sudo apt install -y maven
 mvn install -DskipTests
 wget https://raw.githubusercontent.com/enricorotundo/hadoop-examples-mapreduce/main/src/test/resources/data/trees.csv
 
+# Tiny dataset
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hadoopuser
 $HADOOP_HOME/bin/hdfs dfs -put trees.csv
 $HADOOP_HOME/bin/yarn jar ~/hadoop-examples-mapreduce/target/hadoop-examples-mapreduce-1.0-SNAPSHOT-jar-with-dependencies.jar wordcount trees.csv count
 $HADOOP_HOME/bin/hdfs dfs -cat count/part-r-00000
+
+# 100MB dataset
+sudo apt install unzip
+wget https://www3.stats.govt.nz/2018census/Age-sex-by-ethnic-group-grouped-total-responses-census-usually-resident-population-counts-2006-2013-2018-Censuses-RC-TA-SA2-DHB.zip
+unzip Age-sex-by-ethnic-group-grouped-total-responses-census-usually-resident-population-counts-2006-2013-2018-Censuses-RC-TA-SA2-DHB.zip
+$HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hadoopuser
+$HADOOP_HOME/bin/hdfs dfs -put Data8277.csv
+$HADOOP_HOME/bin/yarn jar ~/hadoop-examples-mapreduce/target/hadoop-examples-mapreduce-1.0-SNAPSHOT-jar-with-dependencies.jar wordcount hdfs:///user/hadoopuser/Data8277.csv count
 ```
