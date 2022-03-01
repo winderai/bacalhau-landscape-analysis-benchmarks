@@ -175,16 +175,6 @@ hadoop-slave2' | sudo tee /usr/local/hadoop/etc/hadoop/workers
 
 :warning: Add an entry for each slave node in your cluster.
 
-### Configure YARN (slaves)
-
-```bash
-echo '<?xml version="1.0"?>
-<property>
-   <name>yarn.resourcemanager.hostname</name>
-   <value>hadoop-master</value>
-</property>' | sudo tee /usr/local/hadoop/etc/hadoop/yarn-site.xml
-```
-
 ### Distribute Hadoop master configuration to slaves (master)
 
 ```bash
@@ -194,6 +184,16 @@ scp /usr/local/hadoop/etc/hadoop/* hadoop-slave2:/usr/local/hadoop/etc/hadoop/
 ```
 
 :warning: Repeat the last command for each slave you spun up.
+
+### Configure YARN (slaves)
+
+```bash
+echo '<?xml version="1.0"?>
+<property>
+   <name>yarn.resourcemanager.hostname</name>
+   <value>hadoop-master</value>
+</property>' | sudo tee /usr/local/hadoop/etc/hadoop/yarn-site.xml
+```
 
 ### Set environment variables (all)
 
