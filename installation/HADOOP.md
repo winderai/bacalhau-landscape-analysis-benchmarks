@@ -1,34 +1,11 @@
-# Hadoop 3.3.1
+# Hadoop 3.3.1 (Multi-node)
 
-This page contains installation instructions for Hadoop.
+This page contains step-by-step instructions to install Hadoop on a multi-node cluster.
 At the end of the process you'll be able to access relevant binaries by using `$HADOOP_HOME`, for example `$HADOOP_HOME/bin/hdfs`.
 
-## Single-node
-
-```bash
-sudo apt -y update
-sudo apt install -y ssh pdsh
-sudo apt install -y openjdk-8-jdk-headless
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
-
-cd ~
-wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
-tar -xvf hadoop-3.3.1.tar.gz &>/dev/null
-
-echo 'export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/' >> vim ~/.bashrc
-echo 'export HADOOP_HOME=/home/ubuntu/hadoop-3.3.1' >> vim ~/.bashrc
-source ~/.bashrc
-```
-
-Reference: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/SingleCluster.html
-
----
-
-## Multi-node
-
-- all: run command in all host machines
-- master
-- slave(s)
+You'll need to ssh into each node. 
+While some commands will be issued on all hosts, some will be for the master or slave(s) only, depending on the situation.
+Each step below reports its target host in the title.
 
 ### Install requirements (all)
 
