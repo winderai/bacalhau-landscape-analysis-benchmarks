@@ -257,7 +257,7 @@ Note: if you run into the `rcmd: socket: Permission denied` error, run `export P
 jps
 ```
 
-**!Important:** Expected output should include: `SecondaryNameNode` and `DataNode`. If `DataNode` is not on the list, run `hadoop datanode` in a separate terminal (impersonating `hadoopuser`).
+:warning: **Important:** Expected output should include: `SecondaryNameNode` and `DataNode`. If `DataNode` is not on the list, run `hadoop datanode` in a separate terminal (impersonating `hadoopuser`).
 
 ### Start HDFS (slave)
 
