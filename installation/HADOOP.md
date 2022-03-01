@@ -230,13 +230,15 @@ $HADOOP_HOME/sbin/start-dfs.sh
 
 If you run into `rcmd: socket: Permission denied` error, run `export PDSH_RCMD_TYPE=ssh` on each node.
 
-```bash
-jps
-```
+:warning: Now, run `jps` and check if its output includes `SecondaryNameNode` and `DataNode`. If the latter is not on the list: 
 
-:warning: Expected output should include: `SecondaryNameNode` and `DataNode`. If the latter is not on the list: 1) open a separat terminal, 2) impersonate `hadoopuser`, 3) `source /etc/environment`,  4) run `$HADOOP_HOME/bin/hdfs datanode`.
+1. Open a separate terminal
+1. Ssh into master
+1. Impersonate `hadoopuser`
+1. `source /etc/environment`
+1. Run `$HADOOP_HOME/bin/hdfs datanode`
 
-### Start HDFS (slave)
+<!-- ### Start HDFS (slave)
 
 ```bash
 $HADOOP_HOME/sbin/start-dfs.sh
@@ -244,7 +246,7 @@ jps
 ```
 
 Note: in case of `Permission denied` error run `cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-` as described [here](https://stackoverflow.com/questions/48978480/hadoop-permission-denied-publickey-password-keyboard-interactive-warning/49960886).
+` as described [here](https://stackoverflow.com/questions/48978480/hadoop-permission-denied-publickey-password-keyboard-interactive-warning/49960886). -->
     
 
 ### Launch YARN (master)
