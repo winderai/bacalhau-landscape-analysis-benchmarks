@@ -120,9 +120,9 @@ Add:
 <SLAVE_IP>   hadoop-slave1
 ```
 
-Use `Private IPv4 address` from the AWS console.
+Use `Public IPv4 address` from the AWS console.
 
-Note: in case of a `ConnectionRefused` refused error, remove the `127.0.0.1    localhost` entry as suggested [here](https://cwiki.apache.org/confluence/display/HADOOP2/ConnectionRefused).
+Note: make sure you remove the `127.0.0.1    localhost` entry, as suggested in the official [docs](https://cwiki.apache.org/confluence/display/HADOOP2/ConnectionRefused).
 
 ### Configure Hadoop user (all)
 
