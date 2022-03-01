@@ -1,16 +1,17 @@
 # sample-code-benchmark
 
-## Benchmark Instructions
-
-1. Clone this repo.
-1. Follow the [AWS installation instructions](installation/AWS.md).
-1. Follow benchmark instructions for a [single-node](installation/SINGLE-NODE.md) or [multi-node](installation/MULTI-NODE.md) set up, depending on the run you'd like to launch.
-
 ## Sample code
 
 - word-count
 - average-house-price
 - derivative-dataset
+
+## Benchmark Instructions
+
+
+1. Clone this repo.
+1. Follow the [AWS installation instructions](installation/AWS.md). 
+1. Follow benchmark instructions for a [single-node](installation/SINGLE-NODE.md) or [multi-node](installation/MULTI-NODE.md) set up, depending on the cluster size you'd like to deploy. You'll need `ssh` access to the cluster nodes.
 
 ## Todo
 
