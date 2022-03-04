@@ -13,7 +13,7 @@ sudo apt install -y openjdk-8-jdk-headless
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 ```
 
-These instructions assume you've set up `/etc/hosts` (as described in the [Hadoop installation](./HADOOP.md)) and therefore you can reference you cluster nodes with `hadoop-master`, `hadoop-slave1`, and so on.
+These instructions assume you've set up `/etc/hosts` (as described in the [Hadoop installation](./HADOOP.md)) and therefore you can reference cluster nodes with `hadoop-master`, `hadoop-slave1`, and so on.
 If you're installing Spark without a prior Hadoop setup, please replace those host names with `Public IPv4 DNS` from AWS console (e.g., `ip-172-31-15-62.eu-central-1.compute.internal`).
 
 ## Download Spark
