@@ -49,8 +49,9 @@ Run in main node:
 
 ```python
 from dask.distributed import Client
-client = Client('hadoop-master:8786') # TODO: double check if this distributes the computation
-client
+
+client = Client('hadoop-master:8786')
+print(client)
 
 def square(x):
     return x ** 2
@@ -58,7 +59,7 @@ def square(x):
 def neg(x):
         return -x
 
-A = client.map(square, range(100_000))
+A = client.map(square, range(50_000))
 B = client.map(neg, A)
 total = client.submit(sum, B)
 total.result()
