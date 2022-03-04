@@ -45,7 +45,7 @@ Use `Public IPv4 address` from the AWS console.
 
 ## Optional: Test Dask Distributed installation
 
-Run in main node:
+Fire up a Python REPL on main node and run the following snippet:
 
 ```python
 from dask.distributed import Client
