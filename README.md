@@ -6,6 +6,12 @@
 - average-house-price
 - derivative-dataset
 
+|                     | hadoop             | spark              | pandas             | dask               | postgres           | snowflake          |
+|---------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
+| [word-count](./sample-code/word-count)          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| average-house-price | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: |
+| derivative-dataset  |                    | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |                    |
+
 ## Benchmark Instructions
 
 
