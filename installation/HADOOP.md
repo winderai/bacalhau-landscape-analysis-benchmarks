@@ -302,7 +302,24 @@ Note: in case of `Permission denied` error run `cat ~/.ssh/id_rsa.pub >> ~/.ssh/
 $HADOOP_HOME/sbin/start-yarn.sh
 ```
 
-Now `jps` in master should output also `ResourceManager` and slave nodes will show `NodeManager`.
+At this point you can use `jps` to double check the right JVM processes are running, on master:
+
+```bash
+hadoopuser@hadoop-master:~$ jps
+1765 NameNode
+2487 Jps
+2012 SecondaryNameNode
+2206 ResourceManager
+```
+
+On slave:
+
+```bash
+hadoopuser@hadoop-slave1:~$ jps
+1986 Jps
+1892 NodeManager
+1711 DataNode
+```
 
 ### That's all folks! 🎉
 
