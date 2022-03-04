@@ -2,9 +2,6 @@
 
 ## Sample code
 
-- word-count
-- average-house-price
-- derivative-dataset
 
 |                     | hadoop             | spark              | pandas             | dask               | postgres           | snowflake          |
 |---------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
