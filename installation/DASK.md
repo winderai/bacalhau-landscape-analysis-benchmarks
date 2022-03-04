@@ -1,13 +1,20 @@
 # Dask Distributed
 
+## Pre-requisites
+
 Install miniconda (confirm/proceed when prompted). Skip if it's already installed:
 
 ```bash
 cd ~
 wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
 bash Miniconda3-py39_4.10.3-Linux-x86_64.sh
-eval "$(/home/ubuntu/miniconda3/bin/conda shell.bash hook)"
+eval "$(/home/${USER}/miniconda3/bin/conda shell.bash hook)"
 ```
+
+These instructions assume you've set up `/etc/hosts` (as described in the [Hadoop installation](./HADOOP.md)) and therefore you can reference cluster nodes with `hadoop-master`, `hadoop-slave1`, and so on.
+If you're installing Dask without a prior Hadoop setup, please replace those host names with `Private IPv4 addresses` from AWS console (e.g., `172.31.25.80`).
+
+## Install Dask
 
 Install Dask in a conda environment:
 
@@ -29,8 +36,11 @@ dask-scheduler
 On each worker node:
 
 ```
-dask-worker tcp://172.31.11.47:8786
+dask-worker tcp://hadoop-master:8786
 ```
+
+Check Dask web UI at `http://<MASTER_PUBLIC_IP>:8787/`. 
+Use `Public IPv4 address` from the AWS console.
 
 ## Optional: Test Dask Distributed installation
 
