@@ -8,7 +8,8 @@ Install miniconda (confirm/proceed when prompted). Skip if it's already installe
 cd ~
 wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.10.3-Linux-x86_64.sh
 bash Miniconda3-py39_4.10.3-Linux-x86_64.sh
-eval "$(/home/${USER}/miniconda3/bin/conda shell.bash hook)"
+echo "eval $(/home/${USER}/miniconda3/bin/conda shell.bash hook)" | tee ~/.bashrc
+source ~/.bashrc
 ```
 
 These instructions assume you've set up `/etc/hosts` (as described in the [Hadoop installation](./HADOOP.md)) and therefore you can reference cluster nodes with `hadoop-master`, `hadoop-slave1`, and so on.
@@ -48,7 +49,7 @@ Run in main node:
 
 ```python
 from dask.distributed import Client
-client = Client('ec2-18-197-25-82.eu-central-1.compute.amazonaws.com:8786')
+client = Client('hadoop-master:8786') # TODO: double check if this distributes the computation
 client
 
 def square(x):
