@@ -4,11 +4,9 @@
 pip install mlflow==1.23.1 EasyProcess==1.1
 ```
 
-
-
-## Dask
-
 Launch `run_experiment.py` from within the main node.
+
+## Pandas
 
 ```
 conda activate pandas
@@ -17,6 +15,8 @@ python run_experiment.py \
     --framework pandas
 ```
 
+## Dask
+
 ```
 conda activate dask
 python run_experiment.py \
@@ -24,7 +24,8 @@ python run_experiment.py \
     --framework dask
 ```
 
-postgre:
+## Postgres
+
 ```
 conda activate base
 python run_experiment.py \
@@ -32,8 +33,8 @@ python run_experiment.py \
     --framework postgres
 ```
 
+## Hadoop
 
-Hadoop:
 ```
 conda activate base
 
@@ -51,10 +52,20 @@ $HADOOP_HOME/sbin/stop-dfs.sh
 $HADOOP_HOME/sbin/stop-yarn.sh
 ```
 
-Spark:
+## Spark
+
 ```
 conda activate base
+
+$SPARK_HOME/sbin/start-master.sh
+# launch on each worker node
+$SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077
+
 python run_experiment.py \
     --experiment_name /test \
     --framework spark
+
+$SPARK_HOME/sbin/stop-master.sh
+# launch on each worker node
+$SPARK_HOME/sbin/stop-worker.sh
 ```
