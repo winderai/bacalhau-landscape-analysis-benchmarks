@@ -51,5 +51,5 @@ $SPARK_HOME/bin/spark-submit \
     --master spark://hadoop-master:7077 \
     --deploy-mode client \
     --class org.apache.spark.examples.SparkPi $SPARK_HOME/examples/jars/spark-examples_2.12-3.2.1.jar \
-    10000
+    1000
 ```
