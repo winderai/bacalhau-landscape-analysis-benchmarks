@@ -304,12 +304,16 @@ $HADOOP_HOME/sbin/start-yarn.sh
 
 Now `jps` in master should output also `ResourceManager` and slave nodes will show `NodeManager`.
 
-### That's all! 🎉
+### That's all folks! 🎉
 
-- http://<MASTER_PUBLIC_IP>:9870/
-- http://<MASTER_PUBLIC_IP>:8088/
+Just make sure you run hadoop jobs impersonating `hadoopuser`.
 
-Reference: https://medium.com/@jootorres_11979/how-to-set-up-a-hadoop-3-2-1-multi-node-cluster-on-ubuntu-18-04-2-nodes-567ca44a3b12
+You can access the web UIs at:
+
+- http://<MASTER_PUBLIC_IP>:9870/ # hdfs
+- http://<MASTER_PUBLIC_IP>:8088/ # hadoop cluster
+
+Use `Public IPv4 address` from the AWS console.
 
 ---
 
