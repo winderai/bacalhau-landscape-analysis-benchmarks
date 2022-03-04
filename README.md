@@ -9,8 +9,8 @@
 |                     | hadoop             | spark              | pandas             | dask               | postgres           | snowflake          |
 |---------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
 | [word-count](./sample-code/word-count)          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| average-house-price | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: |
-| derivative-dataset  |                    | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |                    |
+| [average-house-price](./sample-code/average-house-price) | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: |
+| [derivative-dataset](./sample-code/derivative-dataset)  |                    | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |                    |
 
 ## Benchmark Instructions
 
