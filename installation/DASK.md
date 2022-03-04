@@ -34,7 +34,7 @@ On main node:
 dask-scheduler
 ```
 
-On each worker node :warning::
+On each worker node :warning: :
 
 ```
 dask-worker tcp://hadoop-master:8786
