@@ -13,3 +13,6 @@ Proceed by installing:
 1. [Hadoop](installation/HADOOP.md)
 1. [Spark](installation/SPARK.md)
 1. [Dask](installation/DASK.md)
+
+
+You're now ready to [run the benchmarks](../benchmark/README.md).
