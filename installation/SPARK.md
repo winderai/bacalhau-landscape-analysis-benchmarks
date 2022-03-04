@@ -22,7 +22,8 @@ If you're installing Spark without a prior Hadoop setup, please replace those ho
 cd ~
 wget https://dlcdn.apache.org/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
 tar -xvf spark-3.2.1-bin-hadoop3.2.tgz &>/dev/null
-export SPARK_HOME="/home/${USER}/spark-3.2.1-bin-hadoop3.2"
+echo "export SPARK_HOME=/home/${USER}/spark-3.2.1-bin-hadoop3.2" >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ## Launch Spark master

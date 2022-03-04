@@ -1,8 +1,3 @@
-"""
-This script assumes a runtime environment
-with all pre-requistes preinstalled (conda activate benchmark)
-"""
-
 import argparse
 
 import mlflow

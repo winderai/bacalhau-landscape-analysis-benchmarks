@@ -1,6 +1,8 @@
 # Benchmark
 
-
+```
+pip install mlflow==1.23.1 EasyProcess==1.1
+```
 
 
 
@@ -34,9 +36,19 @@ python run_experiment.py \
 Hadoop:
 ```
 conda activate base
+
+$HADOOP_HOME/sbin/start-dfs.sh
+$HADOOP_HOME/sbin/start-yarn.sh
+
+# check cluster status
+$HADOOP_HOME/bin/hdfs dfsadmin -report
+
 python run_experiment.py \
     --experiment_name /test \
     --framework hadoop
+
+$HADOOP_HOME/sbin/stop-dfs.sh
+$HADOOP_HOME/sbin/stop-yarn.sh
 ```
 
 Spark:
