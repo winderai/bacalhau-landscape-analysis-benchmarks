@@ -1,13 +1,5 @@
 # Hadoop Word Count
 
-Set env vars:
-
-```bash
-export PATH=${JAVA_HOME}/bin:${PATH}
-export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
-export HADOOP_HOME=<YOUR_HADOOP_HOME>
-```
-
 WordCount.java:
 
 ```java
@@ -74,6 +66,13 @@ public class WordCount {
 }
 ```
 
+Set env vars:
+
+```bash
+export PATH=${JAVA_HOME}/bin:${PATH}
+export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar
+export HADOOP_HOME=<YOUR_HADOOP_HOME> # should already have this one set up from the installation
+```
 
 ```bash
 # create JAR file
