@@ -57,6 +57,7 @@ $HADOOP_HOME/sbin/stop-yarn.sh
 ```
 conda activate base
 
+# launch on master node
 $SPARK_HOME/sbin/start-master.sh
 # launch on each worker node
 $SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077
@@ -65,6 +66,7 @@ python run_experiment.py \
     --experiment_name /test \
     --framework spark
 
+# launch on master node
 $SPARK_HOME/sbin/stop-master.sh
 # launch on each worker node
 $SPARK_HOME/sbin/stop-worker.sh
