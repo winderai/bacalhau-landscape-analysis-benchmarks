@@ -328,7 +328,7 @@ Just make sure you run hadoop jobs impersonating `hadoopuser`.
 You can access the web UIs at:
 
 - http://<MASTER_PUBLIC_IP>:9870/ # hdfs
-- http://<MASTER_PUBLIC_IP>:8088/ # hadoop cluster
+- http://<MASTER_PUBLIC_IP>:8088/ # hadoop nodes & jobs
 
 Use `Public IPv4 address` from the AWS console.
 
