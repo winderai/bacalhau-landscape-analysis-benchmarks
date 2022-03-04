@@ -40,6 +40,7 @@ Check master's web UI at `http://<MASTER_PUBLIC_IP>:8080/`. Use `Public IPv4 add
 $SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077
 ```
 
+:warning: Run the command above on each slave node.
 
 ## Test installation
 
