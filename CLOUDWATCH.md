@@ -10,12 +10,15 @@ https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatc
 The logs collected by the unified CloudWatch agent are processed and stored in Amazon CloudWatch Logs.
 Metrics collected by the CloudWatch agent are billed as custom metrics.
 
-# Linux / Ubutu / x86
+# Linux / Ubuntu (x86_64)
 
 
 
 
 ## Create IAM roles to use with the CloudWatch agent on Amazon EC2 instances
+
+
+
 
 https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html#create-iam-roles-for-cloudwatch-agent-roles
 
@@ -23,6 +26,13 @@ https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-
 12 steps: "To create the IAM role necessary for each server to run the CloudWatch agent"
 Ignore `AmazonSSMManagedInstanceCore`
 
+## Assign IAM role to instances
+
+```
+aws ec2 associate-iam-instance-profile \
+    --instance-id "i-09621312a3399db07" \
+    --iam-instance-profile Arn="arn:aws:iam::972867294043:instance-profile/ProtocolLabs-CloudWatchAgentServerRole"
+```
 
 <!-- ## Install AWS cli
 
@@ -155,3 +165,17 @@ sudo apt install -y collectd
 ```
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:amazon-cloudwatch-agent.json
 ```
+
+
+## Get metrics
+
+
+aws cloudwatch list-metrics --namespace "CWAgent"
+
+
+start_time=$(date -v-1d '+%Y-%m-%dT%H:%M:%S')
+now=$(date '+%Y-%m-%dT%H:%M:%S')
+
+aws --output json cloudwatch get-metric-statistics --namespace CWAgent \
+    --metric-name cpu_usage_system --statistics Average  --period 3600 \
+    --start-time $start_time --end-time $now
