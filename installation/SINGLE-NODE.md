@@ -8,10 +8,23 @@ We're going to install:
 - Postgres
 - Hadoop
 - Spark
-- Snowflake **???**
+- Snowflake
 
-Proceed by installing each framework and related prerequistes by running the following script (process duration ~5 minutes).
-Please DO NOT launch any cluster (yet).
+Let's start by setting up some environment variables for Snowflake.
+
+```bash
+export SNOW_ACCOUNTNAME=<YOUR_SNOWFLAKE_ACCOUNTNAME>
+export SNOW_USERNAME=<YOUR_SNOWFLAKE_USERNAME>
+export SNOW_PWD=<YOUR_SNOWFLAKE_PWD>
+export SNOW_REGION=<YOUR_SNOWFLAKE_REGION>
+export SNOW_DBNAME=<YOUR_SNOWFLAKE_DBNAME>
+export SNOW_SCHEMANAME=<YOUR_SNOWFLAKE_SCHEMANAME>
+export SNOW_WAREHOUSENAME=<YOUR_SNOWFLAKE_WAREHOUSENAME>
+```
+
+Proceed by installing each framework and related prerequistes by running the following script (process duration ~7 minutes).
+Please DO NOT launch any application cluster (yet).
+
 
 ```bash
 cd installation/

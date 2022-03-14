@@ -53,3 +53,34 @@ echo 'export HADOOP_CLASSPATH=${JAVA_HOME}/lib/tools.jar' >> ~/.bashrc
 echo "export HADOOP_HOME=/home/${USER}/hadoop-3.3.1" >> ~/.bashrc 
 echo "export SPARK_HOME=/home/${USER}/spark-3.2.1-bin-hadoop3.2" >> ~/.bashrc 
 echo "eval $(/home/${USER}/miniconda3/bin/conda shell.bash hook)" >> ~/.bashrc
+
+# SnowflakeSQL (client)
+cd ~
+curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
+bash snowsql-1.2.21-linux_x86_64.bash
+mkdir -p ~/.snowsql
+echo "[connections]
+accountname = ${SNOW_ACCOUNTNAME}
+username = ${SNOW_USERNAME}
+password = ${SNOW_PWD}
+region = ${SNOW_REGION}
+dbname = ${SNOW_DBNAME}
+schemaname = ${SNOW_SCHEMANAME}
+warehousename = ${SNOW_WAREHOUSENAME}
+
+[variables]
+
+[options]
+auto_completion = True
+log_file = ~/snowsql_rt.log
+log_level = DEBUG
+timing = True
+output_format = psql
+key_bindings = vi
+repository_base_url = https://sfc-repo.snowflakecomputing.com/snowsql" > ~/.snowsql/config
+chmod 700 ~/.snowsql/config
+
+# Done!
+echo "************************************"
+echo "Congrats! You've installed them all."
+echo "************************************"
