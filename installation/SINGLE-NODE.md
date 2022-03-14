@@ -8,7 +8,7 @@ We're going to install:
 - Postgres
 - Hadoop
 - Spark
-- Snowflake
+- Snowflake client
 
 Let's start by setting up some environment variables for Snowflake.
 
