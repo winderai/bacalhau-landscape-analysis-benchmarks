@@ -7,13 +7,9 @@ These instructions allow you to collect a variety of performance metrics from yo
 - disk
 - network
 
-
-
+The target OS is Ubuntu (x86_64), you'll need `aws-cli` installed.
 Note: metrics collected by the CloudWatch agent are billed as custom metrics.
 
-Linux / Ubuntu (x86_64)
-
-- aws cli
 
 # Prerequistes
 
