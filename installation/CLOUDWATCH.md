@@ -11,7 +11,7 @@ Linux / Ubuntu (x86_64)
 
 ### Create an IAM role to use with the CloudWatch agent on Amazon EC2 instances
 
-Follow the 12-step guide on [AWS docs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html#create-iam-roles-for-cloudwatch-agent-roles) under the "To create the IAM role necessary for each server to run the CloudWatch agent" paragraph.
+Follow the 12-step guide on AWS docs from the ["To create the IAM role necessary for each server to run the CloudWatch agent"](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-iam-roles-for-cloudwatch-agent.html#create-iam-roles-for-cloudwatch-agent-roles) paragraph.
 You won't be using Systems Manager so ignore the `AmazonSSMManagedInstanceCore` policy, instead use `CloudWatchAgentServerPolicy` only.
 
 
