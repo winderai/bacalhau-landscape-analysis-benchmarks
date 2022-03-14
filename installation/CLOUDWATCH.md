@@ -1,6 +1,6 @@
 # Collecting metrics from Amazon EC2 instances with the CloudWatch agent
 
-These instructions allow you to collect a variety of performance metrics from you cluster nodes including:
+These instructions allow you to collect a variety of performance metrics from you cluster nodes, sampled every 60 seconds, including:
 
 - cpu usage
 - memory usage
