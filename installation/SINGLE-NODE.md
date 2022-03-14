@@ -10,7 +10,10 @@ We're going to install:
 - Spark
 - Snowflake client
 
-As a first step, please follow the [prerequistes setup for Snowflake](./SNOWFLAKE.md#prerequisites)
+As a first step, please follow the [prerequistes setup for Snowflake](./SNOWFLAKE.md#prerequisites).
+Note, do only the prerequistes part, not the client installation.
+This will give you the right Snowflake resources and configuration.
+The single-node install script will pick it up automatically.
 
 Proceed by installing each framework and related prerequistes by running the following script (process duration ~7 minutes).
 Please DO NOT launch any application cluster (yet).
