@@ -1,7 +1,19 @@
+# Install Snowflake
+
+## Create db
+
+![alt text](../imgs/snowflake_create_db.png "create db")
+
+## Create schema
+
+![alt text](../imgs/snowflake_create_schema.png "create schema")
+
+## Create file format
+
+![alt text](../imgs/snowflake_create_fileformat.png "create file format")
 
 
-
-# Install SnowSQL
+## Install Snowflake client
 
 ```
 cd ~
@@ -9,8 +21,7 @@ curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_
 bash snowsql-1.2.21-linux_x86_64.bash 
 ```
 
-
-# Configure client
+## Configure client
 
 ```bash
 export SNOW_ACCOUNTNAME=<YOUR_SNOWFLAKE_ACCOUNTNAME>
@@ -48,22 +59,8 @@ repository_base_url = https://sfc-repo.snowflakecomputing.com/snowsql" > ~/.snow
 chmod 700 ~/.snowsql/config
 ```
 
+## Optional: Test SnowfSQL installation
 
-# Load
-
-/home/ubuntu/bin/snowsql --query "PUT file://./data/wordcount.txt '@mystage';"
-
-
-/home/ubuntu/bin/snowsql --query "COPY INTO WORDVALUE 
-FROM '@mystage';"
-
-
-/home/ubuntu/bin/snowsql --query "SELECT word, COUNT(*) as count
-from (
-  select c.value::string as word 
-  from "WORDCOUNT2"."NEWSCHEMA"."WORDVALUE", 
-        lateral flatten(input=>split(C1, ' ')) c
-)
-group by word
-order by count desc
-limit 10;"
+```bash
+/home/ubuntu/bin/snowsql --version
+```

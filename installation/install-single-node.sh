@@ -57,6 +57,7 @@ echo "eval $(/home/${USER}/miniconda3/bin/conda shell.bash hook)" >> ~/.bashrc
 # SnowflakeSQL (client)
 cd ~
 curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
+sudo apt install -y unzip
 bash snowsql-1.2.21-linux_x86_64.bash
 mkdir -p ~/.snowsql
 echo "[connections]

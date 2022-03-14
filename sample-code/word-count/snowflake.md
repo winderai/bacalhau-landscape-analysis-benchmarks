@@ -1,35 +1,27 @@
 # Snowflake Word Count
 
-## Prerequisite
-
-### Create db
-
-![alt text](imgs/snowflake_create_db.png "create db")
-
-### Create schema
-
-![alt text](imgs/snowflake_create_schema.png "create schema")
-
-### Create file format
-
-![alt text](imgs/snowflake_create_fileformat.png "create file format")
-
 ### Load wordcount.txt
 
-Follow the procedure from the official docs: https://docs.snowflake.com/en/user-guide/data-load-web-ui.html#step-1-opening-the-load-data-wizard
+```bash
+/home/ubuntu/bin/snowsql --query "PUT file://./data/wordcount.txt '@mystage';"
+
+/home/ubuntu/bin/snowsql --query "COPY INTO WORDVALUE 
+FROM '@mystage';"
+```
 
 
 ## Run query
 
-```sql
-SELECT word, COUNT(*) as count
+```bash
+/home/ubuntu/bin/snowsql --query "SELECT word, COUNT(*) as count
 from (
   select c.value::string as word 
-  from "WORDCOUNT"."WORDCOUNTSCHEMA"."TEST2", 
+  from "WORDCOUNT2"."NEWSCHEMA"."WORDVALUE", 
         lateral flatten(input=>split(C1, ' ')) c
 )
 group by word
-order by count desc;
+order by count desc
+limit 10;"
 ```
 
 Expected result:
