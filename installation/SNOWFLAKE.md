@@ -1,5 +1,8 @@
 # Install Snowflake
 
+
+Create account 
+
 ## Create db
 
 ![alt text](../imgs/snowflake_create_db.png "create db")
@@ -12,16 +15,7 @@
 
 ![alt text](../imgs/snowflake_create_fileformat.png "create file format")
 
-
-## Install Snowflake client
-
-```
-cd ~
-curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
-bash snowsql-1.2.21-linux_x86_64.bash 
-```
-
-## Configure client
+## Set environment variables
 
 ```bash
 export SNOW_ACCOUNTNAME=<YOUR_SNOWFLAKE_ACCOUNTNAME>
@@ -32,6 +26,18 @@ export SNOW_DBNAME=<YOUR_SNOWFLAKE_DBNAME>
 export SNOW_SCHEMANAME=<YOUR_SNOWFLAKE_SCHEMANAME>
 export SNOW_WAREHOUSENAME=<YOUR_SNOWFLAKE_WAREHOUSENAME>
 ```
+
+---
+
+## Install Snowflake client
+
+```
+cd ~
+curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
+bash snowsql-1.2.21-linux_x86_64.bash 
+```
+
+## Configure client
 
 ```bash
 mkdir -p ~/.snowsql
