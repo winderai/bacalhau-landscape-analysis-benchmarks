@@ -13,7 +13,7 @@ We're going to install:
 As a first step, please follow the [prerequistes setup for Snowflake](./SNOWFLAKE.md#prerequisites).
 Note, do only the prerequistes part, not the client installation.
 This will give you the right Snowflake resources (e.g. account, db, etc.) and configuration.
-The single-node install script will pick it up automatically.
+The single-node install script will pick that up automatically.
 
 Proceed by installing each framework and related prerequistes by running the following script (process duration ~7 minutes).
 Please DO NOT launch any application cluster (yet).
