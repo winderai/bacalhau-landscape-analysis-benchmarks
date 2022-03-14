@@ -32,7 +32,9 @@ aws ec2 associate-iam-instance-profile \
 
 # Install the CloudWatch agent
 
-# Download and install deb package
+Run the following commands on each host, this way you'll be able to fetch metrics from the whole cluster.
+
+## Download and install deb package
 
 Make sure you have the `AWS_REGION` environment variable set up.
 
