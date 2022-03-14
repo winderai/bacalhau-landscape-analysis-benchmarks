@@ -1,21 +1,22 @@
 # Install Snowflake
 
+## Prerequisites 
 
 Create account 
 
-## Create db
+### Create db
 
 ![alt text](../imgs/snowflake_create_db.png "create db")
 
-## Create schema
+### Create schema
 
 ![alt text](../imgs/snowflake_create_schema.png "create schema")
 
-## Create file format
+### Create file format
 
 ![alt text](../imgs/snowflake_create_fileformat.png "create file format")
 
-## Set environment variables
+### Set environment variables
 
 ```bash
 export SNOW_ACCOUNTNAME=<YOUR_SNOWFLAKE_ACCOUNTNAME>
@@ -27,6 +28,7 @@ export SNOW_SCHEMANAME=<YOUR_SNOWFLAKE_SCHEMANAME>
 export SNOW_WAREHOUSENAME=<YOUR_SNOWFLAKE_WAREHOUSENAME>
 ```
 
+---
 ---
 
 ## Install Snowflake client
