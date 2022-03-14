@@ -16,7 +16,7 @@ Follow the 12-step guide on AWS docs from the ["To create the IAM role necessary
 You won't be using Systems Manager so ignore the `AmazonSSMManagedInstanceCore` policy, instead use `CloudWatchAgentServerPolicy` only.
 
 
-## Assign IAM role to instances
+### Assign IAM role to instances
 
 Open the IAM console at https://console.aws.amazon.com/iam/ and find the `Instance profile ARN` of the Role created in the step above (example: `arn:aws:iam::xxxxxxxxxx:instance-profile/ProtocolLabs-CloudWatchAgentServerRole`).
 Save it in `export AWS_INSTANCE_PROFILE_ARN="<your-instance-profile-arn>"`.
@@ -30,11 +30,11 @@ aws ec2 associate-iam-instance-profile \
     --iam-instance-profile Arn=${AWS_INSTANCE_PROFILE_ARN}
 ```
 
-## Download and configure the CloudWatch agent using the command line
+## Install the CloudWatch agent
+
+Make sure you have the `AWS_REGION` environment variable set up.
 
 ```
-export AWS_REGION=eu-central-1
-
 wget "https://s3.${AWS_REGION}.amazonaws.com/amazoncloudwatch-agent-${AWS_REGION}/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb"
 
 sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
@@ -47,18 +47,11 @@ sudo apt update
 sudo apt install -y collectd
 ```
 
-## Create the CloudWatch agent configuration file
-
-```
-sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
-```
-
-## Start the CloudWatch agent using the command line
+## Start the CloudWatch agent
 
 ```
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:amazon-cloudwatch-agent.json
 ```
-
 
 ## Get metrics
 
