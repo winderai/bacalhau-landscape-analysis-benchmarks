@@ -18,6 +18,7 @@
 1. Install the various computation frameworks on your hosts by following the instructions, we provide [single-node](installation/SINGLE-NODE.md) and [multi-node](installation/MULTI-NODE.md) setups, depending on the cluster size you'd like to deploy. You need `ssh` to access to the hosts.
 1. [Install an AWS CloudWatch agent](installation/CLOUDWATCH.md) on each host.
 1. Run the [benchmark](benchmark/README.md) scripts.
+1. Fetch CloudWatch metrics
 
 ## Todo
 

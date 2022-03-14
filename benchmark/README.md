@@ -1,5 +1,20 @@
 # Benchmark
 
+
+
+Benchmark sequence:
+
+- start cluster
+- pull dataset to local directory 
+- push dataset to most convenient location (eg. hdfs, snowflake stage/table, etc.)
+- save timestamp for metrics retrieval `START`
+- run actual computation (no put print, no write to files, just computation)
+- save timestamp for metrics retrieval `END`
+- stop cluster (to allow for other experiments to run)
+- fetch metrics from mlflow
+- fetch metrics from CloudWatch (wait x minutes)
+
+
 ```
 pip install mlflow==1.23.1 EasyProcess==1.1
 ```
