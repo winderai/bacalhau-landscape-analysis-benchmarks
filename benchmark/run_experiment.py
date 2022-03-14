@@ -38,6 +38,14 @@ def main(args):
             print(s)
             s = call.stdout
             print(s)
+        elif args.framework == "snowflake":
+            print("Snowflake...")
+            cmd = ["bash", "word-count/snowflake/word-count.sh"]
+            call = EasyProcess(cmd).call()
+            s = call.stderr
+            print(s)
+            s = call.stdout
+            print(s)
         else:
             raise Exception("Framework {} is not supported.".format(args.framework))
         
