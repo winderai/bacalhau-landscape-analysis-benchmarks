@@ -5,7 +5,7 @@
 Benchmark sequence:
 
 - start cluster
-- pull dataset to local directory 
+- pull dataset to local directory
 - push dataset to most convenient location (eg. hdfs, snowflake stage/table, etc.)
 - save timestamp for metrics retrieval `START`
 - run actual computation (no put print, no write to files, just computation)
@@ -21,9 +21,19 @@ pip install mlflow==1.23.1 EasyProcess==1.1
 
 Launch `run_experiment.py` from within the main node.
 
+```bash
+# preliminary setup
+export EXP_NAME=cluster-size-1
+export DATASET_NAME=wordcount-tiny|worcount-large|nlp-large
+```
+
 ## Pandas
 
 ```bash
+# pull data to local dir
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
 conda activate pandas
 python run_experiment.py \
     --experiment_name /test \
@@ -33,6 +43,10 @@ python run_experiment.py \
 ## Dask
 
 ```bash
+# pull data to local dir
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
 conda activate dask
 python run_experiment.py \
     --experiment_name /test \
@@ -42,6 +56,18 @@ python run_experiment.py \
 ## Postgres
 
 ```bash
+# pull data to local dir
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
+# prepare dataset
+sudo -u postgres dropdb --if-exists wordcountdb
+sudo -u postgres createdb wordcountdb
+sudo -u postgres psql -d wordcountdb -c "CREATE TABLE wordcount(word TEXT);"
+
+# load
+echo "$(cat ${DATASET_LOCATION})" | tr " " "\n" | sudo -u postgres psql -d wordcountdb -c "COPY wordcount FROM stdin (delimiter ' ');"
+
 conda activate base
 python run_experiment.py \
     --experiment_name /test \
@@ -51,6 +77,9 @@ python run_experiment.py \
 ## Hadoop
 
 ```bash
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
 conda activate base
 
 $HADOOP_HOME/sbin/start-dfs.sh
@@ -58,6 +87,14 @@ $HADOOP_HOME/sbin/start-yarn.sh
 
 # check cluster status
 $HADOOP_HOME/bin/hdfs dfsadmin -report
+
+# Push dataset to HDFS
+$HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hadoopuser
+$HADOOP_HOME/bin/hdfs dfs -put -f ${DATASET_LOCATION}
+
+# clean up output dir
+$HADOOP_HOME/bin/hdfs dfs -rm -r out
+
 
 python run_experiment.py \
     --experiment_name /test \
@@ -70,6 +107,9 @@ $HADOOP_HOME/sbin/stop-yarn.sh
 ## Spark
 
 ```bash
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
 conda activate base
 
 # launch on master node
@@ -90,6 +130,9 @@ $SPARK_HOME/sbin/stop-worker.sh
 ## Snowflake
 
 ```bash
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
 conda activate base
 python run_experiment.py \
     --experiment_name /test \

@@ -1,6 +1,7 @@
+import os
 import pandas as pd
 
-file_url = "https://raw.githubusercontent.com/enricorotundo/hadoop-examples-mapreduce/main/src/test/resources/data/wordcount.txt"
+file_url = os.environ["DATASET_LOCATION"]
 
 df = pd.read_csv(file_url, header=None)
 # count words
@@ -13,6 +14,4 @@ new_df = (
     .reset_index()
 )
 new_df.columns = ['Word', 'Frequency'] 
-new_df = new_df.sort_values(['Frequency', 'Word'], ascending=False) 
-
-print(new_df)
+new_df = new_df.sort_values(['Frequency', 'Word'], ascending=False)
