@@ -2,7 +2,7 @@
 
 ## Prerequisites 
 
-Create account 
+Create account https://signup.snowflake.com/
 
 ### Create db
 
@@ -29,9 +29,8 @@ export SNOW_WAREHOUSENAME=<YOUR_SNOWFLAKE_WAREHOUSENAME>
 ```
 
 ---
----
 
-## Install Snowflake client
+## Install SnowSQL (client)
 
 ```
 cd ~
@@ -39,7 +38,7 @@ curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_
 bash snowsql-1.2.21-linux_x86_64.bash 
 ```
 
-## Configure client
+### Configure client
 
 ```bash
 mkdir -p ~/.snowsql
@@ -67,7 +66,7 @@ repository_base_url = https://sfc-repo.snowflakecomputing.com/snowsql" > ~/.snow
 chmod 700 ~/.snowsql/config
 ```
 
-## Optional: Test SnowfSQL installation
+### Optional: Test SnowfSQL installation
 
 ```bash
 /home/ubuntu/bin/snowsql --version
