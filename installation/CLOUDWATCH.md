@@ -6,6 +6,7 @@ Metrics collected by the CloudWatch agent are billed as custom metrics.
 
 Linux / Ubuntu (x86_64)
 
+- aws cli
 
 ## Prerequistes
 
@@ -17,10 +18,16 @@ You won't be using Systems Manager so ignore the `AmazonSSMManagedInstanceCore` 
 
 ## Assign IAM role to instances
 
+Open the IAM console at https://console.aws.amazon.com/iam/ and find the `Instance profile ARN` of the Role created in the step above (example: `arn:aws:iam::xxxxxxxxxx:instance-profile/ProtocolLabs-CloudWatchAgentServerRole`).
+Save it in `export AWS_INSTANCE_PROFILE_ARN="<your-instance-profile-arn>"`.
+
+Now run the following command for each EC2 instance in your cluster.
+Replace `<your-ec2-instance-ID>` with the right `Instance ID`, you can find that in the AWS console.
+
 ```
 aws ec2 associate-iam-instance-profile \
-    --instance-id "i-09621312a3399db07" \
-    --iam-instance-profile Arn="arn:aws:iam::972867294043:instance-profile/ProtocolLabs-CloudWatchAgentServerRole"
+    --instance-id "<your-ec2-instance-ID>" \
+    --iam-instance-profile Arn=${AWS_INSTANCE_PROFILE_ARN}
 ```
 
 ## Download and configure the CloudWatch agent using the command line
