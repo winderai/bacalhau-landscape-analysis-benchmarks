@@ -8,7 +8,7 @@ Launch `run_experiment.py` from within the main node.
 
 ## Pandas
 
-```
+```bash
 conda activate pandas
 python run_experiment.py \
     --experiment_name /test \
@@ -17,7 +17,7 @@ python run_experiment.py \
 
 ## Dask
 
-```
+```bash
 conda activate dask
 python run_experiment.py \
     --experiment_name /test \
@@ -26,7 +26,7 @@ python run_experiment.py \
 
 ## Postgres
 
-```
+```bash
 conda activate base
 python run_experiment.py \
     --experiment_name /test \
@@ -35,7 +35,7 @@ python run_experiment.py \
 
 ## Hadoop
 
-```
+```bash
 conda activate base
 
 $HADOOP_HOME/sbin/start-dfs.sh
@@ -54,7 +54,7 @@ $HADOOP_HOME/sbin/stop-yarn.sh
 
 ## Spark
 
-```
+```bash
 conda activate base
 
 # launch on master node
@@ -70,4 +70,13 @@ python run_experiment.py \
 $SPARK_HOME/sbin/stop-master.sh
 # launch on each worker node
 $SPARK_HOME/sbin/stop-worker.sh
+```
+
+## Snowflake
+
+```bash
+conda activate base
+python run_experiment.py \
+    --experiment_name /test \
+    --framework snowflake
 ```
