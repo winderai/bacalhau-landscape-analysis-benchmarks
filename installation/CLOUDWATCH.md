@@ -60,7 +60,7 @@ sudo apt install -y collectd
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:amazon-cloudwatch-agent.json
 ```
 
-## Get metrics
+<!-- ## Get metrics
 
 
 aws cloudwatch list-metrics --namespace "CWAgent"
@@ -71,4 +71,4 @@ now=$(date '+%Y-%m-%dT%H:%M:%S')
 
 aws --output json cloudwatch get-metric-statistics --namespace CWAgent \
     --metric-name cpu_usage_system --statistics Average  --period 3600 \
-    --start-time $start_time --end-time $now
+    --start-time $start_time --end-time $now -->
