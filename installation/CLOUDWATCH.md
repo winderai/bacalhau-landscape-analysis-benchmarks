@@ -1,8 +1,15 @@
 # Collecting metrics from Amazon EC2 instances with the CloudWatch agent
 
-These instructions 
-The logs collected by the unified CloudWatch agent are processed and stored in Amazon CloudWatch Logs.
-Metrics collected by the CloudWatch agent are billed as custom metrics.
+These instructions allow you to collect a variety of performance metrics from you cluster nodes including:
+
+- cpu
+- memory
+- disk
+- network
+
+
+
+Note: metrics collected by the CloudWatch agent are billed as custom metrics.
 
 Linux / Ubuntu (x86_64)
 
