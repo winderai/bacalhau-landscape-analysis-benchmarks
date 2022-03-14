@@ -21,6 +21,9 @@ Please create one at https://signup.snowflake.com/.
 
 ### Set environment variables
 
+Let's now set up some environment variables.
+Take a look at the offical docs https://docs.snowflake.com/ if you're unsure how to fetch the right values.
+
 ```bash
 export SNOW_ACCOUNTNAME=<YOUR_SNOWFLAKE_ACCOUNTNAME>
 export SNOW_USERNAME=<YOUR_SNOWFLAKE_USERNAME>

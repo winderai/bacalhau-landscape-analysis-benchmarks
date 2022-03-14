@@ -10,7 +10,7 @@ We're going to install:
 - Spark
 - Snowflake client
 
-Let's start by setting up some environment variables for Snowflake.
+
 
 ```bash
 export SNOW_ACCOUNTNAME=<YOUR_SNOWFLAKE_ACCOUNTNAME>
