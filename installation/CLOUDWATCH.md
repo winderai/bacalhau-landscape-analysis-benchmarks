@@ -8,7 +8,7 @@ Linux / Ubuntu (x86_64)
 
 - aws cli
 
-## Prerequistes
+# Prerequistes
 
 ### Create an IAM role to use with the CloudWatch agent on Amazon EC2 instances
 
@@ -30,13 +30,14 @@ aws ec2 associate-iam-instance-profile \
     --iam-instance-profile Arn=${AWS_INSTANCE_PROFILE_ARN}
 ```
 
-## Install the CloudWatch agent
+# Install the CloudWatch agent
+
+# Download and install deb package
 
 Make sure you have the `AWS_REGION` environment variable set up.
 
 ```
 wget "https://s3.${AWS_REGION}.amazonaws.com/amazoncloudwatch-agent-${AWS_REGION}/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb"
-
 sudo dpkg -i -E ./amazon-cloudwatch-agent.deb
 ```
 
