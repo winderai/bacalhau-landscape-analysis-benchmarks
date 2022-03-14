@@ -2,7 +2,10 @@
 
 ## Prerequisites 
 
-Create account https://signup.snowflake.com/
+### Create account
+
+A free trial account should suffice for the purpose of running these benchamrks.
+Please create one at https://signup.snowflake.com/. 
 
 ### Create db
 
@@ -32,13 +35,15 @@ export SNOW_WAREHOUSENAME=<YOUR_SNOWFLAKE_WAREHOUSENAME>
 
 ## Install SnowSQL (client)
 
-```
+### Download & install
+
+```bash
 cd ~
 curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/linux_x86_64/snowsql-1.2.21-linux_x86_64.bash
-bash snowsql-1.2.21-linux_x86_64.bash 
+bash snowsql-1.2.21-linux_x86_64.bash # confirm/continue when prompted
 ```
 
-### Configure client
+### Configure
 
 ```bash
 mkdir -p ~/.snowsql
