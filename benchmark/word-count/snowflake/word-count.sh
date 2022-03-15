@@ -12,7 +12,6 @@ if [ ${DATASET_NAME} = "wordcountTiny" ]; then
               lateral flatten(input=>split(C1, ' ')) c
       )
       group by word
-      order by count desc
       limit 10;"
 else
   echo "try again"

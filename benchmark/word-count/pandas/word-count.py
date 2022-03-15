@@ -14,4 +14,4 @@ new_df = (
     .reset_index()
 )
 new_df.columns = ['Word', 'Frequency'] 
-new_df = new_df.sort_values(['Frequency', 'Word'], ascending=False)
+# new_df = new_df.sort_values(['Frequency', 'Word'], ascending=False)

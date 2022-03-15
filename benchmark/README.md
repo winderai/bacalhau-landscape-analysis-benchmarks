@@ -180,10 +180,8 @@ export SNOW_STAGE=mystage
 
 # load data into table
 /home/ubuntu/bin/snowsql --query "PUT file://${DATASET_LOCATION} '@${SNOW_STAGE}';"
-
 /home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} 
 FROM '@${SNOW_STAGE}';"
-
 
 python run_experiment.py \
     --experiment_name /test \
