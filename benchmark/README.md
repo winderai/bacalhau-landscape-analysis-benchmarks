@@ -134,15 +134,16 @@ $HADOOP_HOME/sbin/stop-yarn.sh
 ## Spark
 
 ```bash
+conda activate base
+
+# pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
-conda activate base
-
-# launch on master node
-$SPARK_HOME/sbin/start-master.sh
-# launch on each worker node
-$SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077
+# !Important: only in multi-node setup
+# start cluster
+$SPARK_HOME/sbin/start-master.sh # launch on master node
+$SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077 # launch on each worker node
 
 python run_experiment.py \
     --experiment_name /test \
