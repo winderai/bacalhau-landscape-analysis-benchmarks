@@ -99,10 +99,10 @@ python run_experiment.py \
 ## Hadoop
 
 ```bash
+conda activate base
+
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
-
-conda activate base
 
 $HADOOP_HOME/sbin/start-dfs.sh
 $HADOOP_HOME/sbin/start-yarn.sh
@@ -116,7 +116,6 @@ $HADOOP_HOME/bin/hdfs dfs -put -f ${DATASET_LOCATION}
 
 # clean up output dir
 $HADOOP_HOME/bin/hdfs dfs -rm -r out
-
 
 python run_experiment.py \
     --experiment_name /test \
