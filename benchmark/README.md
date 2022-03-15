@@ -36,14 +36,17 @@ export DATASET_NAME=wordcount-tiny|worcount-large|nlp-large
 ## Pandas
 
 ```bash
+conda activate pandas
+
 # pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
-conda activate pandas
 python run_experiment.py \
     --experiment_name /test \
     --framework pandas
+
+conda activate base
 ```
 
 ## Dask
@@ -64,6 +67,8 @@ python run_experiment.py \
     --framework dask
 
 # stop cluster by killing the related processes, if started before
+
+conda activate base
 ```
 
 ## Postgres
