@@ -14,6 +14,7 @@ Benchmark sequence:
 - fetch metrics from mlflow
 - fetch metrics from CloudWatch (wait x minutes)
 
+# !!! should sort?
 
 ```
 pip install mlflow==1.23.1 EasyProcess==1.1
@@ -113,7 +114,8 @@ $HADOOP_HOME/sbin/start-yarn.sh
 # check cluster status
 $HADOOP_HOME/bin/hdfs dfsadmin -report # in single-node setup this will ouput "The fs class is: org.apache.hadoop.fs.LocalFileSystem"
 
-# Push dataset to HDFS, only in multi-node setup
+# !Important: only in multi-node setup
+# Push dataset to HDFS
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hadoopuser
 $HADOOP_HOME/bin/hdfs dfs -put -f ${DATASET_LOCATION}
 
