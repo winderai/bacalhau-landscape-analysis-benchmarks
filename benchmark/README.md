@@ -101,16 +101,19 @@ python run_experiment.py \
 ```bash
 conda activate base
 
+# pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
+# !Important: start cluster only in multi-node setup
+# start cluster
 $HADOOP_HOME/sbin/start-dfs.sh
 $HADOOP_HOME/sbin/start-yarn.sh
 
 # check cluster status
-$HADOOP_HOME/bin/hdfs dfsadmin -report
+$HADOOP_HOME/bin/hdfs dfsadmin -report # in single-node setup this will ouput "The fs class is: org.apache.hadoop.fs.LocalFileSystem"
 
-# Push dataset to HDFS
+# Push dataset to HDFS, only in multi-node setup
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hadoopuser
 $HADOOP_HOME/bin/hdfs dfs -put -f ${DATASET_LOCATION}
 
@@ -121,6 +124,7 @@ python run_experiment.py \
     --experiment_name /test \
     --framework hadoop
 
+# stop cluster, if started before
 $HADOOP_HOME/sbin/stop-dfs.sh
 $HADOOP_HOME/sbin/stop-yarn.sh
 ```
