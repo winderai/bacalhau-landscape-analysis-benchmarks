@@ -59,11 +59,9 @@ dask-worker tcp://hadoop-master:8786 # On each worker node
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
-
 python run_experiment.py \
     --experiment_name /test \
     --framework dask
-
 
 # stop cluster by killing the related processes, if started before
 ```
