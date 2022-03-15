@@ -27,6 +27,12 @@ export EXP_NAME=cluster-size-1
 export DATASET_NAME=wordcount-tiny|worcount-large|nlp-large
 ```
 
+## Prerequistes
+
+- ec2 instances running
+- single-node or multi node setup
+- cloudwatch agent running
+
 ## Pandas
 
 ```bash
@@ -43,14 +49,23 @@ python run_experiment.py \
 ## Dask
 
 ```bash
+conda activate dask
+
+# !Important: start cluster only on multi-node
+dask-scheduler # On main node
+dask-worker tcp://hadoop-master:8786 # On each worker node
+
 # pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
-conda activate dask
+
 python run_experiment.py \
     --experiment_name /test \
     --framework dask
+
+
+# stop cluster by killing the related processes, if started before
 ```
 
 ## Postgres
