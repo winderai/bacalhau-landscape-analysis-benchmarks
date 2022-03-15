@@ -4,12 +4,16 @@
 set -euxo pipefail
 
 
-/home/ubuntu/bin/snowsql --query "SELECT word, COUNT(*) as count
-from (
-  select c.value::string as word 
-  from "WORDCOUNT2"."NEWSCHEMA"."WORDVALUE", 
-        lateral flatten(input=>split(C1, ' ')) c
-)
-group by word
-order by count desc
-limit 10;"
+if [ ${DATASET_NAME} = "wordcountTiny" ]; then
+    /home/ubuntu/bin/snowsql --query "SELECT word, COUNT(*) as count
+      from (
+        select c.value::string as word 
+        from "${SNOW_DBNAME}"."${SNOW_SCHEMANAME}"."${DATASET_NAME}", 
+              lateral flatten(input=>split(C1, ' ')) c
+      )
+      group by word
+      order by count desc
+      limit 10;"
+else
+  echo "try again"
+fi

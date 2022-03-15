@@ -145,6 +145,10 @@ export DATASET_LOCATION=$(cat .dataset_location)
 $SPARK_HOME/sbin/start-master.sh # launch on master node
 $SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077 # launch on each worker node
 
+####### !
+####### may need to pull the dataset on each node?
+####### !
+
 python run_experiment.py \
     --experiment_name /test \
     --framework spark
@@ -157,11 +161,30 @@ $SPARK_HOME/sbin/stop-worker.sh
 
 ## Snowflake
 
+`${SNOW_DBNAME}`
+
+`${SNOW_SCHEMANAME}`
+
+mystage
+
 ```bash
+conda activate base
+
+# pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
-conda activate base
+
+# create a Snowflake stage
+export SNOW_STAGE=mystage
+
+# load data into table
+/home/ubuntu/bin/snowsql --query "PUT file://${DATASET_LOCATION} '@${SNOW_STAGE}';"
+
+/home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} 
+FROM '@${SNOW_STAGE}';"
+
+
 python run_experiment.py \
     --experiment_name /test \
     --framework snowflake
