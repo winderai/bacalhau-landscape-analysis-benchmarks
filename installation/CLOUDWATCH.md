@@ -26,7 +26,7 @@ Open the IAM console at https://console.aws.amazon.com/iam/ and find the `Instan
 Save it in `export AWS_INSTANCE_PROFILE_ARN="<your-instance-profile-arn>"`.
 
 Now run the following command for each EC2 instance in your cluster.
-Replace `<your-ec2-instance-ID>` with the right `Instance ID`, you can find that in the AWS console.
+Replace `<your-ec2-instance-ID>` with the right `Instance ID`, you can find that value either in the AWS console or by running `ec2metadata --instance-id`.
 
 ```
 aws ec2 associate-iam-instance-profile \
