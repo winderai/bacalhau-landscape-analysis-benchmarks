@@ -160,22 +160,17 @@ $SPARK_HOME/sbin/stop-worker.sh
 
 ## Snowflake
 
-Make you have `SNOW_DBNAME` and `SNOW_SCHEMANAME` properly set up, if not take a look at the [Snowflake installation instructions](../installation/SNOWFLAKE.md).
-
-mystage
-
-https://docs.snowflake.com/en/user-guide/data-load-local-file-system.html
+Make you have `SNOW_DBNAME` and `SNOW_SCHEMANAME` properly set up, if not take a look at the [Snowflake installation instructions](../installation/SNOWFLAKE.md#set-environment-variables).
+Furthemore, you'll need to a Snowflake stage to host your dataset, please check the [official docs](https://docs.snowflake.com/en/user-guide/data-load-local-file-system.html) to learn how to create one.
 
 ```bash
 conda activate base
 
+export SNOW_STAGE=<your-snowflake-stage>
+
 # pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
-
-
-# create a Snowflake stage
-export SNOW_STAGE=mystage
 
 # load data into table
 /home/ubuntu/bin/snowsql --query "PUT file://${DATASET_LOCATION} '@${SNOW_STAGE}';"
