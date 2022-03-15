@@ -24,7 +24,7 @@ Launch `run_experiment.py` from within the main node.
 ```bash
 # preliminary setup
 export EXP_NAME=cluster-size-1
-export DATASET_NAME=wordcount-tiny|worcount-large|nlp-large
+export DATASET_NAME=wordcountTiny|worcountLarge|nlpLarge # use camel-case naming
 ```
 
 ## Prerequistes
@@ -54,7 +54,7 @@ conda activate base
 ```bash
 conda activate dask
 
-# !Important: start cluster only on multi-node
+# !Important: start cluster only in multi-node setup
 dask-scheduler # On main node
 dask-worker tcp://hadoop-master:8786 # On each worker node
 
@@ -74,19 +74,23 @@ conda activate base
 ## Postgres
 
 ```bash
+conda activate base
+
 # pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
 # prepare dataset
-sudo -u postgres dropdb --if-exists wordcountdb
-sudo -u postgres createdb wordcountdb
-sudo -u postgres psql -d wordcountdb -c "CREATE TABLE wordcount(word TEXT);"
+export DB_NAME=${DATASET_NAME}Db
+sudo -u postgres dropdb --if-exists ${DB_NAME}
+sudo -u postgres createdb ${DB_NAME}
+# if DATASET_NAME is "wordcountTiny"
+sudo -u postgres psql -d ${DB_NAME} -c "CREATE TABLE ${DATASET_NAME}(word TEXT);"
 
-# load
-echo "$(cat ${DATASET_LOCATION})" | tr " " "\n" | sudo -u postgres psql -d wordcountdb -c "COPY wordcount FROM stdin (delimiter ' ');"
+# load data into table
+# if DATASET_NAME is "wordcountTiny"
+echo "$(cat ${DATASET_LOCATION})" | tr " " "\n" | sudo -u postgres psql -d ${DB_NAME} -c "COPY ${DATASET_NAME} FROM stdin (delimiter ' ');"
 
-conda activate base
 python run_experiment.py \
     --experiment_name /test \
     --framework postgres
