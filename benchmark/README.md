@@ -1,11 +1,11 @@
-# Benchmark
+# Benchmark WIP
 
 
 
-Benchmark sequence:
+Benchmark sequence WIP:
 
 - start cluster
-- pull dataset to local directory
+- pull dataset to local stash
 - push dataset to most convenient location (eg. hdfs, snowflake stage/table, etc.)
 - save timestamp for metrics retrieval `START`
 - **timed!: run actual computation (no put print, no write to files, just computation)**
@@ -160,11 +160,11 @@ $SPARK_HOME/sbin/stop-worker.sh
 
 ## Snowflake
 
-`${SNOW_DBNAME}`
-
-`${SNOW_SCHEMANAME}`
+Make you have `SNOW_DBNAME` and `SNOW_SCHEMANAME` properly set up, if not take a look at the [Snowflake installation instructions](../installation/SNOWFLAKE.md).
 
 mystage
+
+https://docs.snowflake.com/en/user-guide/data-load-local-file-system.html
 
 ```bash
 conda activate base
