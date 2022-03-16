@@ -106,7 +106,7 @@ bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
 # !Important: start cluster only in multi-node setup
-# start cluster
+# Run on main node
 $HADOOP_HOME/sbin/start-dfs.sh
 $HADOOP_HOME/sbin/start-yarn.sh
 
@@ -127,6 +127,7 @@ python run_experiment.py \
     --framework hadoop
 
 # stop cluster, if started before
+# Run on main node
 $HADOOP_HOME/sbin/stop-dfs.sh
 $HADOOP_HOME/sbin/stop-yarn.sh
 ```
