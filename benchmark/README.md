@@ -146,9 +146,10 @@ export DATASET_LOCATION=$(cat .dataset_location)
 $SPARK_HOME/sbin/start-master.sh # launch on master node
 $SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077 # launch on each worker node
 
-####### !
-####### may need to pull the dataset on each node?
-####### !
+# !Important: only in multi-node setup
+# distribute dataset across cluster
+ # run this for each slave node, replace the node indexing accordingly (e.g. hadoop-slave2, hadoop-slave3, etc.)
+scp ${DATASET_LOCATION} hadoopuser@hadoop-slave1:${DATASET_LOCATION}
 
 python run_experiment.py \
     --experiment_name /test \
