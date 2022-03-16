@@ -106,7 +106,7 @@ bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
 # !Important: start cluster only in multi-node setup
-# start cluster
+# Run on main node
 $HADOOP_HOME/sbin/start-dfs.sh
 $HADOOP_HOME/sbin/start-yarn.sh
 
@@ -116,7 +116,8 @@ $HADOOP_HOME/bin/hdfs dfsadmin -report # in single-node setup this will ouput "T
 # !Important: only in multi-node setup
 # Push dataset to HDFS
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hadoopuser
-$HADOOP_HOME/bin/hdfs dfs -put -f ${DATASET_LOCATION}
+$HADOOP_HOME/bin/hdfs dfs -put -f ${DATASET_LOCATION} /user/hadoopuser
+export DATASET_LOCATION=$(echo "/user/hadoopuser/$(basename ${DATASET_LOCATION})")
 
 # clean up output dir
 $HADOOP_HOME/bin/hdfs dfs -rm -r out
@@ -126,6 +127,7 @@ python run_experiment.py \
     --framework hadoop
 
 # stop cluster, if started before
+# Run on main node
 $HADOOP_HOME/sbin/stop-dfs.sh
 $HADOOP_HOME/sbin/stop-yarn.sh
 ```
@@ -144,17 +146,18 @@ export DATASET_LOCATION=$(cat .dataset_location)
 $SPARK_HOME/sbin/start-master.sh # launch on master node
 $SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077 # launch on each worker node
 
-####### !
-####### may need to pull the dataset on each node?
-####### !
+# !Important: only in multi-node setup
+# distribute dataset across cluster
+ # run this for each slave node, replace the node indexing accordingly (e.g. hadoop-slave2, hadoop-slave3, etc.)
+scp ${DATASET_LOCATION} hadoopuser@hadoop-slave1:${DATASET_LOCATION}
 
 python run_experiment.py \
     --experiment_name /test \
     --framework spark
 
-# launch on master node
+# run on master node
 $SPARK_HOME/sbin/stop-master.sh
-# launch on each worker node
+# run on each worker node
 $SPARK_HOME/sbin/stop-worker.sh
 ```
 

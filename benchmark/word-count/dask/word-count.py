@@ -3,7 +3,7 @@ import os
 from dask.distributed import Client
 
 if __name__ == '__main__':
-    client = Client()
+    client = Client("hadoop-master:8786")
     print(client)
 
     import dask.dataframe as dd
