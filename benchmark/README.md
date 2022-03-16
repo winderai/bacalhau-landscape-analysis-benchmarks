@@ -155,9 +155,9 @@ python run_experiment.py \
     --experiment_name /test \
     --framework spark
 
-# launch on master node
+# run on master node
 $SPARK_HOME/sbin/stop-master.sh
-# launch on each worker node
+# run on each worker node
 $SPARK_HOME/sbin/stop-worker.sh
 ```
 
