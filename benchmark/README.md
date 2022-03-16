@@ -20,6 +20,7 @@ pip install mlflow==1.23.1 EasyProcess==1.1
 ```
 
 Launch `run_experiment.py` from within the main node.
+If you're in a multi-node setup, run the benchmarks as `hadoopuser` instead of the default `ubuntu` user.
 
 ```bash
 # preliminary setup
