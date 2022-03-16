@@ -15,4 +15,5 @@ Proceed by installing:
 1. [Dask](installation/DASK.md)
 
 
-You're now ready to [run the benchmarks](../benchmark/README.md).
+If you'd like to track cpu/mem/etc. usage don't forget to set up [CloudWatch agent](./CLOUDWATCH.md).
+After that, you'll be ready to [run the benchmarks](../benchmark/README.md).
