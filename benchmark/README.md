@@ -116,7 +116,8 @@ $HADOOP_HOME/bin/hdfs dfsadmin -report # in single-node setup this will ouput "T
 # !Important: only in multi-node setup
 # Push dataset to HDFS
 $HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hadoopuser
-$HADOOP_HOME/bin/hdfs dfs -put -f ${DATASET_LOCATION}
+$HADOOP_HOME/bin/hdfs dfs -put -f ${DATASET_LOCATION} /user/hadoopuser
+export DATASET_LOCATION=$(echo "/user/hadoopuser/$(basename ${DATASET_LOCATION})")
 
 # clean up output dir
 $HADOOP_HOME/bin/hdfs dfs -rm -r out
