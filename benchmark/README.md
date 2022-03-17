@@ -13,6 +13,7 @@ Benchmark sequence WIP:
 - stop cluster (to allow for other experiments to run)
 - fetch metrics from mlflow
 - fetch metrics from CloudWatch (wait x minutes)
+- [ ] disable web UI for clusters?
 
 
 ```

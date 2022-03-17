@@ -19,19 +19,3 @@
 1. [Install an AWS CloudWatch agent](installation/CLOUDWATCH.md) on each host.
 1. Run the [benchmark](benchmark/README.md) scripts.
 1. Fetch CloudWatch metrics
-
-## Todo
-
-
-Benchmarks:
-
-- [x] Build JARs for Hadoop and Spark examples
-- [x] run_experiment.py for Hadoop
-- [x] run_experiment.py for Spark
-- [ ] make sure experiment prepping (init dirs, fetch dataset) is not counted against the benchmarking 
-- [ ] Fetch CPU/Memory stats
-- [ ] Fetch large dataset
-- [ ] Move dataset to S3? or HDFS?
-- [ ] disable web UI for clusters?
-
-
