@@ -2,6 +2,10 @@
 
 ## Sample code
 
+1. Clone this repo `git clone https://gitlab.com/WinderAI/protocol-labs/sample-code-benchmark.git` on your machine.
+1. Install the [single-node setup](./installation/SINGLE-NODE.md) shipped with this repo.
+1. Install `jupyter lab` in your base environment
+1. Run `cd sample-code && jupyter lab --ip=0.0.0.0`
 
 |                     | hadoop             | spark              | pandas             | dask               | postgres           | snowflake          |
 |---------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
