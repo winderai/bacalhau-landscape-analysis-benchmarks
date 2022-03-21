@@ -12,7 +12,7 @@ object AvgPrice
         val spark = SparkSession.builder.config(conf).getOrCreate()
         
         val input_df = spark.read.option("header", "true")
-          .csv("file://" + System.getProperty("user.dir") + "/data/address_book.csv")
+          .csv("file://" + System.getProperty("user.dir") + "/../data/address_book.csv")
           .withColumn("Price", col("Price").cast(DoubleType))
           .groupBy("Zipcode")
           .agg(avg("Price").as("AvgPrice"))
@@ -23,4 +23,3 @@ object AvgPrice
           .csv("file://" + System.getProperty("user.dir") + "/output")
     }
 }
-

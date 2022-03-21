@@ -67,7 +67,7 @@ public class AvgPrice
     public static void main(String[] args) throws Exception
     {
         // set the paths of the input and output directories in the HDFS
-        Path input_dir = new Path("data");
+        Path input_dir = new Path("../data");
         Path output_dir = new Path("average_prices");
 
         // in case the output directory already exists, delete it
