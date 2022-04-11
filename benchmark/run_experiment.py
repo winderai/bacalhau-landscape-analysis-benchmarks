@@ -41,8 +41,10 @@ def main(args):
         print("STDERR:")
         s = call.stderr
         print(s)
+        mlflow.log_text("stderr", s)
         print("STDOUT:")
         s = call.stdout
+        mlflow.log_text("stdout", s)
         print(s)
 
     print("DONE")
