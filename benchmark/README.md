@@ -186,3 +186,19 @@ python run_experiment.py \
     --experiment_name /${EXP_NAME} \
     --framework snowflake
 ```
+
+
+## CloudWatch metrics
+
+```
+export AWS_PROFILE=winder
+os.getenv('AWS_REGION')
+host_ip = "ip-172-31-12-99"
+
+python cloudwatch.py \
+    --host_ip ip-172-31-12-99 \
+    --aws_region eu-central-1 \
+    --start_time 1649689571.6 \
+    --end_time 1649689572 \
+    --output_dir "/tmp"
+```
