@@ -166,3 +166,4 @@ cython_debug/
 !benchmark/word-count/hadoop/WordCount.java
 
 *.csv
+benchmark/.dataset_location
