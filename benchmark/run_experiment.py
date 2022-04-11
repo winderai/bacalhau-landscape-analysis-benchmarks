@@ -32,11 +32,13 @@ def main(args):
         call = EasyProcess(cmd).call()
         t1 = time.time()
         mlflow.log_metric("running_time", t1 - t0)
+        mlflow.log_metric("start_time", t0)
+        mlflow.log_metric("end_time", t1)
 
         print("STDERR:")
         s = call.stderr
         print(s)
-        print("\nSTDOUT:")
+        print("STDOUT:")
         s = call.stdout
         print(s)
 
