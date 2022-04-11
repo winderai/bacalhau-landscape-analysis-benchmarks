@@ -36,6 +36,7 @@ def main(args):
         mlflow.log_metric("start_time", t0)
         mlflow.log_metric("end_time", t1)
         mlflow.log_parameter("dataset_name", os.getenv['DATASET_NAME'])
+        mlflow.log_parameter("dataset_location", os.getenv['DATASET_LOCATION'])
         
         print("STDERR:")
         s = call.stderr
