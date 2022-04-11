@@ -1,3 +1,4 @@
+import os
 import argparse
 from pathlib import Path
 import time
@@ -34,7 +35,8 @@ def main(args):
         mlflow.log_metric("running_time", t1 - t0)
         mlflow.log_metric("start_time", t0)
         mlflow.log_metric("end_time", t1)
-
+        mlflow.log_parameter("dataset_name", os.getenv['DATASET_NAME'])
+        
         print("STDERR:")
         s = call.stderr
         print(s)
