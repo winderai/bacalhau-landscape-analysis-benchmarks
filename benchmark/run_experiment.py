@@ -1,54 +1,45 @@
 import argparse
+from pathlib import Path
+import time
 
 import mlflow
 from easyprocess import EasyProcess
 
 def main(args):
     # experiment tracking
-    mlflow.set_tracking_uri("file:./mlflow-files")
+    mlflow.set_tracking_uri("file:{}/mlflow-files".format(str(Path.home())))
     mlflow.set_experiment(args.experiment_name)
     
     with mlflow.start_run(run_name=args.framework) as parent_run:
         if args.framework == "dask":
             cmd = ["python", "word-count/dask/word-count.py"]
-            s = EasyProcess(cmd).call().stdout
-            print(s)
         elif args.framework == "pandas":
-            mlflow.log_param("param1", 1111)
-            mlflow.log_metric("foo", 222)
             cmd = ["python", "word-count/pandas/word-count.py"]
-            s = EasyProcess(cmd).call().stdout
-            print(s)
         elif args.framework == "postgres":
             print("Postgres...")
             cmd = ["bash", "word-count/postgres/word-count.sh"]
-            call = EasyProcess(cmd).call()
-            s = call.stderr
-            print(s)
-            s = call.stdout
-            print(s)
         elif args.framework == "hadoop":
             cmd = ["bash", "word-count/hadoop/run.sh"]
-            s = EasyProcess(cmd).call().stderr
-            print(s)
         elif args.framework == "spark":
             cmd = ["bash", "word-count/spark/run.sh"]
-            call = EasyProcess(cmd).call()
-            s = call.stderr
-            print(s)
-            s = call.stdout
-            print(s)
         elif args.framework == "snowflake":
             print("Snowflake...")
             cmd = ["bash", "word-count/snowflake/word-count.sh"]
-            call = EasyProcess(cmd).call()
-            s = call.stderr
-            print(s)
-            s = call.stdout
-            print(s)
         else:
-            raise Exception("Framework {} is not supported.".format(args.framework))
+            raise Exception("Framework {} is not supported. Please try again.".format(args.framework))
         
+        t0 = time.time()
+        call = EasyProcess(cmd).call()
+        t1 = time.time()
+        mlflow.log_metric("running_time", t1 - t0)
+
+        print("STDERR:")
+        s = call.stderr
+        print(s)
+        print("\nSTDOUT:")
+        s = call.stdout
+        print(s)
+
     print("DONE")
 
 if __name__ == "__main__":
