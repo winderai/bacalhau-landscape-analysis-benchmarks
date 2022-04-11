@@ -45,7 +45,7 @@ bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
 python run_experiment.py \
-    --experiment_name /test \
+    --experiment_name /${EXP_NAME} \
     --framework pandas
 
 conda activate base
@@ -65,7 +65,7 @@ bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
 python run_experiment.py \
-    --experiment_name /test \
+    --experiment_name /${EXP_NAME} \
     --framework dask
 
 # stop cluster by killing the related processes, if started before
@@ -94,7 +94,7 @@ sudo -u postgres psql -d ${DB_NAME} -c "CREATE TABLE ${DATASET_NAME}(word TEXT);
 echo "$(cat ${DATASET_LOCATION})" | tr " " "\n" | sudo -u postgres psql -d ${DB_NAME} -c "COPY ${DATASET_NAME} FROM stdin (delimiter ' ');"
 
 python run_experiment.py \
-    --experiment_name /test \
+    --experiment_name /${EXP_NAME} \
     --framework postgres
 ```
 
@@ -125,7 +125,7 @@ export DATASET_LOCATION=$(echo "/user/hadoopuser/$(basename ${DATASET_LOCATION})
 $HADOOP_HOME/bin/hdfs dfs -rm -r out
 
 python run_experiment.py \
-    --experiment_name /test \
+    --experiment_name /${EXP_NAME} \
     --framework hadoop
 
 # stop cluster, if started before
@@ -154,7 +154,7 @@ $SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077 # launch on each wor
 scp ${DATASET_LOCATION} hadoopuser@hadoop-slave1:${DATASET_LOCATION}
 
 python run_experiment.py \
-    --experiment_name /test \
+    --experiment_name /${EXP_NAME} \
     --framework spark
 
 # run on master node
@@ -183,6 +183,6 @@ export DATASET_LOCATION=$(cat .dataset_location)
 FROM '@${SNOW_STAGE}';"
 
 python run_experiment.py \
-    --experiment_name /test \
+    --experiment_name /${EXP_NAME} \
     --framework snowflake
 ```
