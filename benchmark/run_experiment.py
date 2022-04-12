@@ -29,9 +29,9 @@ def main(args):
         else:
             raise Exception("Framework {} is not supported. Please try again.".format(args.framework))
         
-        t0 = time.time()
+        t0 = int(time.time())
         call = EasyProcess(cmd).call()
-        t1 = time.time()
+        t1 = int(time.time())
         print("start_time: {}".format(t0))
         print("end_time: {}".format(t1))
 

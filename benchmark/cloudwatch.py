@@ -183,6 +183,7 @@ if __name__ == "__main__":
         "--host_ip",
         type=str,
         required=True,
+        help="EC2 instance's private IP name e.g. 'ip-172-31-12-99'"
     )
     parser.add_argument(
         "--aws_region",

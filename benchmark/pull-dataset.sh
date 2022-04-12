@@ -10,6 +10,7 @@ if [ $1 = "wordcountTiny" ]; then
 elif [ $1 = "worcountLarge" ]; then
     tar -xvf wordcount-1GB.tar.gz -C /tmp/
     mv /tmp/large-textfile.txt /tmp/wordcount-1GB.txt
+    echo "/tmp/wordcount-1GB.txt" > .dataset_location
 else
     echo "try again"
 fi
