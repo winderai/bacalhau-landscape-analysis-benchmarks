@@ -32,6 +32,9 @@ def main(args):
         t0 = time.time()
         call = EasyProcess(cmd).call()
         t1 = time.time()
+        print("start_time: {}".format(t0))
+        print("end_time: {}".format(t1))
+
         mlflow.log_metric("running_time", t1 - t0)
         mlflow.log_metric("start_time", t0)
         mlflow.log_metric("end_time", t1)
