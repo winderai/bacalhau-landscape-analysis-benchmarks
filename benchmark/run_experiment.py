@@ -2,7 +2,7 @@ import os
 import argparse
 from pathlib import Path
 import time
-import datetime
+from datetime import datetime
 import pytz
 
 import mlflow
