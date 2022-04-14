@@ -6,7 +6,7 @@ if __name__ == '__main__':
     try:
         client = Client("hadoop-master:8786")
         print("Connecting to hadoop-master...")
-    else:
+    except:
         client = Client()
         print("Connecting to localhost...")
     print(client)
