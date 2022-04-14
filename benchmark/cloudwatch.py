@@ -4,6 +4,7 @@ import datetime
 from datetime import date, timedelta, datetime
 import pprint
 import argparse
+import pytz
 
 import boto3
 import pandas as pd
@@ -14,127 +15,28 @@ def main(args):
    host_ip = args.host_ip
    # Create CloudWatch client
    cloudwatch = boto3.client('cloudwatch', region_name=args.aws_region)
-   start_time = datetime.fromtimestamp(int(float(args.start_time)))
-   end_time = datetime.fromtimestamp(int(float(args.end_time)))
+   start_time = datetime.fromtimestamp(int(float(args.start_time)), pytz.timezone("UTC"))
+   end_time = datetime.fromtimestamp(int(float(args.end_time)), pytz.timezone("UTC"))
    output_dir = args.output_dir
+   print("start_time: {}".format(start_time))
+   print("end_time: {}".format(end_time))
 
-   # paginator = cloudwatch.get_paginator('list_metrics')
-   # for response in paginator.paginate(Dimensions=[{"Name": "host", "Value": "ip-172-31-43-56"}],
-   #                 Namespace='CWAgent'):
-   #     pprint.pprint(response)
-
-   metrics = [{
-      "Dimensions":[
-         {
-            "Name":"host",
-            "Value":host_ip
-         },
-         {
-            "Name":"cpu",
-            "Value":"cpu0"
-         }
-      ],
-      "MetricName":"cpu_usage_user",
-      "Namespace":"CWAgent"
-   },
-   {
-      "Dimensions":[
-         {
-            "Name":"host",
-            "Value":host_ip
-         },
-         {
-            "Name":"cpu",
-            "Value":"cpu0"
-         }
-      ],
-      "MetricName":"cpu_usage_system",
-      "Namespace":"CWAgent"
-   },
-   {
-      "Dimensions":[
-         {
-            "Name":"host",
-            "Value":host_ip
-         },
-         {
-            "Name":"cpu",
-            "Value":"cpu0"
-         }
-      ],
-      "MetricName":"cpu_usage_idle",
-      "Namespace":"CWAgent"
-   },
-   {
-      "Dimensions":[
-         {
-            "Name":"host",
-            "Value":host_ip
-         },
-         {
-            "Name":"cpu",
-            "Value":"cpu0"
-         }
-      ],
-      "MetricName":"cpu_usage_iowait",
-      "Namespace":"CWAgent"
-   },
-   {
-      "Dimensions":[
-         {
-            "Name":"host",
-            "Value":host_ip
-         }
-      ],
-      "MetricName":"mem_used_percent",
-      "Namespace":"CWAgent"
-   },
-   {
-      "Dimensions":[
-         {
-            "Name":"host",
-            "Value":host_ip
-         },
-         {
-            "Name":"name",
-            "Value":"xvda1"
-         }
-      ],
-      "MetricName":"diskio_io_time",
-      "Namespace":"CWAgent"
-   },
-   {
-      "Dimensions":[
-         {
-            "Name":"host",
-            "Value":host_ip
-         },
-         {
-            "Name":"name",
-            "Value":"xvda"
-         }
-      ],
-      "MetricName":"diskio_writes",
-      "Namespace":"CWAgent"
-   },
-   {
-      "Dimensions":[
-         {
-            "Name":"host",
-            "Value":host_ip
-         },
-         {
-            "Name":"name",
-            "Value":"xvda"
-         }
-      ],
-      "MetricName":"diskio_reads",
-      "Namespace":"CWAgent"
-   }
-   ]
-
+   paginator = cloudwatch.get_paginator('list_metrics')
+   metrics = []
+   for response in paginator.paginate(Dimensions=[{"Name": "host", "Value": host_ip}],
+                   Namespace='CWAgent'):
+      for metric in response['Metrics']:
+         #if ("cpu" in metric['MetricName']) or ("mem" in metric['MetricName']) or ("diskio" in metric['MetricName']):
+         if ("cpu" in metric['MetricName']):
+            metrics.append(metric)
+   
    metric_data_queries = []
    for metric in metrics:
+      try:
+         id = metric["MetricName"] + "_" + metric['Dimensions'][1]['Value']
+      except:
+         id = metric["MetricName"] + "_" + metric['Dimensions'][0]['Value']
+      id = id.replace("-", "_")
       metric_data_queries.append(
          {
                'Id': metric["MetricName"],
@@ -146,8 +48,9 @@ def main(args):
                'ReturnData': True,
          }
       )
+      break
 
-   # pprint.pprint(metric_data_queries)
+   pprint.pprint(metric_data_queries)
 
 
    response = cloudwatch.get_metric_data(
@@ -156,25 +59,24 @@ def main(args):
          EndTime=end_time,
    )
 
-   #pprint.pprint(response)
-   data = response['MetricDataResults']
+   pprint.pprint(response)
+   # data = response['MetricDataResults']
 
-   all_metrics_data = []
-   for metric in data:
-      metric_data = {
-         'metric_name': metric['Id'], 
-         'timestamp': metric['Timestamps'], 
-         'metric_value': metric['Values'],
-         'host': host_ip,
-      }
-      df_metric = pd.DataFrame.from_dict(metric_data)
-      all_metrics_data.append(df_metric)
+   # all_metrics_data = []
+   # for metric in data:
+   #    metric_data = {
+   #       'metric_name': metric['Id'], 
+   #       'timestamp': metric['Timestamps'], 
+   #       'metric_value': metric['Values'],
+   #       'host': host_ip,
+   #    }
+   #    df_metric = pd.DataFrame.from_dict(metric_data)
+   #    all_metrics_data.append(df_metric)
+   # df = pd.concat(all_metrics_data)
 
-   df = pd.concat(all_metrics_data)
-
-   print(df)
-   if output_dir:
-      df.to_csv(output_dir + "/" + "{}_{}_{}".format(host_ip, args.start_time, args.end_time) + ".csv")
+   # print(df)
+   # if output_dir:
+   #    df.to_csv(output_dir + "/" + "{}_{}_{}".format(host_ip, args.start_time, args.end_time) + ".csv")
 
 
 if __name__ == "__main__":

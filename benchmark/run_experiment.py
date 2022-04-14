@@ -2,6 +2,8 @@ import os
 import argparse
 from pathlib import Path
 import time
+import datetime
+import pytz
 
 import mlflow
 from easyprocess import EasyProcess
@@ -37,7 +39,9 @@ def main(args):
 
         mlflow.log_metric("running_time", t1 - t0)
         mlflow.log_metric("start_time", t0)
+        mlflow.log_metric("start_time_datetime", str(datetime.fromtimestamp(int(float(t0)), pytz.timezone("UTC"))))
         mlflow.log_metric("end_time", t1)
+        mlflow.log_metric("end_time_datetime", str(datetime.fromtimestamp(int(float(t1)), pytz.timezone("UTC"))))
         mlflow.log_param("dataset_name", os.getenv('DATASET_NAME'))
         mlflow.log_param("dataset_location", os.getenv('DATASET_LOCATION'))
         mlflow.log_param("etc_hosts", open("/etc/hosts", "r").read())
