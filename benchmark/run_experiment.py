@@ -51,6 +51,9 @@ def main(args):
         mlflow.log_param("stdout", s[:5_000])
         print(s)
 
+        if call.return_code != 0:
+            raise Exception("Something went wrong. Check stderr.")
+
     print("DONE")
 
 if __name__ == "__main__":
