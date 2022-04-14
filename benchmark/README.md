@@ -177,8 +177,8 @@ export DATASET_LOCATION=$(cat .dataset_location)
 
 # load data into table
 /home/ubuntu/bin/snowsql --query "PUT file://${DATASET_LOCATION} '@${SNOW_STAGE}';"
-/home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} 
-FROM '@${SNOW_STAGE}';"
+/home/ubuntu/bin/snowsql --query "CREATE TABLE ${DATASET_NAME}(C1 STRING);"
+/home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} FROM '@${SNOW_STAGE}';"
 
 python run_experiment.py \
     --experiment_name /${EXP_NAME} \
