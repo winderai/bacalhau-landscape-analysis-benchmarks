@@ -189,14 +189,12 @@ python run_experiment.py \
 ## CloudWatch metrics
 
 ```
-export AWS_PROFILE=winder
-os.getenv('AWS_REGION')
-host_ip = "ip-172-31-12-99"
+export AWS_PROFILE=<your-aws-profile>
 
 python cloudwatch.py \
     --host_ip ip-172-31-12-99 \
     --aws_region eu-central-1 \
-    --start_time 1649689571.6 \
-    --end_time 1649689572 \
+    --start_time 1649949609 \
+    --end_time 1649949612 \
     --output_dir "/tmp"
 ```
