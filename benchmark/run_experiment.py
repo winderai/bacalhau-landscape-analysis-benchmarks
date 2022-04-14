@@ -40,7 +40,7 @@ def main(args):
         mlflow.log_metric("end_time", t1)
         mlflow.log_param("dataset_name", os.getenv('DATASET_NAME'))
         mlflow.log_param("dataset_location", os.getenv('DATASET_LOCATION'))
-        mlflow.log_param("/etc/hosts", open("/etc/hosts", "r").read())
+        mlflow.log_param("etc_hosts", open("/etc/hosts", "r").read())
 
         print("STDERR:")
         s = call.stderr
