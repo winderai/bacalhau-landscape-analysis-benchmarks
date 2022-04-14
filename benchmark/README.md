@@ -194,7 +194,7 @@ export AWS_PROFILE=<your-aws-profile>
 python cloudwatch.py \
     --host_ip ip-172-31-12-99 \
     --aws_region eu-central-1 \
-    --start_time 1649949609 \
+    --start_time 1649948609 \
     --end_time 1649949612 \
     --output_dir "/tmp"
 ```

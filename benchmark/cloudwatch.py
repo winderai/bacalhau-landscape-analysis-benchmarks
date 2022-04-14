@@ -26,8 +26,8 @@ def main(args):
    for response in paginator.paginate(Dimensions=[{"Name": "host", "Value": host_ip}],
                    Namespace='CWAgent'):
       for metric in response['Metrics']:
-         #if ("cpu" in metric['MetricName']) or ("mem" in metric['MetricName']) or ("diskio" in metric['MetricName']):
-         if ("cpu" in metric['MetricName']):
+         if ("cpu" in metric['MetricName']) or ("mem" in metric['MetricName']) or ("diskio" in metric['MetricName']):
+         # if ("cpu" in metric['MetricName']):
             metrics.append(metric)
    
    metric_data_queries = []
@@ -39,7 +39,7 @@ def main(args):
       id = id.replace("-", "_")
       metric_data_queries.append(
          {
-               'Id': metric["MetricName"],
+               'Id': id,
                'MetricStat': {
                   'Metric': metric,
                   'Period': 60,
@@ -48,35 +48,34 @@ def main(args):
                'ReturnData': True,
          }
       )
-      break
-
-   pprint.pprint(metric_data_queries)
-
+   # pprint.pprint(metric_data_queries)
 
    response = cloudwatch.get_metric_data(
       MetricDataQueries=metric_data_queries,
          StartTime=start_time, 
          EndTime=end_time,
    )
+   # pprint.pprint(response)
+   data = response['MetricDataResults']
 
-   pprint.pprint(response)
-   # data = response['MetricDataResults']
+   all_metrics_data = []
+   for metric in data:
+      print(metric)
+      metric_data = {
+         'metric_name': metric['Id'], 
+         'timestamp': metric['Timestamps'], 
+         'metric_value': metric['Values'],
+         'label': metric['Label'],
+         'host': host_ip,
+      }
+      df_metric = pd.DataFrame.from_dict(metric_data)
+      all_metrics_data.append(df_metric)
+   df = pd.concat(all_metrics_data)
 
-   # all_metrics_data = []
-   # for metric in data:
-   #    metric_data = {
-   #       'metric_name': metric['Id'], 
-   #       'timestamp': metric['Timestamps'], 
-   #       'metric_value': metric['Values'],
-   #       'host': host_ip,
-   #    }
-   #    df_metric = pd.DataFrame.from_dict(metric_data)
-   #    all_metrics_data.append(df_metric)
-   # df = pd.concat(all_metrics_data)
-
-   # print(df)
-   # if output_dir:
-   #    df.to_csv(output_dir + "/" + "{}_{}_{}".format(host_ip, args.start_time, args.end_time) + ".csv")
+   print(df['metric_name'].unique())
+   print(df)
+   if output_dir:
+      df.to_csv(output_dir + "/" + "{}_{}_{}".format(host_ip, args.start_time, args.end_time) + ".csv")
 
 
 if __name__ == "__main__":
