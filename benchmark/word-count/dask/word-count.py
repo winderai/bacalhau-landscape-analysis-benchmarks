@@ -3,7 +3,12 @@ import os
 from dask.distributed import Client
 
 if __name__ == '__main__':
-    client = Client("hadoop-master:8786")
+    try:
+        client = Client("hadoop-master:8786")
+        print("Connecting to hadoop-master...")
+    else:
+        client = Client()
+        print("Connecting to localhost...")
     print(client)
 
     import dask.dataframe as dd
