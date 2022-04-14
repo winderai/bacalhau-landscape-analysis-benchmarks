@@ -86,11 +86,9 @@ export DATASET_LOCATION=$(cat .dataset_location)
 export DB_NAME=${DATASET_NAME}Db
 sudo -u postgres dropdb --if-exists ${DB_NAME}
 sudo -u postgres createdb ${DB_NAME}
-# if DATASET_NAME is "wordcountTiny"
 sudo -u postgres psql -d ${DB_NAME} -c "CREATE TABLE ${DATASET_NAME}(word TEXT);"
 
 # load data into table
-# if DATASET_NAME is "wordcountTiny"
 echo "$(cat ${DATASET_LOCATION})" | tr " " "\n" | sudo -u postgres psql -d ${DB_NAME} -c "COPY ${DATASET_NAME} FROM stdin (delimiter ' ');"
 
 python run_experiment.py \
