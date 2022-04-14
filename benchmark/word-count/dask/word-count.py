@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
     file_url = os.environ["DATASET_LOCATION"]
 
-    df = dd.read_csv(file_path, header=None)
+    df = dd.read_csv(file_url, header=None)
     # count words
     new_df = (
         df[0]
