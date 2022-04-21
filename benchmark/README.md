@@ -198,3 +198,6 @@ python cloudwatch.py \
     --end_time 1649949612 \
     --output_dir "/tmp"
 ```
+
+
+`mlflow ui --backend-store-uri ~/mlflow-files --host 0.0.0.0`
