@@ -87,14 +87,12 @@ sudo -u postgres dropdb --if-exists ${DB_NAME}
 sudo -u postgres createdb ${DB_NAME}
 sudo -u postgres psql -d ${DB_NAME} -c "CREATE TABLE ${DATASET_NAME}(word TEXT);"
 
-# load data into table
-sudo -u postgres psql -d ${DB_NAME} -c "COPY ${DATASET_NAME} FROM '${DATASET_LOCATION}' (delimiter '~');"
-# quick check
-sudo -u postgres psql -d ${DB_NAME} -c "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
-
 python run_experiment.py \
     --experiment_name /${EXP_NAME} \
     --framework postgres
+
+# quick check
+sudo -u postgres psql -d ${DB_NAME} -c "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
 ```
 
 ## Snowflake
@@ -111,19 +109,19 @@ export SNOW_STAGE=<your-snowflake-stage>
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
-# load data into table
+# prepare data
 /home/ubuntu/bin/snowsql --query "DROP STAGE IF EXISTS ${SNOW_STAGE};"
 /home/ubuntu/bin/snowsql --query "CREATE STAGE ${SNOW_STAGE};"
 /home/ubuntu/bin/snowsql --query "PUT file://${DATASET_LOCATION} '@${SNOW_STAGE}';"
 /home/ubuntu/bin/snowsql --query "DROP TABLE IF EXISTS ${DATASET_NAME};"
 /home/ubuntu/bin/snowsql --query "CREATE TABLE ${DATASET_NAME}(C1 STRING);"
-/home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} FROM '@${SNOW_STAGE}';"
-# quick check
-/home/ubuntu/bin/snowsql --query "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
 
 python run_experiment.py \
     --experiment_name /${EXP_NAME} \
     --framework snowflake
+
+# quick check
+/home/ubuntu/bin/snowsql --query "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
 ```
 
 
