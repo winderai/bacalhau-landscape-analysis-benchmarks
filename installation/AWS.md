@@ -11,8 +11,8 @@
 
 ```bash
 # aws cli
-export AWS_PROFILE=winder
-export AWS_REGION=eu-central-1
+export AWS_PROFILE=<your-aws-profile>
+export AWS_REGION=<your-aws-region>
 # ec2
 export PROJ_NAME=ProtocolLabsDEV
 export GROUP_NAME_DESCRIPT="ProtocolLabs dev security group"
@@ -39,14 +39,17 @@ aws ec2 authorize-security-group-ingress \
 
 ## Launch EC2 instances
 
-Configure the cluster resources, set `EC2_COUNT` to 1 for running the benchmarks in a single node setting.
+Configure the cluster resources, note each machine we launch here will have the same resources.
+To run the benchmarks in a single node setting set `EC2_COUNT` to 1.
+For the purpose of benchmarking performance, it's important to use instance type with a consistent workload capacity, therefore, we recommend using M5 instances.
+
 
 ```bash
-export EC2_COUNT=1
-export EC2_INSTANCE_TYPE=t2.large
+export EC2_COUNT=<set-nr-of-hosts>
+export EC2_INSTANCE_TYPE=<pick-an-ec2-instance-type>
 export AMI_ID=ami-0d527b8c289b4af7f
 export EBS_SIZE=75
-export KEY_NAME=wr-enrico-aws-ec2
+export KEY_NAME=<your-key-pair-name>
 ```
 
 ```bash
