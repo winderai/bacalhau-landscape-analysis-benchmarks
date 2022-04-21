@@ -44,6 +44,7 @@ def main(args):
         mlflow.log_param("end_time_datetime", str(datetime.fromtimestamp(int(float(t1)), pytz.timezone("UTC"))))
         mlflow.log_param("dataset_name", os.getenv('DATASET_NAME'))
         mlflow.log_param("dataset_location", os.getenv('DATASET_LOCATION'))
+        mlflow.log_param("env_vars", str(dict(os.environ)))
         mlflow.log_param("etc_hosts", open("/etc/hosts", "r").read())
 
         print("STDERR:")
