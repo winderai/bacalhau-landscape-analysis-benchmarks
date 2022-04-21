@@ -4,7 +4,9 @@
 set -euxo pipefail
 
 # load data into table
+date
 /home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} FROM '@${SNOW_STAGE}';"
+date
 
 # run query
 /home/ubuntu/bin/snowsql --query "SELECT word, COUNT(*) as count
@@ -15,3 +17,4 @@ set -euxo pipefail
   )
   group by word
   limit 10;"
+date
