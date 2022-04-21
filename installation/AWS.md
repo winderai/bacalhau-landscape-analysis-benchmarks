@@ -84,4 +84,4 @@ aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances \
 )
 ```
 
-You may need to manually clean up the security group as well.
+You may need to manually delete the security group as well.
