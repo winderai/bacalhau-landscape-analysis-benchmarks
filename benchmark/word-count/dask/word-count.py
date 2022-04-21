@@ -28,4 +28,4 @@ if __name__ == '__main__':
     new_df.columns = ['Word', 'Frequency']
     # new_df = new_df.sort_values(['Frequency', 'Word'], ascending=False)
 
-    new_df.compute()
+    print(new_df.compute().head())
