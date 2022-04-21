@@ -97,6 +97,36 @@ python run_experiment.py \
     --framework postgres
 ```
 
+## Snowflake
+
+Make you have `SNOW_DBNAME` and `SNOW_SCHEMANAME` properly set up, if not take a look at the [Snowflake installation instructions](../installation/SNOWFLAKE.md#set-environment-variables).
+Furthemore, you'll need to a Snowflake stage to host your dataset, please check the [official docs](https://docs.snowflake.com/en/user-guide/data-load-local-file-system.html) to learn how to create one.
+
+```bash
+conda activate base
+
+export SNOW_STAGE=<your-snowflake-stage>
+
+# pull data to local dir
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
+# load data into table
+/home/ubuntu/bin/snowsql --query "DROP STAGE IF EXISTS ${SNOW_STAGE};"
+/home/ubuntu/bin/snowsql --query "CREATE STAGE ${SNOW_STAGE};"
+/home/ubuntu/bin/snowsql --query "PUT file://${DATASET_LOCATION} '@${SNOW_STAGE}';"
+/home/ubuntu/bin/snowsql --query "DROP TABLE IF EXISTS ${DATASET_NAME};"
+/home/ubuntu/bin/snowsql --query "CREATE TABLE ${DATASET_NAME}(C1 STRING);"
+/home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} FROM '@${SNOW_STAGE}';"
+# quick check
+/home/ubuntu/bin/snowsql --query "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
+
+python run_experiment.py \
+    --experiment_name /${EXP_NAME} \
+    --framework snowflake
+```
+
+
 ## Hadoop
 
 ```bash
@@ -164,35 +194,8 @@ $SPARK_HOME/sbin/stop-master.sh
 $SPARK_HOME/sbin/stop-worker.sh
 ```
 
-## Snowflake
 
-Make you have `SNOW_DBNAME` and `SNOW_SCHEMANAME` properly set up, if not take a look at the [Snowflake installation instructions](../installation/SNOWFLAKE.md#set-environment-variables).
-Furthemore, you'll need to a Snowflake stage to host your dataset, please check the [official docs](https://docs.snowflake.com/en/user-guide/data-load-local-file-system.html) to learn how to create one.
-
-```bash
-conda activate base
-
-export SNOW_STAGE=<your-snowflake-stage>
-
-# pull data to local dir
-bash pull-dataset.sh ${DATASET_NAME}
-export DATASET_LOCATION=$(cat .dataset_location)
-
-# load data into table
-/home/ubuntu/bin/snowsql --query "DROP STAGE IF EXISTS ${SNOW_STAGE};"
-/home/ubuntu/bin/snowsql --query "CREATE STAGE ${SNOW_STAGE};"
-/home/ubuntu/bin/snowsql --query "PUT file://${DATASET_LOCATION} '@${SNOW_STAGE}';"
-/home/ubuntu/bin/snowsql --query "DROP TABLE IF EXISTS ${DATASET_NAME};"
-/home/ubuntu/bin/snowsql --query "CREATE TABLE ${DATASET_NAME}(C1 STRING);"
-/home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} FROM '@${SNOW_STAGE}';"
-# quick check
-/home/ubuntu/bin/snowsql --query "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
-
-python run_experiment.py \
-    --experiment_name /${EXP_NAME} \
-    --framework snowflake
-```
-
+--- 
 
 ## CloudWatch metrics
 
