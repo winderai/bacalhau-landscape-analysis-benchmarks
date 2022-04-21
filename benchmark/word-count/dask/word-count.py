@@ -23,9 +23,9 @@ if __name__ == '__main__':
         .split()
         .explode()
         .value_counts()
-        .reset_index()
+        # .reset_index()
     )
-    new_df.columns = ['Word', 'Frequency']
+    # new_df.columns = ['Word', 'Frequency']
     # new_df = new_df.sort_values(['Frequency', 'Word'], ascending=False)
 
     print(new_df.compute().head())
