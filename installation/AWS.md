@@ -5,7 +5,7 @@
 * Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) (tested on `2.4.17`)
 * Enough EC2 quota to launch multiple instances
 * EC2 permissions to set up a security group
-* AWS key set up (see KEY_NAME)
+* [EC2 key pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html), we'll store its name in `KEY_NAME`
 
 ## Setup some env vars:
 
