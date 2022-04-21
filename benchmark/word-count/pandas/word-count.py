@@ -15,3 +15,5 @@ new_df = (
 )
 new_df.columns = ['Word', 'Frequency'] 
 # new_df = new_df.sort_values(['Frequency', 'Word'], ascending=False)
+
+print(new_df.head())
