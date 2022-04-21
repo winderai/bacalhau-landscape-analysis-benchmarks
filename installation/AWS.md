@@ -72,7 +72,9 @@ aws ec2 describe-instances \
     --output text
 ```
 
-## Cleanup EC2
+---
+
+## Cleanup EC2 (only when your're done with these benchmarks)
 
 ```bash
 aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances \
@@ -81,3 +83,5 @@ aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances \
         --output text\
 )
 ```
+
+You may need to manually clean up the security group as well.
