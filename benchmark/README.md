@@ -184,6 +184,8 @@ export DATASET_LOCATION=$(cat .dataset_location)
 /home/ubuntu/bin/snowsql --query "CREATE TABLE ${DATASET_NAME}(C1 STRING);"
 /home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} FROM '@${SNOW_STAGE}';"
 
+/home/ubuntu/bin/snowsql --query "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
+
 python run_experiment.py \
     --experiment_name /${EXP_NAME} \
     --framework snowflake
