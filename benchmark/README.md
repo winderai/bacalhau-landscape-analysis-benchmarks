@@ -178,6 +178,7 @@ export DATASET_LOCATION=$(cat .dataset_location)
 
 # load data into table
 /home/ubuntu/bin/snowsql --query "DROP STAGE IF EXISTS ${SNOW_STAGE};"
+/home/ubuntu/bin/snowsql --query "CREATE STAGE ${SNOW_STAGE};"
 /home/ubuntu/bin/snowsql --query "PUT file://${DATASET_LOCATION} '@${SNOW_STAGE}';"
 /home/ubuntu/bin/snowsql --query "DROP TABLE IF EXISTS ${DATASET_NAME};"
 /home/ubuntu/bin/snowsql --query "CREATE TABLE ${DATASET_NAME}(C1 STRING);"
