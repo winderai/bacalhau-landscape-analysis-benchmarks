@@ -74,7 +74,7 @@ aws ec2 describe-instances \
 
 ---
 
-## Cleanup EC2 (only when your're done with these benchmarks)
+## Cleanup EC2 (only when your're done with the benchmarks)
 
 ```bash
 aws ec2 terminate-instances --instance-ids $(aws ec2 describe-instances \
