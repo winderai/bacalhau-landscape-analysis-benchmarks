@@ -125,6 +125,8 @@ python run_experiment.py \
     --experiment_name /${EXP_NAME} \
     --framework hadoop
 
+$HADOOP_HOME/bin/hadoop fs -cat ./out/part-r-00000 | head
+
 # stop cluster, if started before
 # Run on main node
 $HADOOP_HOME/sbin/stop-dfs.sh
