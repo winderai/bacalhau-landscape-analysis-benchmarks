@@ -88,7 +88,9 @@ sudo -u postgres createdb ${DB_NAME}
 sudo -u postgres psql -d ${DB_NAME} -c "CREATE TABLE ${DATASET_NAME}(word TEXT);"
 
 # load data into table
-echo "$(cat ${DATASET_LOCATION})" | tr " " "\n" | sudo -u postgres psql -d ${DB_NAME} -c "COPY ${DATASET_NAME} FROM stdin (delimiter ' ');"
+sudo -u postgres psql -d ${DB_NAME} -c "COPY ${DATASET_NAME} FROM '${DATASET_LOCATION}' (delimiter '~');"
+# quick check
+sudo -u postgres psql -d ${DB_NAME} -c "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
 
 python run_experiment.py \
     --experiment_name /${EXP_NAME} \
@@ -183,7 +185,7 @@ export DATASET_LOCATION=$(cat .dataset_location)
 /home/ubuntu/bin/snowsql --query "DROP TABLE IF EXISTS ${DATASET_NAME};"
 /home/ubuntu/bin/snowsql --query "CREATE TABLE ${DATASET_NAME}(C1 STRING);"
 /home/ubuntu/bin/snowsql --query "COPY INTO ${DATASET_NAME} FROM '@${SNOW_STAGE}';"
-
+# quick check
 /home/ubuntu/bin/snowsql --query "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
 
 python run_experiment.py \
