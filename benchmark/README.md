@@ -16,11 +16,10 @@ Benchmark sequence WIP:
 - [ ] disable web UI for clusters?
 
 
-```
-pip install mlflow==1.23.1 EasyProcess==1.1
-```
 
-Launch `run_experiment.py` from within the main node.
+Make sure your shell is pointing to the conda base environemnt, if that's not the case just do `source ~/.bashrc`.
+Now you can launch `run_experiment.py` from within the main node.
+You may need to install the following python packages `pip install mlflow==1.23.1 EasyProcess==1.1`.
 If you're in a multi-node setup, run the benchmarks as `hadoopuser` instead of the default `ubuntu` user.
 
 ```bash
