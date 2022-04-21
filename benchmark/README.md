@@ -25,7 +25,7 @@ If you're in a multi-node setup, run the benchmarks as `hadoopuser` instead of t
 ```bash
 # preliminary setup
 export EXP_NAME=cluster-size-1
-export DATASET_NAME=wordcountTiny|worcountLarge # use camel-case naming
+export DATASET_NAME=wordcountTiny|wordcountLarge # use camel-case naming
 ```
 
 ## Prerequistes
