@@ -63,7 +63,7 @@ aws ec2 run-instances \
     --tag-specifications "ResourceType=instance,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]" "ResourceType=volume,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
 ```
 
-Retrieve public IPs:
+Retrieve public IPs either via EC2 console or the following command:
 
 ```bash
 aws ec2 describe-instances \
