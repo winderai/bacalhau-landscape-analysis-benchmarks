@@ -12,7 +12,7 @@ Note: metrics collected by the CloudWatch agent are billed as custom metrics.
 
 # Prerequistes
 
-The target OS is Ubuntu (x86_64), you'll need `aws-cli` installed.
+The target OS is Ubuntu (x86_64), you'll need `aws-cli` and `unzip` installed. 
 
 ### Create an IAM role to use with the CloudWatch agent on Amazon EC2 instances
 
