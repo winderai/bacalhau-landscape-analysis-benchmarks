@@ -130,6 +130,9 @@ python run_experiment.py \
 ```bash
 conda activate base
 
+## !Important: impersonate `hadoopuser` only in multi-node setup
+##su - hadoopuser
+
 # pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
@@ -150,6 +153,8 @@ export DATASET_LOCATION=$(echo "/user/hadoopuser/$(basename ${DATASET_LOCATION})
 
 # clean up output dir
 $HADOOP_HOME/bin/hdfs dfs -rm -r out
+
+# TODO may need to install conda here in multi-node
 
 python run_experiment.py \
     --experiment_name /${EXP_NAME} \
@@ -180,7 +185,7 @@ $SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077 # launch on each wor
 # !Important: only in multi-node setup
 # distribute dataset across cluster
  # run this for each slave node, replace the node indexing accordingly (e.g. hadoop-slave2, hadoop-slave3, etc.)
-scp ${DATASET_LOCATION} hadoopuser@hadoop-slave1:${DATASET_LOCATION}
+#scp ${DATASET_LOCATION} hadoopuser@hadoop-slave1:${DATASET_LOCATION}
 
 python run_experiment.py \
     --experiment_name /${EXP_NAME} \
@@ -192,6 +197,105 @@ $SPARK_HOME/sbin/stop-master.sh
 $SPARK_HOME/sbin/stop-worker.sh
 ```
 
+# Multi-node cluster
+
+## Dask
+
+```bash
+## !Important: impersonate `hadoopuser` only in multi-node setup
+su - hadoopuser
+
+conda activate dask
+
+# !Important: start cluster only in multi-node setup
+dask-scheduler # On main node
+dask-worker tcp://hadoop-master:8786 # On each worker node
+
+# pull data to local dir
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
+python run_experiment.py \
+    --experiment_name /${EXP_NAME} \
+    --framework dask
+
+# stop cluster by killing the related processes, if started before
+
+conda activate base
+```
+
+## Hadoop
+
+```bash
+conda activate base
+
+## !Important: impersonate `hadoopuser` only in multi-node setup
+##su - hadoopuser
+
+# pull data to local dir
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
+# !Important: start cluster only in multi-node setup
+# Run on main node
+$HADOOP_HOME/sbin/start-dfs.sh
+$HADOOP_HOME/sbin/start-yarn.sh
+
+# check cluster status
+$HADOOP_HOME/bin/hdfs dfsadmin -report # in single-node setup this will ouput "The fs class is: org.apache.hadoop.fs.LocalFileSystem"
+
+# !Important: only in multi-node setup
+# Push dataset to HDFS
+$HADOOP_HOME/bin/hdfs dfs -mkdir -p /user/hadoopuser
+$HADOOP_HOME/bin/hdfs dfs -put -f ${DATASET_LOCATION} /user/hadoopuser
+export DATASET_LOCATION=$(echo "/user/hadoopuser/$(basename ${DATASET_LOCATION})")
+
+# clean up output dir
+$HADOOP_HOME/bin/hdfs dfs -rm -r out
+
+# TODO may need to install conda here in multi-node
+
+python run_experiment.py \
+    --experiment_name /${EXP_NAME} \
+    --framework hadoop
+
+$HADOOP_HOME/bin/hadoop fs -cat ./out/part-r-00000 | head
+
+# stop cluster, if started before
+# Run on main node
+$HADOOP_HOME/sbin/stop-dfs.sh
+$HADOOP_HOME/sbin/stop-yarn.sh
+```
+
+## Spark
+
+```bash
+conda activate base
+
+# pull data to local dir
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
+# !Important: only in multi-node setup
+# start cluster
+$SPARK_HOME/sbin/start-master.sh # launch on master node
+$SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077 # launch on each worker node
+
+# !Important: only in multi-node setup
+# distribute dataset across cluster
+ # run this for each slave node, replace the node indexing accordingly (e.g. hadoop-slave2, hadoop-slave3, etc.)
+#scp ${DATASET_LOCATION} hadoopuser@hadoop-slave1:${DATASET_LOCATION}
+# TODO copy dataset over each node
+
+python run_experiment.py \
+    --experiment_name /${EXP_NAME} \
+    --framework spark
+
+# run on master node
+$SPARK_HOME/sbin/stop-master.sh
+# run on each worker node
+$SPARK_HOME/sbin/stop-worker.sh
+```
 
 --- 
 
