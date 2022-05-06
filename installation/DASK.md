@@ -24,6 +24,7 @@ conda create -y -n dask python=3.9
 conda activate dask
 conda install -y dask==2022.2.0 distributed==2022.2.0 -c conda-forge
 pip install requests==2.27.1 aiohttp==3.8.1
+pip install --upgrade click==8.0.2 # https://github.com/dask/distributed/issues/6013
 ```
 
 ## Launch cluster
