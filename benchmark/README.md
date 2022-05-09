@@ -42,7 +42,7 @@ export EXP_NAME=cluster-size-1
 export DATASET_NAME=wordcountTiny|wordcountLarge|wordcountXL # use camel-case naming
 ```
 
-## Pandas
+## 1) Pandas
 
 ```bash
 conda activate pandas
@@ -58,7 +58,7 @@ python run_experiment.py \
 conda activate base
 ```
 
-## Dask
+## 2) Dask
 
 ```bash
 conda activate dask
@@ -72,7 +72,7 @@ python run_experiment.py \
     --framework dask
 ```
 
-## Hadoop
+## 3) Hadoop
 
 ```bash
 conda activate base
@@ -94,7 +94,7 @@ python run_experiment.py \
 $HADOOP_HOME/bin/hadoop fs -cat ./out/part-r-00000 | head
 ```
 
-## Spark
+## 4) Spark
 
 ```bash
 conda activate base
@@ -108,7 +108,7 @@ python run_experiment.py \
     --framework spark
 ```
 
-## Postgres
+## 5) Postgres
 
 ```bash
 conda activate base
@@ -131,7 +131,7 @@ python run_experiment.py \
 sudo -u postgres psql -d ${DB_NAME} -c "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
 ```
 
-## Snowflake
+## 6) Snowflake
 
 Make you have `SNOW_DBNAME` and `SNOW_SCHEMANAME` properly set up, if not take a look at the [Snowflake installation instructions](../installation/SNOWFLAKE.md#set-environment-variables).
 Furthemore, you'll need to a Snowflake stage to host your dataset, please check the [official docs](https://docs.snowflake.com/en/user-guide/data-load-local-file-system.html) to learn how to create one.
@@ -179,7 +179,7 @@ export EXP_NAME=cluster-size-3|cluster-size-6
 export DATASET_NAME=wordcountTiny|wordcountLarge|wordcountXL # use camel-case naming
 ```
 
-## Dask
+## 1) Dask
 
 ```bash
 conda activate dask
@@ -201,7 +201,7 @@ python run_experiment.py \
 conda activate base
 ```
 
-## Hadoop
+## 2) Hadoop
 
 ```bash
 conda activate base
@@ -239,7 +239,7 @@ $HADOOP_HOME/sbin/stop-dfs.sh
 $HADOOP_HOME/sbin/stop-yarn.sh
 ```
 
-## Spark
+## 3) Spark
 
 ```bash
 conda activate base
