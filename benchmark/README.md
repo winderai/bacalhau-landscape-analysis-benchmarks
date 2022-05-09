@@ -184,7 +184,6 @@ export DATASET_NAME=wordcountTiny|wordcountLarge|wordcountXL # use camel-case na
 ```bash
 conda activate dask
 
-# !Important: start cluster
 dask-scheduler # On main node
 dask-worker tcp://hadoop-master:8786 # On each worker node
 
@@ -210,7 +209,6 @@ conda activate base
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
-# !Important: start cluster
 # Run on main node
 $HADOOP_HOME/sbin/start-dfs.sh
 $HADOOP_HOME/sbin/start-yarn.sh
