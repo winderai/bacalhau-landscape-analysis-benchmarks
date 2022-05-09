@@ -26,14 +26,17 @@ aws ec2 create-security-group \
     --group-name $PROJ_NAME \
     --description $GROUP_NAME_DESCRIPT \
     --tag-specifications "ResourceType=security-group,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
+```
 
-# this exposes the security group to any inbound traffic for the Internet
-# make sure to terminate the EC2 instances once the benchmark has completed
+Create an ingress rule, for security reasons we restrict inbout traffic from a single IP address. 
+Please set `YOUR_IP_ADDRESS` accordingly.
+
+```bash
 aws ec2 authorize-security-group-ingress \
     --group-name $PROJ_NAME \
     --protocol all \
     --port 0-65535 \
-    --cidr 0.0.0.0/0 \
+    --cidr $YOUR_IP_ADDRESS/32 \
     --tag-specifications "ResourceType=security-group-rule,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
 ```
 
