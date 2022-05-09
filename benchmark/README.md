@@ -81,7 +81,6 @@ conda activate base
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
 
-
 # check cluster status
 $HADOOP_HOME/bin/hdfs dfsadmin -report # in single-node setup this will ouput "The fs class is: org.apache.hadoop.fs.LocalFileSystem"
 
@@ -103,7 +102,6 @@ conda activate base
 # pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
-
 
 python run_experiment.py \
     --experiment_name /${EXP_NAME} \
@@ -259,7 +257,6 @@ $SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077 # launch on each wor
 scp ${DATASET_LOCATION} hadoopuser@hadoop-slave1:${DATASET_LOCATION}
 ...
 scp ${DATASET_LOCATION} hadoopuser@hadoop-slave6:${DATASET_LOCATION}
-
 
 python run_experiment.py \
     --experiment_name /${EXP_NAME} \
