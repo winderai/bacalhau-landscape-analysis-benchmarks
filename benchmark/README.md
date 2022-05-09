@@ -17,9 +17,7 @@ Benchmark sequence WIP:
 
 
 
-Make sure your shell is pointing to the conda base environemnt, if that's not the case just do `source ~/.bashrc`.
-Now you can launch `run_experiment.py` from within the main node.
-You may need to install the following python packages `pip install mlflow==1.23.1 EasyProcess==1.1`.
+
 
 ## Summary
 
@@ -35,6 +33,9 @@ You may need to install the following python packages `pip install mlflow==1.23.
 - single-node
 - [Optional] cloudwatch agent running
 
+Make sure your shell is pointing to the conda base environemnt, if that's not the case just do `source ~/.bashrc`.
+Now you can launch `run_experiment.py` from within the main node.
+You may need to install the following python packages `pip install mlflow==1.23.1 EasyProcess==1.1`.
 
 ```bash
 # preliminary setup
@@ -178,6 +179,10 @@ Since you're in a multi-node setup, run the benchmarks as `hadoopuser` instead o
 export EXP_NAME=cluster-size-3|cluster-size-6
 export DATASET_NAME=wordcountTiny|wordcountLarge|wordcountXL # use camel-case naming
 ```
+
+Make sure your shell is pointing to the conda base environemnt, if that's not the case just do `source ~/.bashrc`.
+Now you can launch `run_experiment.py` from within the main node.
+You may need to install the following python packages `pip install mlflow==1.23.1 EasyProcess==1.1`.
 
 ## 1) Dask
 
