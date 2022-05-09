@@ -1,7 +1,7 @@
 # Hadoop 3.3.1 (Multi-node)
 
 This page contains step-by-step instructions to install Hadoop on a multi-node cluster.
-At the end of the process you'll be able to access relevant binaries by using `$HADOOP_HOME`, for example `$HADOOP_HOME/bin/hdfs`.
+At the end of the process you'll be able to impersonate `hadoopuser` and access relevant binaries by using `$HADOOP_HOME`, for example `$HADOOP_HOME/bin/hdfs`.
 
 
 ### Install requirements (all)

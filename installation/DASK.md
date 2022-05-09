@@ -1,5 +1,8 @@
 # Dask Distributed
 
+This page contains step-by-step instructions to install Dask on a multi-node cluster.
+At the end of the process you'll be able to impersonate `hadoopuser` and launch `dask-scheduler` and `dask-worker` processes.
+
 ## Pre-requisites
 
 First, impersonate hadoopuser (`su - hadoopuser`) to align this setup with Hadoop and Spark installations.

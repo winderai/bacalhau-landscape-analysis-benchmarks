@@ -1,6 +1,8 @@
 # Spark 3.2.1 (without HDFS)
 
-This is a [standalone deploy mode](https://spark.apache.org/docs/latest/spark-standalone.html
+This page contains step-by-step instructions to install Spark on a multi-node cluster.
+At the end of the process you'll be able to impersonate `hadoopuser` and access relevant binaries by using `$SPARK_HOME`, for example `$SPARK_HOME/bin/spark-submit`.
+Note this is a [standalone deploy mode](https://spark.apache.org/docs/latest/spark-standalone.html
 ), it simply consists of a couple of launch scripts.
 
 ## Pre-requisite
