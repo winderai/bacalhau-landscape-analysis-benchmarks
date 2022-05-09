@@ -5,7 +5,9 @@ This is a [standalone deploy mode](https://spark.apache.org/docs/latest/spark-st
 
 ## Pre-requisite
 
-Install Java 8 (if not already installed with Hadoop):
+First, impersonate hadoopuser (`su - hadoopuser`) to align this setup with Hadoop and Dask installations.
+
+Second, install Java 8 (if not already installed with Hadoop):
 
 ```bash
 sudo apt -y update
