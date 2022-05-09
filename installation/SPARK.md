@@ -21,7 +21,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 These instructions assume you've set up `/etc/hosts` (as described in the [Hadoop installation](./HADOOP.md)) and therefore you can reference cluster nodes with `hadoop-master`, `hadoop-slave1`, and so on.
 If you're installing Spark without a prior Hadoop setup, please replace those host names with `Public IPv4 DNS` from AWS console (e.g., `ip-172-31-15-62.eu-central-1.compute.internal`).
 
-## Download Spark
+## Download Spark (all)
 
 ```bash
 cd ~
@@ -31,7 +31,7 @@ echo "export SPARK_HOME=/home/${USER}/spark-3.2.1-bin-hadoop3.2" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-## Launch Spark master
+## Launch Spark master (master)
 
 ```bash
 $SPARK_HOME/sbin/start-master.sh
@@ -40,7 +40,7 @@ $SPARK_HOME/sbin/start-master.sh
 Check master's web UI at `http://<MASTER_PUBLIC_IP>:8080/`. Use `Public IPv4 address` from the AWS console.
 
 
-## Launch Spark slave(s)
+## Launch Spark workers (worker)
 
 ```bash
 $SPARK_HOME/sbin/start-worker.sh spark://hadoop-master:7077
