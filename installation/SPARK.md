@@ -8,6 +8,7 @@ Note this is a [standalone deploy mode](https://spark.apache.org/docs/latest/spa
 ## Pre-requisite
 
 First, impersonate hadoopuser (`su - hadoopuser`) to align this setup with Hadoop and Dask installations.
+That user was created in the [Hadoop installation](./HADOOP.md) instructions.
 
 Second, install Java 8 (if not already installed with Hadoop):
 

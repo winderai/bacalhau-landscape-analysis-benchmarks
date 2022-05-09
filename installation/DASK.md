@@ -6,6 +6,7 @@ At the end of the process you'll be able to impersonate `hadoopuser` and launch 
 ## Pre-requisites
 
 First, impersonate hadoopuser (`su - hadoopuser`) to align this setup with Hadoop and Spark installations.
+That user was created in the [Hadoop installation](./HADOOP.md) instructions.
 
 Second, install miniconda (confirm/proceed when prompted). Skip if it's already installed:
 
