@@ -72,6 +72,44 @@ python run_experiment.py \
     --framework dask
 ```
 
+## Hadoop
+
+```bash
+conda activate base
+
+# pull data to local dir
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
+
+# check cluster status
+$HADOOP_HOME/bin/hdfs dfsadmin -report # in single-node setup this will ouput "The fs class is: org.apache.hadoop.fs.LocalFileSystem"
+
+# clean up output dir
+$HADOOP_HOME/bin/hdfs dfs -rm -r out
+
+python run_experiment.py \
+    --experiment_name /${EXP_NAME} \
+    --framework hadoop
+
+$HADOOP_HOME/bin/hadoop fs -cat ./out/part-r-00000 | head
+```
+
+## Spark
+
+```bash
+conda activate base
+
+# pull data to local dir
+bash pull-dataset.sh ${DATASET_NAME}
+export DATASET_LOCATION=$(cat .dataset_location)
+
+
+python run_experiment.py \
+    --experiment_name /${EXP_NAME} \
+    --framework spark
+```
+
 ## Postgres
 
 ```bash
@@ -122,45 +160,6 @@ python run_experiment.py \
 
 # quick check
 /home/ubuntu/bin/snowsql --query "SELECT * FROM ${DATASET_NAME} LIMIT 10;"
-```
-
-
-## Hadoop
-
-```bash
-conda activate base
-
-# pull data to local dir
-bash pull-dataset.sh ${DATASET_NAME}
-export DATASET_LOCATION=$(cat .dataset_location)
-
-
-# check cluster status
-$HADOOP_HOME/bin/hdfs dfsadmin -report # in single-node setup this will ouput "The fs class is: org.apache.hadoop.fs.LocalFileSystem"
-
-# clean up output dir
-$HADOOP_HOME/bin/hdfs dfs -rm -r out
-
-python run_experiment.py \
-    --experiment_name /${EXP_NAME} \
-    --framework hadoop
-
-$HADOOP_HOME/bin/hadoop fs -cat ./out/part-r-00000 | head
-```
-
-## Spark
-
-```bash
-conda activate base
-
-# pull data to local dir
-bash pull-dataset.sh ${DATASET_NAME}
-export DATASET_LOCATION=$(cat .dataset_location)
-
-
-python run_experiment.py \
-    --experiment_name /${EXP_NAME} \
-    --framework spark
 ```
 
 
