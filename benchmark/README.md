@@ -63,7 +63,6 @@ conda activate base
 ```bash
 conda activate dask
 
-
 # pull data to local dir
 bash pull-dataset.sh ${DATASET_NAME}
 export DATASET_LOCATION=$(cat .dataset_location)
