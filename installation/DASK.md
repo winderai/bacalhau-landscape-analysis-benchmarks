@@ -2,7 +2,8 @@
 
 ## Pre-requisites
 
-Install miniconda (confirm/proceed when prompted). Skip if it's already installed:
+First, impersonate hadoopuser (`su - hadoopuser`) to align this setup with Hadoop and Spark installations.
+Second, install miniconda (confirm/proceed when prompted). Skip if it's already installed:
 
 ```bash
 cd ~
