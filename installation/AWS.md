@@ -40,6 +40,18 @@ aws ec2 authorize-security-group-ingress \
     --tag-specifications "ResourceType=security-group-rule,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
 ```
 
+Allow traffic from private IP range `172.16.0.0 – 172.31.255.255`.
+You may need to use a different CIDR if your EC2 hosts fall within a different IP range.
+
+```bash
+aws ec2 authorize-security-group-ingress \
+    --group-name $PROJ_NAME \
+    --protocol all \
+    --port 0-65535 \
+    --cidr 172.16.0.0/12 \
+    --tag-specifications "ResourceType=security-group-rule,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
+```
+
 ## Launch EC2 instances
 
 Configure the cluster resources, note each machine we launch here will have the same resources.
