@@ -239,9 +239,9 @@ scp /usr/local/hadoop/etc/hadoop/* hadoop-slave2:/usr/local/hadoop/etc/hadoop/
 
 ### Set environment variables (all)
 
-```bash
-su - hadoopuser
+Make sure you're `hadoopuser`, otherwise do `su - hadoopuser`.
 
+```bash
 echo 'export HADOOP_HOME="/usr/local/hadoop"' >> ~/.bashrc
 echo 'export HADOOP_COMMON_HOME=$HADOOP_HOME' >> ~/.bashrc
 echo 'export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop' >> ~ ~/.bashrc
