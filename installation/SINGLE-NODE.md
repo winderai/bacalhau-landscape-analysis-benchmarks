@@ -10,21 +10,21 @@ We're going to install:
 - Spark
 - Snowflake client
 
-As a first step, please install the [prerequistes setup for Snowflake](./SNOWFLAKE.md#prerequisites).
+
+
+1) As a first step, please install the [prerequistes setup for Snowflake](./SNOWFLAKE.md#prerequisites).
 Note, do only the prerequistes part, not the client installation.
 That'll install the right Snowflake and configuration (e.g. account, db name, etc.).
 The single-node install script will pick that up automatically.
 
-Proceed by installing each framework and related prerequistes by running the following script (process duration ~7 minutes).
+2) Proceed by installing each framework and related prerequistes by running the following script (process duration ~7 minutes).
 Please DO NOT launch any application cluster (yet).
-
 
 ```bash
 cd installation/
 bash install-single-node.sh # confirm/proceed when prompted
 source ~/.bashrc
 ```
-
 At this point we have all frameworks installed.
 
 If you'd like to track cpu/mem/etc. usage don't forget to set up [CloudWatch agent](./CLOUDWATCH.md).
