@@ -1,7 +1,8 @@
 # Benchmark instructions
 
-## Summary
-
+This document contains step-by-step instructions to run the benchmarks.
+Access MLflow metrics with ``mlflow ui --backend-store-uri ~/mlflow-files --host 0.0.0.0``.
+CloudWatch metrics can be retrieved via the AWS console.
 
 - [Single-node setup](#single-node-setup)
 - [Multi-node setup](#multi-node-setup)
@@ -10,9 +11,8 @@
 
 ## Prerequistes
 
-- ec2 instance running
-- single-node
-- [Optional] cloudwatch agent running
+- One EC2 instance running
+- [Optional] CloudWatch agent running
 
 Make sure your shell is pointing to the conda base environemnt, if that's not the case just do `source ~/.bashrc`.
 Now you can launch `run_experiment.py` from within the main node.
@@ -148,10 +148,8 @@ python run_experiment.py \
 
 ## Prerequistes
 
-- ec2 instances running
-- multi node setup
+- Multiple EC2 instances running
 - [Optional] cloudwatch agent running
-
 
 Since you're in a multi-node setup, run the benchmarks as `hadoopuser` instead of the default `ubuntu` user.
 
