@@ -18,7 +18,7 @@ That'll install the right Snowflake and configuration (e.g. account, db name, et
 The single-node install script will pick that up automatically.
 
 2) Proceed by installing each framework and related prerequistes by running the following script (process duration ~7 minutes).
-Please DO NOT launch any application cluster (yet).
+Please DO NOT launch any cluster (yet).
 
 ```bash
 cd installation/
