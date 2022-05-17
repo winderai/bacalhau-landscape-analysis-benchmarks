@@ -1,4 +1,4 @@
-Build JAR:
+### Build JAR
 
 ```
 bash ./install-sbt.sh
