@@ -1,29 +1,10 @@
-# Benchmark WIP
-
-
-
-Benchmark sequence WIP:
-
-- start cluster
-- pull dataset to local stash
-- push dataset to most convenient location (eg. hdfs, snowflake stage/table, etc.)
-- save timestamp for metrics retrieval `START`
-- **timed!: run actual computation (no put print, no write to files, just computation)**
-- save timestamp for metrics retrieval `END`
-- stop cluster (to allow for other experiments to run)
-- fetch metrics from mlflow
-- fetch metrics from CloudWatch (wait x minutes)
-- [ ] disable web UI for clusters?
-
-
-
-
+# Benchmark instructions
 
 ## Summary
 
+
 - [Single-node setup](#single-node-setup)
 - [Multi-node setup](#multi-node-setup)
-- [cloudwatch](#cloudwatch-metrics)
 
 # Single-node setup
 
@@ -270,21 +251,3 @@ $SPARK_HOME/sbin/stop-master.sh
 # run on each worker node
 $SPARK_HOME/sbin/stop-worker.sh
 ```
-
---- 
-
-## CloudWatch metrics
-
-```
-export AWS_PROFILE=<your-aws-profile>
-
-python cloudwatch.py \
-    --host_ip ip-172-31-12-99 \
-    --aws_region eu-central-1 \
-    --start_time 1649948609 \
-    --end_time 1649949612 \
-    --output_dir "/tmp"
-```
-
-
-`mlflow ui --backend-store-uri ~/mlflow-files --host 0.0.0.0`
