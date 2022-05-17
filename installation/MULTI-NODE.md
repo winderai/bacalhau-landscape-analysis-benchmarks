@@ -6,11 +6,11 @@ You'll need to ssh into each node.
 Some commands will be issued on all hosts, others will be only for the master or slave(s), depending on the step.
 Rest assured, each snippet makes its target host explicit either in the title, or in the description.
 
+> Throughout these benchmarks we use the `master/slave` terminology only for legacy reasons (most Hadoop's instructions used that jargon). Winder.ai condemns any perpetration of slavery and therefore suggest the use of `main/worker` terminology in any future work.
+
+
 For convienence, I'd recommend using [iTerm2's broadcast input](https://christopher.su/notes/mac/iterm-broadcast/) to quickly issue commands across multiple machines.
  
-Throughout these benchmarks we use the `master/slave` terminology only for legacy reasons (most Hadoop's instructions used that jargon).
-Winder.ai condemns any perpetration of slavery and therefore suggest the use of `main/worker` terminology in any future work.
-
 Proceed by installing:
 
 1. [Hadoop](installation/HADOOP.md)
