@@ -27,3 +27,7 @@ This repository contains (1) a collection of working code samples to demonstrate
 1. [Install an AWS CloudWatch agent](installation/CLOUDWATCH.md) on each host.
 1. [Run the benchmark](benchmark/README.md) scripts.
 1. Fetch CloudWatch metrics
+
+---
+
+For further details on this repository please reach out to Enrico (enrico@winder.ai) or Phil (phil@winder.ai).
