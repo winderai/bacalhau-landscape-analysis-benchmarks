@@ -62,8 +62,8 @@ For the purpose of benchmarking performance, it's important to use instance type
 ```bash
 export EC2_COUNT=<set-nr-of-hosts>
 export EC2_INSTANCE_TYPE=<pick-an-ec2-instance-type>
-export AMI_ID=ami-0d527b8c289b4af7f
-export EBS_SIZE=75
+export AMI_ID=ami-0d527b8c289b4af7f # Important! Make sure you use this AMI!
+export EBS_SIZE=75 # This disk size is sufficient for running all code samples and benchmarks
 export KEY_NAME=<your-key-pair-name>
 ```
 
