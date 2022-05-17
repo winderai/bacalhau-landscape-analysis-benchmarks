@@ -2,7 +2,7 @@
 
 > This project was created by [Winder.ai, an ML consultancy](https://winder.ai/), and funded by [Protocol Labs](https://protocol.ai/).
 
-This repository contains (1) a collection of working code samples to demonstrate a variety of use cases for different computing frameworks; (2) a benchmark facility to compare running time and resource utilization of different computing frameworks.
+This repository contains (1) a collection of working code samples to demonstrate a variety of use cases for different computing frameworks (see table below); (2) benchmark instructions on how to compare running time and resource utilization of different computing frameworks. Please find the instructions below.
 
 ## Sample code
 
