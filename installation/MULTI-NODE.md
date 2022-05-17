@@ -8,6 +8,9 @@ Rest assured, each snippet makes its target host explicit either in the title, o
 
 For convienence, I'd recommend using [iTerm2's broadcast input](https://christopher.su/notes/mac/iterm-broadcast/) to quickly issue commands across multiple machines.
 
+Throughout these benchmarks we use the `master/slave` terminology only for legacy reasons.
+Winder.ai condemns any perpetration of slavery and therefore suggest the use of `main/worker`.
+
 Proceed by installing:
 
 1. [Hadoop](installation/HADOOP.md)
