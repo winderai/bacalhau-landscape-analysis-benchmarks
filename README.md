@@ -4,16 +4,18 @@
 
 ## Sample code
 
-1. Clone this repo `git clone https://gitlab.com/WinderAI/protocol-labs/sample-code-benchmark.git` on your machine.
-1. Install the [single-node setup](./installation/SINGLE-NODE.md) shipped with this repo.
-1. Install `jupyter lab` in your base environment.
-1. Launch `cd sample-code && jupyter lab --ip=0.0.0.0` to run the sample notebooks.
-
 |                     | hadoop             | spark              | pandas             | dask               | postgres           | snowflake          |
 |---------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
 | [word-count](./sample-code/word-count)          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | [average-house-price](./sample-code/average-house-price) | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: |
 | [derivative-dataset](./sample-code/derivative-dataset)  |                    | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |                    |
+
+
+1. Clone this repo `git clone https://gitlab.com/WinderAI/protocol-labs/sample-code-benchmark.git` on your machine.
+1. [Create the AWS resources](installation/AWS.md) to host your cluster. In this step, you'll set the number of EC2 instances you're going to spin up.
+1. Install the [single-node setup](./installation/SINGLE-NODE.md) shipped with this repo.
+1. Install `jupyter lab` in your base environment.
+1. Launch `cd sample-code && jupyter lab --ip=0.0.0.0` to run the sample notebooks.
 
 ## Benchmark Instructions
 
