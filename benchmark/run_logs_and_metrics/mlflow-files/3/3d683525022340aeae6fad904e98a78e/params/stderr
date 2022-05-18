@@ -1,0 +1,41 @@
++ '[' cluster-size-6 = cluster-size-1 ']'
++ /home/hadoopuser/spark-3.2.1-bin-hadoop3.2/bin/spark-submit --master spark://hadoop-master:7077 word-count/spark/target/scala-2.12/sparkwordcount_2.12-0.1.jar /tmp/wordcount-10GB.txt
+22/05/10 09:42:03 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+22/05/10 09:42:04 INFO SparkContext: Running Spark version 3.2.1
+22/05/10 09:42:04 INFO ResourceUtils: ==============================================================
+22/05/10 09:42:04 INFO ResourceUtils: No custom resources configured for spark.driver.
+22/05/10 09:42:04 INFO ResourceUtils: ==============================================================
+22/05/10 09:42:04 INFO SparkContext: Submitted application: JavaWordCount
+22/05/10 09:42:04 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+22/05/10 09:42:04 INFO ResourceProfile: Limiting resource is cpu
+22/05/10 09:42:04 INFO ResourceProfileManager: Added ResourceProfile id: 0
+22/05/10 09:42:04 INFO SecurityManager: Changing view acls to: hadoopuser
+22/05/10 09:42:04 INFO SecurityManager: Changing modify acls to: hadoopuser
+22/05/10 09:42:04 INFO SecurityManager: Changing view acls groups to: 
+22/05/10 09:42:04 INFO SecurityManager: Changing modify acls groups to: 
+22/05/10 09:42:04 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(hadoopuser); groups with view permissions: Set(); users  with modify permissions: Set(hadoopuser); groups with modify permissions: Set()
+22/05/10 09:42:04 INFO Utils: Successfully started service 'sparkDriver' on port 40689.
+22/05/10 09:42:04 INFO SparkEnv: Registering MapOutputTracker
+22/05/10 09:42:04 INFO SparkEnv: Registering BlockManagerMaster
+22/05/10 09:42:04 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+22/05/10 09:42:04 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+22/05/10 09:42:04 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+22/05/10 09:42:04 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-890dbde8-bebf-4127-b599-909d155133bc
+22/05/10 09:42:04 INFO MemoryStore: MemoryStore started with capacity 408.9 MiB
+22/05/10 09:42:04 INFO SparkEnv: Registering OutputCommitCoordinator
+22/05/10 09:42:04 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+22/05/10 09:42:04 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://hadoop-master:4040
+22/05/10 09:42:04 INFO SparkContext: Added JAR file:/home/hadoopuser/sample-code-benchmark/benchmark/word-count/spark/target/scala-2.12/sparkwordcount_2.12-0.1.jar at spark://hadoop-master:40689/jars/sparkwordcount_2.12-0.1.jar with timestamp 1652175724137
+22/05/10 09:42:04 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://hadoop-master:7077...
+22/05/10 09:42:05 INFO TransportClientFactory: Successfully created connection to hadoop-master/172.31.25.67:7077 after 23 ms (0 ms spent in bootstraps)
+22/05/10 09:42:05 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20220510094205-0002
+22/05/10 09:42:05 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20220510094205-0002/0 on worker-20220510073521-172.31.17.140-35405 (172.31.17.140:35405) with 32 core(s)
+22/05/10 09:42:05 INFO StandaloneSchedulerBackend: Granted executor ID app-20220510094205-0002/0 on hostPort 172.31.17.140:35405 with 32 core(s), 1024.0 MiB RAM
+22/05/10 09:42:05 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20220510094205-0002/1 on worker-20220510073520-172.31.27.91-36143 (172.31.27.91:36143) with 32 core(s)
+22/05/10 09:42:05 INFO StandaloneSchedulerBackend: Granted executor ID app-20220510094205-0002/1 on hostPort 172.31.27.91:36143 with 32 core(s), 1024.0 MiB RAM
+22/05/10 09:42:05 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20220510094205-0002/2 on worker-20220510073516-172.31.20.169-40219 (172.31.20.169:40219) with 32 core(s)
+22/05/10 09:42:05 INFO StandaloneSchedulerBackend: Granted executor ID app-20220510094205-0002/2 on hostPort 172.31.20.169:40219 with 32 core(s), 1024.0 MiB RAM
+22/05/10 09:42:05 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20220510094205-0002/3 on worker-20220510073518-172.31.29.89-35399 (172.31.29.89:35399) with 32 core(s)
+22/05/10 09:42:05 INFO StandaloneSchedulerBackend: Granted executor ID app-20220510094205-0002/3 on hostPort 172.31.29.89:35399 with 32 core(s), 1024.0 MiB RAM
+22/05/10 09:42:05 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20220510094205-0002/4 on worker-20220510073519-172.31.20

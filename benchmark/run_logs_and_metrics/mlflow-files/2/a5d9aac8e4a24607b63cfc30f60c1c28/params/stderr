@@ -1,0 +1,65 @@
++ /usr/local/hadoop/bin/yarn jar word-count/hadoop/wc.jar WordCount /user/hadoopuser/wordcount-10GB.txt out -D yarn.app.mapreduce.am.resource.memory-mb=32000 -D yarn.app.mapreduce.am.resource.vcores=4 -D mapreduce.map.resource.memory-mb=96000 -D mapreduce.map.resource.vcores=32 -D mapreduce.reduce.resource.memory-mb=96000 -D mapreduce.reduce.resource.vcores=32
+2022-05-09 15:23:50,654 INFO client.DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at hadoop-master/172.31.26.164:8032
+2022-05-09 15:23:50,963 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2022-05-09 15:23:50,973 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/hadoopuser/.staging/job_1652106242218_0003
+2022-05-09 15:23:51,153 INFO input.FileInputFormat: Total input files to process : 1
+2022-05-09 15:23:51,210 INFO mapreduce.JobSubmitter: number of splits:79
+2022-05-09 15:23:51,285 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1652106242218_0003
+2022-05-09 15:23:51,285 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2022-05-09 15:23:51,399 INFO conf.Configuration: resource-types.xml not found
+2022-05-09 15:23:51,399 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2022-05-09 15:23:51,442 INFO impl.YarnClientImpl: Submitted application application_1652106242218_0003
+2022-05-09 15:23:51,467 INFO mapreduce.Job: The url to track the job: http://hadoop-master:8088/proxy/application_1652106242218_0003/
+2022-05-09 15:23:51,467 INFO mapreduce.Job: Running job: job_1652106242218_0003
+2022-05-09 15:23:56,520 INFO mapreduce.Job: Job job_1652106242218_0003 running in uber mode : false
+2022-05-09 15:23:56,520 INFO mapreduce.Job:  map 0% reduce 0%
+2022-05-09 15:24:12,596 INFO mapreduce.Job:  map 7% reduce 0%
+2022-05-09 15:24:18,616 INFO mapreduce.Job:  map 9% reduce 0%
+2022-05-09 15:24:22,638 INFO mapreduce.Job:  map 10% reduce 0%
+2022-05-09 15:24:23,641 INFO mapreduce.Job:  map 13% reduce 0%
+2022-05-09 15:24:24,644 INFO mapreduce.Job:  map 17% reduce 0%
+2022-05-09 15:24:25,648 INFO mapreduce.Job:  map 18% reduce 0%
+2022-05-09 15:24:37,684 INFO mapreduce.Job:  map 21% reduce 0%
+2022-05-09 15:24:38,687 INFO mapreduce.Job:  map 22% reduce 0%
+2022-05-09 15:24:39,690 INFO mapreduce.Job:  map 23% reduce 0%
+2022-05-09 15:24:40,693 INFO mapreduce.Job:  map 24% reduce 6%
+2022-05-09 15:24:43,703 INFO mapreduce.Job:  map 25% reduce 6%
+2022-05-09 15:24:44,705 INFO mapreduce.Job:  map 26% reduce 6%
+2022-05-09 15:24:46,711 INFO mapreduce.Job:  map 27% reduce 6%
+2022-05-09 15:24:48,718 INFO mapreduce.Job:  map 28% reduce 6%
+2022-05-09 15:24:49,722 INFO mapreduce.Job:  map 30% reduce 6%
+2022-05-09 15:24:50,724 INFO mapreduce.Job:  map 31% reduce 6%
+2022-05-09 15:24:51,727 INFO mapreduce.Job:  map 34% reduce 6%
+2022-05-09 15:24:52,730 INFO mapreduce.Job:  map 34% reduce 10%
+2022-05-09 15:24:58,748 INFO mapreduce.Job:  map 34% reduce 11%
+2022-05-09 15:25:01,757 INFO mapreduce.Job:  map 35% reduce 11%
+2022-05-09 15:25:02,760 INFO mapreduce.Job:  map 36% reduce 11%
+2022-05-09 15:25:03,763 INFO mapreduce.Job:  map 37% reduce 11%
+2022-05-09 15:25:04,765 INFO mapreduce.Job:  map 38% reduce 11%
+2022-05-09 15:25:05,768 INFO mapreduce.Job:  map 40% reduce 11%
+2022-05-09 15:25:07,774 INFO mapreduce.Job:  map 41% reduce 11%
+2022-05-09 15:25:09,779 INFO mapreduce.Job:  map 42% reduce 11%
+2022-05-09 15:25:11,785 INFO mapreduce.Job:  map 43% reduce 11%
+2022-05-09 15:25:13,791 INFO mapreduce.Job:  map 44% reduce 11%
+2022-05-09 15:25:14,793 INFO mapreduce.Job:  map 45% reduce 11%
+2022-05-09 15:25:15,796 INFO mapreduce.Job:  map 47% reduce 11%
+2022-05-09 15:25:16,798 INFO mapreduce.Job:  map 47% reduce 14%
+2022-05-09 15:25:17,801 INFO mapreduce.Job:  map 49% reduce 14%
+2022-05-09 15:25:18,804 INFO mapreduce.Job:  map 50% reduce 14%
+2022-05-09 15:25:19,807 INFO mapreduce.Job:  map 51% reduce 14%
+2022-05-09 15:25:22,814 INFO mapreduce.Job:  map 51% reduce 17%
+2022-05-09 15:25:28,828 INFO mapreduce.Job:  map 52% reduce 17%
+2022-05-09 15:25:29,830 INFO mapreduce.Job:  map 53% reduce 17%
+2022-05-09 15:25:30,833 INFO mapreduce.Job:  map 54% reduce 17%
+2022-05-09 15:25:31,835 INFO mapreduce.Job:  map 56% reduce 17%
+2022-05-09 15:25:32,838 INFO mapreduce.Job:  map 57% reduce 17%
+2022-05-09 15:25:34,842 INFO mapreduce.Job:  map 58% reduce 17%
+2022-05-09 15:25:36,847 INFO mapreduce.Job:  map 59% reduce 17%
+2022-05-09 15:25:38,852 INFO mapreduce.Job:  map 60% reduce 17%
+2022-05-09 15:25:39,854 INFO mapreduce.Job:  map 61% reduce 17%
+2022-05-09 15:25:40,857 INFO mapreduce.Job:  map 61% reduce 18%
+2022-05-09 15:25:41,860 INFO mapreduce.Job:  map 63% reduce 18%
+2022-05-09 15:25:42,862 INFO mapreduce.Job:  map 64% reduce 18%
+2022-05-09 15:25:43,864 INFO mapreduce.Job:  map 66% reduce 18%
+2022-05-09 15:25:44,867 INFO mapreduce.Job:  map 67% reduce 18%
+2022-05-09 15:25:46,872 INFO map

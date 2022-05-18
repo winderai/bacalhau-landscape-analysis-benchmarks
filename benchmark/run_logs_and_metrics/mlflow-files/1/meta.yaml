@@ -1,0 +1,4 @@
+artifact_location: file:///home/ubuntu/mlflow-files/1
+experiment_id: '1'
+lifecycle_stage: active
+name: /cluster-size-1

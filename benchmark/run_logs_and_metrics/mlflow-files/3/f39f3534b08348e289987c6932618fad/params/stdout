@@ -1,0 +1,8 @@
+Connecting to hadoop-master...
+<Client: 'tcp://172.31.25.67:8786' processes=5 threads=160, memory=1.22 TiB>
+the     81700000
+a       60200000
+of      53750000
+word    51600000
+and     49450000
+Name: 0, dtype: int64

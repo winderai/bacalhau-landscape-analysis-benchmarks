@@ -1,0 +1,18 @@
+Tue May 10 15:28:06 UTC 2022
+COPY 94600000
+Tue May 10 15:32:43 UTC 2022
+         word         |  count  
+----------------------+---------
+ 10                   | 2150000
+ America              | 2150000
+ American             | 2150000
+ As                   | 4300000
+ But                  | 4300000
+ Classification  Word | 2150000
+ Contents             | 2150000
+ Details              | 4300000
+ Different            | 2150000
+ External             | 2150000
+(10 rows)
+
+Tue May 10 15:35:11 UTC 2022

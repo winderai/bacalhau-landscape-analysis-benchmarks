@@ -1,0 +1,12 @@
++ date
++ /home/ubuntu/bin/snowsql --query 'COPY INTO wordcountXL FROM '\''@wordcountstage'\'';'
++ date
++ /home/ubuntu/bin/snowsql --query 'SELECT word, COUNT(*) as count
+  from (
+    select c.value::string as word 
+    from wordcountdb.wordcountschema.wordcountXL, 
+          lateral flatten(input=>split(C1, '\'' '\'')) c
+  )
+  group by word
+  limit 10;'
++ date

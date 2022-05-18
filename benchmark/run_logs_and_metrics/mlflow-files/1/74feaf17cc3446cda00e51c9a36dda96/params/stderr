@@ -1,0 +1,53 @@
++ /home/ubuntu/hadoop-3.3.1/bin/yarn jar word-count/hadoop/wc.jar WordCount /tmp/wordcount-10GB.txt out -D yarn.app.mapreduce.am.resource.memory-mb=32000 -D yarn.app.mapreduce.am.resource.vcores=4 -D mapreduce.map.resource.memory-mb=96000 -D mapreduce.map.resource.vcores=32 -D mapreduce.reduce.resource.memory-mb=96000 -D mapreduce.reduce.resource.vcores=32
+2022-05-10 16:16:45,842 INFO impl.MetricsConfig: Loaded properties from hadoop-metrics2.properties
+2022-05-10 16:16:45,900 INFO impl.MetricsSystemImpl: Scheduled Metric snapshot period at 10 second(s).
+2022-05-10 16:16:45,900 INFO impl.MetricsSystemImpl: JobTracker metrics system started
+2022-05-10 16:16:45,964 WARN mapreduce.JobResourceUploader: Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+2022-05-10 16:16:46,011 INFO input.FileInputFormat: Total input files to process : 1
+2022-05-10 16:16:46,052 INFO mapreduce.JobSubmitter: number of splits:316
+2022-05-10 16:16:46,128 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_local531354542_0001
+2022-05-10 16:16:46,128 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2022-05-10 16:16:46,234 INFO mapreduce.Job: The url to track the job: http://localhost:8080/
+2022-05-10 16:16:46,234 INFO mapreduce.Job: Running job: job_local531354542_0001
+2022-05-10 16:16:46,235 INFO mapred.LocalJobRunner: OutputCommitter set in config null
+2022-05-10 16:16:46,242 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2022-05-10 16:16:46,242 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-05-10 16:16:46,243 INFO mapred.LocalJobRunner: OutputCommitter is org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+2022-05-10 16:16:46,361 INFO mapred.LocalJobRunner: Starting task: attempt_local531354542_0001_m_000000_0
+2022-05-10 16:16:46,361 INFO mapred.LocalJobRunner: Waiting for map tasks
+2022-05-10 16:16:46,377 INFO output.FileOutputCommitter: File Output Committer Algorithm version is 2
+2022-05-10 16:16:46,377 INFO output.FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+2022-05-10 16:16:46,395 INFO mapred.Task:  Using ResourceCalculatorProcessTree : [ ]
+2022-05-10 16:16:46,399 INFO mapred.MapTask: Processing split: file:/tmp/wordcount-10GB.txt:0+33554432
+2022-05-10 16:16:46,469 INFO mapred.MapTask: (EQUATOR) 0 kvi 26214396(104857584)
+2022-05-10 16:16:46,469 INFO mapred.MapTask: mapreduce.task.io.sort.mb: 100
+2022-05-10 16:16:46,469 INFO mapred.MapTask: soft limit at 83886080
+2022-05-10 16:16:46,469 INFO mapred.MapTask: bufstart = 0; bufvoid = 104857600
+2022-05-10 16:16:46,469 INFO mapred.MapTask: kvstart = 26214396; length = 6553600
+2022-05-10 16:16:46,473 INFO mapred.MapTask: Map output collector class = org.apache.hadoop.mapred.MapTask$MapOutputBuffer
+2022-05-10 16:16:47,239 INFO mapreduce.Job: Job job_local531354542_0001 running in uber mode : false
+2022-05-10 16:16:47,239 INFO mapreduce.Job:  map 0% reduce 0%
+2022-05-10 16:16:47,590 INFO mapred.MapTask: Spilling map output
+2022-05-10 16:16:47,590 INFO mapred.MapTask: bufstart = 0; bufend = 32415399; bufvoid = 104857600
+2022-05-10 16:16:47,590 INFO mapred.MapTask: kvstart = 26214396(104857584); kvend = 13346732(53386928); length = 12867665/6553600
+2022-05-10 16:16:47,590 INFO mapred.MapTask: (EQUATOR) 42901155 kvi 10725284(42901136)
+2022-05-10 16:16:50,003 INFO mapred.MapTask: Finished spill 0
+2022-05-10 16:16:50,003 INFO mapred.MapTask: (RESET) equator 42901155 kv 10725284(42901136) kvi 8103856(32415424)
+2022-05-10 16:16:50,541 INFO mapred.LocalJobRunner: 
+2022-05-10 16:16:50,542 INFO mapred.MapTask: Starting flush of map output
+2022-05-10 16:16:50,542 INFO mapred.MapTask: Spilling map output
+2022-05-10 16:16:50,542 INFO mapred.MapTask: bufstart = 42901155; bufend = 66128087; bufvoid = 104857600
+2022-05-10 16:16:50,542 INFO mapred.MapTask: kvstart = 10725284(42901136); kvend = 1505092(6020368); length = 9220193/6553600
+2022-05-10 16:16:51,812 INFO mapred.MapTask: Finished spill 1
+2022-05-10 16:16:51,817 INFO mapred.Merger: Merging 2 sorted segments
+2022-05-10 16:16:51,821 INFO mapred.Merger: Down to the last merge-pass, with 2 segments left of total size: 10312 bytes
+2022-05-10 16:16:51,830 INFO mapred.Task: Task:attempt_local531354542_0001_m_000000_0 is done. And is in the process of committing
+2022-05-10 16:16:51,831 INFO mapred.LocalJobRunner: map > sort
+2022-05-10 16:16:51,831 INFO mapred.Task: Task 'attempt_local531354542_0001_m_000000_0' done.
+2022-05-10 16:16:51,842 INFO mapred.Task: Final Counters for attempt_local531354542_0001_m_000000_0: Counters: 18
+	File System Counters
+		FILE: Number of bytes read=33582321
+		FILE: Number of bytes written=687048
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write 

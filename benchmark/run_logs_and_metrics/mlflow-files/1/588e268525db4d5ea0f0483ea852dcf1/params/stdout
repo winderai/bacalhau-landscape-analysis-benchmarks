@@ -1,0 +1,8 @@
+Connecting to localhost...
+<Client: 'tcp://127.0.0.1:36269' processes=8 threads=32, memory=248.96 GiB>
+the     81700000
+a       60200000
+of      53750000
+word    51600000
+and     49450000
+Name: 0, dtype: int64

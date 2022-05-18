@@ -1,0 +1,15 @@
+artifact_uri: file:///home/hadoopuser/mlflow-files/1/3d683525022340aeae6fad904e98a78e/artifacts
+end_time: 1652175738294
+entry_point_name: ''
+experiment_id: '3'
+lifecycle_stage: active
+name: ''
+run_id: 3d683525022340aeae6fad904e98a78e
+run_uuid: 3d683525022340aeae6fad904e98a78e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1652175722704
+status: 3
+tags: []
+user_id: hadoopuser

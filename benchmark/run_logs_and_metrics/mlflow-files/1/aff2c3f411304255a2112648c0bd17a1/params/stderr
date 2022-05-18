@@ -1,0 +1,4 @@
++ '[' cluster-size-1 = cluster-size-1 ']'
++ /home/ubuntu/spark-3.2.1-bin-hadoop3.2/bin/spark-submit --master 'local[*]' word-count/spark/target/scala-2.12/sparkwordcount_2.12-0.1.jar /tmp/wordcount-10GB.txt
+/home/ubuntu/spark-3.2.1-bin-hadoop3.2/bin/spark-class: line 71: /usr/lib/jvm/java-8-openjdk-amd64//bin/java: No such file or directory
+/home/ubuntu/spark-3.2.1-bin-hadoop3.2/bin/spark-class: line 96: CMD: bad array subscript

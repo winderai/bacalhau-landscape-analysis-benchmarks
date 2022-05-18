@@ -1,0 +1,15 @@
+artifact_uri: file:///home/ubuntu/mlflow-files/1/74feaf17cc3446cda00e51c9a36dda96/artifacts
+end_time: 1652200905956
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 74feaf17cc3446cda00e51c9a36dda96
+run_uuid: 74feaf17cc3446cda00e51c9a36dda96
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1652199405109
+status: 3
+tags: []
+user_id: ubuntu
