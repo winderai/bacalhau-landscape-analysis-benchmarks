@@ -19,6 +19,8 @@ In this repository you find: (1) a collection of working code examples to demons
 
 We provide working examples for [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) workloads that could be computed next to data.
 
+Take a look at the [`sample-code/`](./sample-code) folder or follow the instructions below to run the demos.
+
 |                     | hadoop             | spark              | pandas             | dask               | postgres           | snowflake          |
 |---------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
 | [Word count](./sample-code/word-count)          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
@@ -34,6 +36,11 @@ We provide working examples for [embarrassingly parallel](https://en.wikipedia.o
 1. Launch `cd sample-code && jupyter lab --ip=0.0.0.0` to run the sample notebooks in `sample-code/`.
 
 ## Benchmark instructions
+
+The benchmarks consists of a timed [Word count](https://en.wikipedia.org/wiki/Word_count) job running on all frameworks mentioned above.
+Each run is launched one at a time and requires some preliminary work (e.g. spin-up cluster). 
+
+Feel free to explore the [`benchmark/`](./benchmark) directory to familiarize with this setup.
 
 ### Instructions
 
