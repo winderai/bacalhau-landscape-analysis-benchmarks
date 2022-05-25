@@ -12,7 +12,7 @@ We counldn't not wink to the pythonic data analysis world, so we've also covered
 
 
 
-Hereby you find: (1) a collection of working code examples to demonstrate a variety of use cases for different computing frameworks, the table below illustrates the coverage; (2) scripts and instructions to benchmark running time and resource utilization of different computing frameworks. Please see the instructions below.
+In this repository you find: (1) a collection of working code examples to demonstrate a variety of use cases for different computing frameworks, the table below illustrates the coverage; (2) scripts and instructions to benchmark running time and resource utilization of different computing frameworks. Please see the instructions below.
 
 
 ## Sample code
