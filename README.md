@@ -3,6 +3,7 @@
 > This project was created by [Winder.ai, an ML consultancy](https://winder.ai/), and funded by [Protocol Labs](https://protocol.ai/).
 
 This repository contains a detailed analysis of the current state of general purpose computation frameworks and a series of sample demos and benchmarks.
+
 Hereby you find: (1) a collection of working code examples to demonstrate a variety of use cases for different computing frameworks, the table below illustrates the coverage; (2) benchmark scripts and instructions on how to compare running time and resource utilization of different computing frameworks. Please see the instructions below.
 
 ## Sample code
