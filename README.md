@@ -4,15 +4,28 @@
 
 This repository contains a detailed analysis of the current state of general purpose computation frameworks and a series of sample demos and benchmarks.
 
+We've intentionally reviewd a wide range of heterogeneous frameworks to provide you with both a broad overview and to capture nuances between frameworks.
+Thus, next to big data tools like [Apache Hadoop](https://hadoop.apache.org/) and [Apache Spark](https://spark.apache.org/) we've reviewed databases such as [Postgres](https://www.postgresql.org/) and [Snowflake](https://www.snowflake.com/). 
+Note the latter is a proprietary SaaS warehouse product, despite the amount of insights on its internal processing is limited we've included it for its blazoned performance.
+We counldn't not wink to the pythonic data analysis world, so we've also included very popular anaylsis tools like [Pandas](https://pandas.pydata.org/) and it's parallel/distributed brother [Dask](https://dask.org/).
+
+
+
+
 Hereby you find: (1) a collection of working code examples to demonstrate a variety of use cases for different computing frameworks, the table below illustrates the coverage; (2) scripts and instructions to benchmark running time and resource utilization of different computing frameworks. Please see the instructions below.
 
+
 ## Sample code
+
+We provide working examples for [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) workloads that could be computed next to data.
 
 |                     | hadoop             | spark              | pandas             | dask               | postgres           | snowflake          |
 |---------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
 | [Word count](./sample-code/word-count)          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | [Average house price](./sample-code/average-house-price) | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: |
 | [Derivative dataset (e.g. `head -n 10 <file.txt>`)](./sample-code/derivative-dataset)  |                    | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |                    |
+
+### Instructions
 
 1. Clone this repo `git clone https://gitlab.com/WinderAI/protocol-labs/sample-code-benchmark.git` on your machine.
 1. [Create the AWS resources](installation/AWS.md) to host your cluster. In this step you shall spin up one single EC2 instance.
@@ -21,6 +34,8 @@ Hereby you find: (1) a collection of working code examples to demonstrate a vari
 1. Launch `cd sample-code && jupyter lab --ip=0.0.0.0` to run the sample notebooks in `sample-code/`.
 
 ## Benchmark instructions
+
+### Instructions
 
 1. [Create the AWS resources](installation/AWS.md) to host your cluster. In this step, you'll set the number of EC2 instances you're going to spin up.
 1. Clone this repo `git clone https://gitlab.com/WinderAI/protocol-labs/sample-code-benchmark.git` on the main cluster node.
