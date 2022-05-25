@@ -7,7 +7,7 @@ This repository contains a detailed analysis of the current state of general pur
 We've intentionally reviewd a wide range of heterogeneous frameworks to provide you with both a broad overview and to capture nuances between frameworks.
 Thus, next to big data tools like [Apache Hadoop](https://hadoop.apache.org/) and [Apache Spark](https://spark.apache.org/), we've reviewed databases such as [Postgres](https://www.postgresql.org/) and [Snowflake](https://www.snowflake.com/). 
 Note the latter is a proprietary SaaS warehouse product, despite the amount of insights on its internal processing is limited we've included it for its blazoned performance.
-We counldn't not wink to the pythonic data analysis world, so we've also included very popular anaylsis tools like [Pandas](https://pandas.pydata.org/) and it's parallel/distributed brother [Dask](https://dask.org/).
+We counldn't not wink to the pythonic data analysis world, so we've also covered very popular anaylsis tools like [Pandas](https://pandas.pydata.org/) and it's parallel/distributed brother [Dask](https://dask.org/).
 
 
 
