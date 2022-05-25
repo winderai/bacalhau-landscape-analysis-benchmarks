@@ -1,8 +1,9 @@
-# Protocol Labs - Landscape Analysis
+# [Protocol Labs] Compute Over Data Landscape Analysis - Landscape Analysis
 
 > This project was created by [Winder.ai, an ML consultancy](https://winder.ai/), and funded by [Protocol Labs](https://protocol.ai/).
 
-This repository contains (1) a collection of working code samples to demonstrate a variety of use cases for different computing frameworks (see table below); (2) benchmark instructions on how to compare running time and resource utilization of different computing frameworks. Please find the instructions below.
+This repository contains a detailed analysis of the current state of general purpose computation frameworks and a series of sample demos and benchmarks.
+Hereby you find: (1) a collection of working code examples to demonstrate a variety of use cases for different computing frameworks, the table below illustrates the coverage; (2) benchmark scripts and instructions on how to compare running time and resource utilization of different computing frameworks. Please see the instructions below.
 
 ## Sample code
 
@@ -10,7 +11,7 @@ This repository contains (1) a collection of working code samples to demonstrate
 |---------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
 | [word-count](./sample-code/word-count)          | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | [average-house-price](./sample-code/average-house-price) | :white_check_mark: | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: | :white_check_mark: |
-| [derivative-dataset](./sample-code/derivative-dataset)  |                    | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |                    |
+| [derivative-dataset (e.g. `head -n 10 <file.txt>`)](./sample-code/derivative-dataset)  |                    | :white_check_mark: | :white_check_mark: |                    | :white_check_mark: |                    |
 
 1. Clone this repo `git clone https://gitlab.com/WinderAI/protocol-labs/sample-code-benchmark.git` on your machine.
 1. [Create the AWS resources](installation/AWS.md) to host your cluster. In this step you shall spin up one single EC2 instance.
