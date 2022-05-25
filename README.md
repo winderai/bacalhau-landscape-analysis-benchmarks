@@ -38,7 +38,10 @@ Take a look at the [`sample-code/`](./sample-code) folder or follow the instruct
 ## Benchmark instructions
 
 The benchmarks consists of a timed [Word count](https://en.wikipedia.org/wiki/Word_count) job running on all frameworks mentioned above.
-Each run is launched one at a time and requires some preliminary work (e.g. spin-up cluster). 
+Each run is launched one at a time and requires some manual preliminary work (e.g. spin-up cluster).
+During the creation of AWS resources you can select the number of nodes you'd like to spawn, can do single or multi node setups.
+The difference is the latter installation is way more cumbersome so take your time.
+
 To facilitate the logging of running time, job parameters and various environment variables, the launch scripts uses [MLflow](https://mlflow.org/).
 Differently, resource usage (i.e., cpu, memory, disk) is logged via [AWS CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
 This means CloudWatch metrics can be fetched from their dashboard starting from 5-10 minutes after the experiment has completed.
