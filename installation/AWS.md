@@ -28,8 +28,8 @@ aws ec2 create-security-group \
     --tag-specifications "ResourceType=security-group,Tags=[{Key=project,Value=$PROJ_NAME},{Key=Name,Value=$PROJ_NAME}]"
 ```
 
-Create an ingress rule, for security reasons we restrict inbout traffic from a single IP address. 
-Please set `YOUR_IP_ADDRESS` accordingly.
+Create an ad-hoc ingress rule, for security reasons we restrict inbout traffic from a single IP address.
+Please set `YOUR_IP_ADDRESS` accordingly; this is the IP of your workstation, try querying https://www.myip.com/ or contact your system admin to find the exact location.
 
 ```bash
 aws ec2 authorize-security-group-ingress \
