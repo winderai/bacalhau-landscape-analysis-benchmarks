@@ -44,7 +44,7 @@ Differently, resource usage (i.e., cpu, memory, disk) is logged via [AWS CloudWa
 This means CloudWatch metrics can be fetched from their dashboard starting from 5-10 minutes after the experiment has completed.
 This is to allow the metrics to flow into AWS sink.
 
-Feel free to explore the [`benchmark/`](./benchmark) directory to familiarize with this setup.
+Feel free to explore the [`benchmark/`](./benchmark) directory to familiarize with this setup, or follow the instructions below to spawn a cluster and run the benchmarks.
 
 ### Instructions
 
