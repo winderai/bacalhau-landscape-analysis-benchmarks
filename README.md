@@ -40,7 +40,7 @@ Take a look at the [`sample-code/`](./sample-code) folder or follow the instruct
 The benchmarks consists of a timed [Word count](https://en.wikipedia.org/wiki/Word_count) job running on all frameworks mentioned above.
 Each run is launched one at a time and requires some preliminary work (e.g. spin-up cluster). 
 To facilitate the logging of running time, job parameters and various environment variables, the launch scripts uses [MLflow](https://mlflow.org/).
-Differently, resource usage is logged via [AWS CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
+Differently, resource usage (i.e., cpu, memory, disk) is logged via [AWS CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
 This means CloudWatch metrics can be fetched from their dashboard starting from 5-10 minutes after the experiment has completed.
 This is to allow the metrics to flow into AWS sink.
 
