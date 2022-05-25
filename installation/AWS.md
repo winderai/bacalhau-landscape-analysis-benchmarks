@@ -29,7 +29,7 @@ aws ec2 create-security-group \
 ```
 
 Create an ad-hoc ingress rule, for security reasons we restrict inbout traffic from a single IP address.
-Please set `YOUR_IP_ADDRESS` accordingly; this is the IP of your workstation, try querying https://www.myip.com/ or contact your system admin to find the exact location.
+Please set `YOUR_IP_ADDRESS` accordingly; this is the IP of your workstation, try querying https://www.myip.com/ or contact your system admin to find the exact address.
 
 ```bash
 aws ec2 authorize-security-group-ingress \
