@@ -19,7 +19,7 @@ In this repository you find: (1) a collection of working code examples to demons
 
 We provide working examples for [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) workloads that could be computed next to data.
 
-Take a look at the [`sample-code/`](./sample-code) folder to view the demos (no installation needed!). 
+Take a look at the [`sample-code/`](./sample-code) folder for viewing the demos (no installation needed!). 
 If you want to run them live as well please follow the instructions below.
 
 
