@@ -4,7 +4,7 @@
 
 ### Create account
 
-A free trial account should suffice for the purpose of running these benchamrks.
+A free trial account is sufficient for running these benchamrks.
 Please create one at https://signup.snowflake.com/. 
 
 ### Create db
