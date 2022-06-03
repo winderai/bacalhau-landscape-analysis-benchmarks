@@ -19,6 +19,10 @@ Please create one at https://signup.snowflake.com/.
 
 ![alt text](../imgs/snowflake_create_fileformat.png "create file format")
 
+### Create table
+
+![alt text](../imgs/snowflake_create_table.png "create table")
+
 ### Set environment variables
 
 Let's now set up some environment variables.
