@@ -1,26 +1,29 @@
-# [Protocol Labs] Compute Over Data Landscape Analysis - Landscape Analysis
+# [Protocol Labs] Compute Over Data Landscape Analysis - Bacalhau
 
 > This project was created by [Winder.ai, an ML consultancy](https://winder.ai/), and funded by [Protocol Labs](https://protocol.ai/).
 
-This repository contains a detailed analysis of the current state of general purpose computation frameworks and a series of sample demos and benchmarks.
+This repository contains a detailed analysis of the current state of general-purpose computation frameworks and a series of sample demos and benchmarks.
 
-We've intentionally reviewd a wide range of heterogeneous frameworks to provide you with both a broad overview and to capture nuances between frameworks.
+We've intentionally reviewed a wide range of heterogeneous frameworks to provide a broad overview and capture nuances between frameworks.
 Thus, next to big data tools like [Apache Hadoop](https://hadoop.apache.org/) and [Apache Spark](https://spark.apache.org/), we've reviewed databases such as [Postgres](https://www.postgresql.org/) and [Snowflake](https://www.snowflake.com/). 
-Note the latter is a proprietary SaaS warehouse product, despite the amount of insights on its internal processing is limited we've included it for its blazoned performance.
-We counldn't not wink to the pythonic data analysis world, so we've also covered very popular anaylsis tools such as [Pandas](https://pandas.pydata.org/) and it's parallel/distributed brother [Dask](https://dask.org/).
+Note the latter is a proprietary SaaS warehouse product, despite the  limited insights on its internal processing we've included it for its blazoned performance.
+We couldn't not wink to the pythonic data analysis world, so we've also covered top-rated analysis tools such as [Pandas](https://pandas.pydata.org/) and its parallel/distributed brother [Dask](https://dask.org/).
 
 
 
 
-In this repository you find: (1) a collection of working code examples to demonstrate a variety of use cases for different computing frameworks, the table below illustrates the coverage; (2) scripts and instructions to benchmark running time and resource utilization of different computing frameworks. Please see the instructions below.
+In this repository you find: 
+1. A collection of working code examples to demonstrate a variety of use cases for different computing frameworks, the table below illustrates the coverage.
+2. A set of scripts and instructions to benchmark running time and resource utilization of different computing frameworks. Please see the instructions below.
 
+We provide accompanying slides to summarize this work and report benchmarks results - [[link to slides](https://docs.google.com/presentation/d/1wOh-ASGshgc1Ivkoyaz9zGpVGTxX9LDMZQB4-eXOBP4/edit?usp=sharing)].
 
 ## Sample code
 
-We provide working examples for [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) workloads that could be computed next to data.
+We provide working examples for [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) workloads that can be computed next to data.
 
 Take a look at the [`sample-code/`](./sample-code) folder for viewing the demos (no installation needed!). 
-If you want to run them live as well please follow the instructions below.
+If you want to run them live, please follow the instructions below.
 
 
 |                     | hadoop             | spark              | pandas             | dask               | postgres           | snowflake          |
@@ -37,19 +40,19 @@ If you want to run them live as well please follow the instructions below.
 1. Install `jupyter lab` in your base environment.
 1. Launch `cd sample-code && jupyter lab --ip=0.0.0.0` to run the sample notebooks in `sample-code/`.
 
-## Benchmark instructions
+## Benchmarks
 
-The benchmarks consists of a timed [Word count](https://en.wikipedia.org/wiki/Word_count) job running on all frameworks mentioned above.
+The benchmarks consist of a timed [Word count](https://en.wikipedia.org/wiki/Word_count) job running on all frameworks mentioned above.
 Each run is launched one at a time and requires some manual preliminary work (e.g. spin-up cluster).
-During the creation of AWS resources you can select the number of nodes you'd like to spawn, can do single or multi node setups.
+During the creation of AWS resources you can select the number of nodes you'd like to spawn, can do single or multi-node setups.
 The difference is the latter installation is way more cumbersome so take your time.
 
-To facilitate the logging of running time, job parameters and various environment variables, the launch scripts uses [MLflow](https://mlflow.org/).
+To facilitate the logging of running time, job parameters and various environment variables, the launch scripts use [MLflow](https://mlflow.org/).
 Differently, resource usage (i.e., cpu, memory, disk) is logged via [AWS CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
-This means CloudWatch metrics can be fetched from their dashboard starting from 5-10 minutes after the experiment has completed.
+This means CloudWatch metrics can be fetched from their dashboard starting from 5-10 minutes after the experiment has been completed.
 This is to allow the metrics to flow into AWS sink.
 
-Feel free to explore the [`benchmark/`](./benchmark) directory to familiarize with this setup, or follow the instructions below to spawn a cluster and run the benchmarks.
+Feel free to explore the [`benchmark/`](./benchmark) directory to familiarize yourself with this setup, or follow the instructions below to spawn a cluster and run the benchmarks.
 
 ### Instructions
 
