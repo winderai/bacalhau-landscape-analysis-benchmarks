@@ -16,7 +16,7 @@ In this repository you find:
 1. A collection of working code examples to demonstrate a variety of use cases for different computing frameworks, the table below illustrates the coverage.
 2. A set of scripts and instructions to benchmark running time and resource utilization of different computing frameworks. Please see the instructions below.
 
-We provide accompanying slides to summarize this work and report benchmarks results - [[link to slides](https://docs.google.com/presentation/d/1wOh-ASGshgc1Ivkoyaz9zGpVGTxX9LDMZQB4-eXOBP4/edit?usp=sharing)].
+> We provide accompanying slides that summarize this work and report on the benchmarks results - [[link to slides](https://docs.google.com/presentation/d/1wOh-ASGshgc1Ivkoyaz9zGpVGTxX9LDMZQB4-eXOBP4/edit?usp=sharing)].
 
 ## Sample code
 
