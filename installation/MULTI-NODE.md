@@ -13,9 +13,9 @@ For convienence, I'd recommend using [iTerm2's broadcast input](https://christop
  
 Proceed by installing:
 
-1. [Hadoop](installation/HADOOP.md)
-1. [Spark](installation/SPARK.md)
-1. [Dask](installation/DASK.md)
+1. [Hadoop](./HADOOP.md)
+1. [Spark](./SPARK.md)
+1. [Dask](./DASK.md)
 
 
 If you'd like to track cpu/mem/etc. usage don't forget to set up [CloudWatch agent](./CLOUDWATCH.md).
