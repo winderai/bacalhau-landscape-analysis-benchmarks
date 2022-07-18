@@ -18,7 +18,7 @@ In this repository you find:
 
 > We provide accompanying slides that summarize this work and report on the benchmarks results - [[link to slides](https://docs.google.com/presentation/d/1wOh-ASGshgc1Ivkoyaz9zGpVGTxX9LDMZQB4-eXOBP4/edit?usp=sharing)].
 
-## Sample code
+## Sample code :books:
 
 We provide working examples for [embarrassingly parallel](https://en.wikipedia.org/wiki/Embarrassingly_parallel) workloads that can be computed next to data.
 
@@ -40,7 +40,7 @@ If you want to run them live, please follow the instructions below.
 1. Install `jupyter lab` in your base environment.
 1. Launch `cd sample-code && jupyter lab --ip=0.0.0.0` to run the sample notebooks in `sample-code/`.
 
-## Benchmarks
+## Benchmarks :stopwatch:
 
 The benchmarks consist of a timed [Word count](https://en.wikipedia.org/wiki/Word_count) job running on all frameworks mentioned above.
 Each run is launched one at a time and requires some manual preliminary work (e.g. spin-up cluster).
