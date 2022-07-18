@@ -1,6 +1,6 @@
-# [Protocol Labs] Compute Over Data Landscape Analysis - Bacalhau
+# Compute Over Data Landscape Analysis
 
-> This project was created by [Winder.ai, an ML consultancy](https://winder.ai/), and funded by [Protocol Labs](https://protocol.ai/).
+> This project was created by [Winder.ai, an ML consultancy](https://winder.ai/), and funded by [Protocol Labs](https://protocol.ai/), the creators of [Bacalhau](https://github.com/filecoin-project/bacalhau), a Compute over Data framework for IPFS & Filecoin
 
 This repository contains a detailed analysis of the current state of general-purpose computation frameworks and a series of sample demos and benchmarks.
 
